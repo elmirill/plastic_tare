@@ -1,0 +1,77 @@
+/* Main Color */
+
+#header{
+	background: #FCFFFC;
+}
+
+#header-main-nav{
+	background: #388E3C;
+}
+
+#menu li a:hover{
+	background: #2E7D32;
+}
+
+#sidebar{
+	//background: #F9F5FF;
+	background: #E8F5E9;
+}
+
+#catalogue {
+	background: #C8E6C9;
+}
+
+#catalogue > ul > li > a p:hover, #catalogue ul ul li:hover{
+	background: #A5D6A7;
+}
+
+.calc-dropdown {
+	background: #C8E6C9;
+}
+
+#additem  {
+	background: #66BB6A;
+}
+
+.calc-quantity {
+
+}
+
+
+/* Additional Color */
+
+#contacts-header a{
+	color: #C62828;
+}
+
+#callme-shrinked a{
+	color: #FFEBEE;
+} 
+
+#calculate  {
+	background: #E53935;
+	color:rgba(255,255,255,0.95);
+}
+
+#form-button {
+	background: #E57373;
+}
+
+.form-field, .form-area {
+	background: rgba(255,255,255,0.85);
+}
+
+
+/* Neutral Colors */
+
+#footer{
+	background: #2c3b2d;
+}
+
+.footer-wrappers h2 {
+	color:rgba(255,255,255,0.85);
+}
+
+#footer-contacts p {
+	color:rgba(255,255,255,0.85);
+}
