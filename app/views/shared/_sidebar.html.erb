@@ -1,0 +1,62 @@
+<div id="sidebar" class="clearfix">
+	<h2 class="catalogue-title">Каталог продукции</h2>
+	<div id="catalogue">
+		<ul>
+			<li><a href="javascript:toggleDiv('catalogue-type');"><p>По типу</p></a>
+				<ul id="catalogue-type">
+					<li>Глухие</li>
+					<li>Штабилируемые</li>
+					<li>Вкладываемые</li>
+					<li>Решетчатые</li>
+					<li>Перфорированные</li>
+					<li>Крышки</li>
+					<li>Паллеты</li>
+				</ul>
+			</li>
+			<li><a href="javascript:toggleDiv('catalogue-sphere');"><p>По сферам применения</p></a>
+				<ul id="catalogue-sphere">
+					<li>Рыбное производство</li>
+					<li>Птицефабрики</li>
+					<li>Мясное производство</li>
+					<li>Хранение овощей </li>
+					<li>Внутрицеховая тара </li>
+					<li>Молочное производство</li>
+					<li>Многоцелевая тара</li>
+					<li>Складская тара</li>
+					<li>Мусорные контейнеры</li>
+				</ul>
+			</li>
+			<li><a href=""><p>Вся продукция</p></a></li>
+		</ul>
+		<div id="catalogue-search-wrapper" class="search-wrapper">
+				<input type="text" id="catalogue-search" class="search" placeholder="Поиск по каталогу" />
+				<input type="submit" id="catalogue-search-submit" class="search-submit" name="#" value="" />
+		</div>
+	</div>
+
+	<div id="calc-wrapper" class="clearfix">
+		<h2 class="calc-title">Калькулятор объема</h2>
+		<select class="calc-dropdown">
+		  <option value="volvo">Ящик №1 (овощной)</option>
+		  <option value="saab">Ящик №2/п (овощной)</option>
+		  <option value="mercedes">Ящик №3 (овощной)</option>
+		  <option value="audi">Ящик №4 (Тетрапак)</option>
+		  <option value="audi">Ящик №5 (Творожный)</option>
+		  <option value="audi">Ящик №6 (Полипак)</option>
+		</select>
+		<input type="text" id="" class="calc-quantity" />
+		<select class="calc-dropdown">
+		  <option value="volvo">Ящик №1 (овощной)</option>
+		  <option value="saab">Ящик №2/п (овощной)</option>
+		  <option value="mercedes">Ящик №3 (овощной)</option>
+		  <option value="audi">Ящик №4 (Тетрапак)</option>
+		  <option value="audi">Ящик №5 (Творожный)</option>
+		  <option value="audi">Ящик №6 (Полипак)</option>
+		</select>
+		<input type="text" id="" class="calc-quantity" />
+		<input type="submit" id="additem" class="calc-button" value="Добавить" />
+		<input type="submit" id="calculate" class="calc-button" value="Посчитать" />
+	</div>
+
+	<%= link_to "Рассчитать стоимость доставки", "#", id: "delivery-cost" %>
+</div>

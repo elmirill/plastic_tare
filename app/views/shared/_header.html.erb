@@ -1,0 +1,33 @@
+<div id="header" class="clearfix">
+	<div id="header-top" class="row clearfix">
+
+		<%= link_to root_path do %> 
+			<div id="logo"><h1>Пласт-Тара</h1></div>
+		<% end %>
+
+		<div id="contacts-header">
+			<h2><span>(383)</span> 349 94 84</h2>
+			<p><a href="#">Заказать звонок</a></p>
+		</div>
+
+		<h1 id="descript">Производство пластиковой тары</h1>
+
+	</div>
+	
+	<div id="header-main-nav" class="clearfix">
+		<div class="row clearfix relative">
+			<ul id="menu">
+				<li><a href="">Доставка и оплата</a></li>
+				<li><a href="">Сертификаты</a></li>
+				<li><%= link_to "Контакты", contacts_path %></li>
+				<li><a href="">О компании</a></li>
+			</ul>
+			<div class="search-wrapper">
+				<input type="text" id="site-search" class="search" placeholder="Поиск" />
+				<input type="submit" id="site-search-submit" class="search-submit" name="#" value="" />
+			</div>
+			<div id="callme-shrinked" class="hidden"><p><a href="#">Заказать звонок</a></p></div>
+		</div>
+	</div>
+
+</div>
