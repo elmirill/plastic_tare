@@ -53,11 +53,11 @@
 	color:rgba(255,255,255,0.95);
 }
 
-#form-button {
+.form-button, .form-button-footer, .form-button-admin {
 	background: #E57373;
 }
 
-.form-field, .form-area {
+.form-field-footer, .form-area-footer {
 	background: rgba(255,255,255,0.85);
 }
 

@@ -1,0 +1,16 @@
+.admin-edit-link {
+	color: #D35D57;
+}
+
+	.admin-edit-link-right {
+		@extend .admin-edit-link;
+		position: absolute;
+		right: 0px;
+		top: 30px;
+	}
+
+	.admin-edit-link-back {
+		@extend .admin-edit-link;
+		float: left;
+		margin: 7px 15px 0px 0px;
+	}

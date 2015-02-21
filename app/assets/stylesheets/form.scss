@@ -1,0 +1,93 @@
+.form{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	font-family:'PT Sans', sans-serif;
+	font-size:1em;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	transition:all 0.2s ease;
+	-webkit-transition:all 0.2s ease;
+	-khtml-transition:all 0.2s ease;
+	-moz-transition:all 0.2s ease;
+}
+
+
+	.form-field{
+		@extend .form;
+		float: left;
+		margin:0px 10px 20px 0px;
+		padding: 7px 10px;
+		width:50%;
+		min-width: 350px;
+	}
+
+		.form-field-footer{
+			@extend .form-field;
+			border: 0px;
+			width:45%;
+			width:calc(50% - 10px);
+			min-width: initial;
+			margin:0px 0px 20px 0px;
+		}
+
+		.form-field-admin{
+			@extend .form-field;
+			margin:0px 0px 20px 0px;
+			float: none;
+		}
+
+	.form-area{
+		@extend .form;
+		width:100%;
+		min-width: 350px;
+		height: 200px;
+		margin-bottom:20px;
+		padding: 7px 10px;
+	}
+
+		.form-area-footer{
+			@extend .form-area;
+			border: 0px;
+			height: 150px;
+		}
+
+		.form-area-admin{
+			@extend .form-area;
+			height: 80px;
+		}
+
+	.form-button{
+		@extend .form;
+		float: right;
+		height: 34px;
+		padding: 7px 10px;
+		font-size: 1em;
+		font-family: 'PT Sans', sans-serif;
+		border: 1px solid rgba(0,0,0,0.05);
+		cursor: pointer;
+	}
+
+	.form-button:hover{
+		opacity: 0.8;
+	}
+
+		.form-button-footer{
+			@extend .form-button;
+			width:45%;
+			width:calc(50% - 10px);
+		}
+
+		.form-button-admin{
+			@extend .form-button;
+			float: left;
+		}
+
+
+
+#footer-form-name{
+	margin-right: 10px;
+}
+
+#footer-form-contact{
+	margin-left: 10px;
+}
