@@ -9,6 +9,11 @@
 		top: 30px;
 	}
 
+		.admin-edit-link-right-sub {
+			@extend .admin-edit-link-right;
+			top: 20px;
+		}
+
 	.admin-edit-link-back {
 		@extend .admin-edit-link;
 		float: left;

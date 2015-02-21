@@ -1,69 +1,40 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <h1>Продукция</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Gallery</th>
-      <th>Kind</th>
-      <th>Application</th>
-      <th>Size</th>
-      <th>Capacity</th>
-      <th>Volume</th>
-      <th>Parameter</th>
-      <th>Color</th>
-      <th>Color var</th>
-      <th>Color var price 1</th>
-      <th>Color var price 2</th>
-      <th>Color var price 3</th>
-      <th>High var</th>
-      <th>High var price 1</th>
-      <th>High var price 2</th>
-      <th>High var price 3</th>
-      <th>Spec var</th>
-      <th>Spec var price 1</th>
-      <th>Spec var price 2</th>
-      <th>Spec var price 3</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @products.each do |product| %>
+  <div class="product-index">
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.gallery %></td>
-        <td><%= product.kind %></td>
-        <td><%= product.application %></td>
-        <td><%= product.size %></td>
-        <td><%= product.capacity %></td>
-        <td><%= product.volume %></td>
-        <td><%= product.parameter %></td>
-        <td><%= product.color %></td>
-        <td><%= product.color_var %></td>
-        <td><%= product.color_var_price_1 %></td>
-        <td><%= product.color_var_price_2 %></td>
-        <td><%= product.color_var_price_3 %></td>
-        <td><%= product.high_var %></td>
-        <td><%= product.high_var_price_1 %></td>
-        <td><%= product.high_var_price_2 %></td>
-        <td><%= product.high_var_price_3 %></td>
-        <td><%= product.spec_var %></td>
-        <td><%= product.spec_var_price_1 %></td>
-        <td><%= product.spec_var_price_2 %></td>
-        <td><%= product.spec_var_price_3 %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h3><%= link_to product.name, product %></h3>
+
+    <img src=<%= product.gallery.split("','").first %> class="product-image-index" />
+
+    <div class="product-description-index">
+      <% if product.description.present? %>
+        <p><%= product.description %></p>
+      <% end %>
+      <% if product.size.present? %>
+      <p><span class="bold">Размер:</span> <%= product.size %> мм</p>
+      <% end %>
+      <% if product.capacity.present? %>
+      <p><span class="bold">Вместимость:</span> <%= product.capacity %></p>
+      <% end %>
+      <% if product.volume.present? %>
+      <p><span class="bold">Объем:</span> <%= product.volume %> л</p>
+      <% end %>
+      <% if product.parameter.present? %>
+      <p><span class="bold">Параметры:</span> <%= product.parameter %></p>
+      <% end %>
+    </div>
+    
+    <div class="admin-edit-link-right-sub">
+      <%= link_to 'Редактировать', edit_product_path(product), class: "admin-edit-link" %>
+      <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Уверены?' }, class: "admin-edit-link" %>
+    </div>
+
+  </div>
+<% end %>
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'Новый продукт', new_product_path, class: "admin-edit-link-right" %>

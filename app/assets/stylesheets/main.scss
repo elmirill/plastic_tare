@@ -710,6 +710,31 @@ padding:0px 20px 0px 20px;
 	line-height: 1.9;
 }
 
+.product-index{
+	position: relative;
+	padding: 20px 0px;
+	clear: both;
+}
+
+.product-image-index{
+	float: left;
+	width: 230px;
+	padding: 0px 20px 10px 0px;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.product-description-index{
+	float: right;
+	width: calc(100% - 250px);
+}
+
+.product-var{
+	padding: 0px 0px 10px 0px;
+}
+
 /*******************/
 /*******Footer******/
 /*******************/
