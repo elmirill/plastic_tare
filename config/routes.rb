@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :products
+
   resources :contacts
 
   root 'pages#home'

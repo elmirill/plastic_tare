@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  gallery: MyString
+  kind: MyString
+  application: MyString
+  size: MyString
+  capacity: MyString
+  volume: 1
+  parameter: MyString
+  color: MyString
+  color_var: false
+  color_var_price_1: 1
+  color_var_price_2: 1
+  color_var_price_3: 1
+  high_var: false
+  high_var_price_1: 1
+  high_var_price_2: 1
+  high_var_price_3: 1
+  spec_var: false
+  spec_var_price_1: 1
+  spec_var_price_2: 1
+  spec_var_price_3: 1
+
+two:
+  name: MyString
+  description: MyText
+  gallery: MyString
+  kind: MyString
+  application: MyString
+  size: MyString
+  capacity: MyString
+  volume: 1
+  parameter: MyString
+  color: MyString
+  color_var: false
+  color_var_price_1: 1
+  color_var_price_2: 1
+  color_var_price_3: 1
+  high_var: false
+  high_var_price_1: 1
+  high_var_price_2: 1
+  high_var_price_3: 1
+  spec_var: false
+  spec_var_price_1: 1
+  spec_var_price_2: 1
+  spec_var_price_3: 1

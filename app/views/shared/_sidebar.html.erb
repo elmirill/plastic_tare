@@ -26,7 +26,11 @@
 					<li>Мусорные контейнеры</li>
 				</ul>
 			</li>
-			<li><a href=""><p>Вся продукция</p></a></li>
+			<li>
+				<%= link_to products_path do %>
+					<p>Вся продукция</p>
+				<% end %>
+			</li>
 		</ul>
 		<div id="catalogue-search-wrapper" class="search-wrapper">
 				<input type="text" id="catalogue-search" class="search" placeholder="Поиск по каталогу" />
