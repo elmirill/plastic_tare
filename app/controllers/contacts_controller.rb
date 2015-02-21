@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contact = Contact.where(description: "default")
+    @contact = Contact.where(id: 1)
   end
 
   # GET /contacts/1

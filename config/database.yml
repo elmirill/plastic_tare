@@ -17,8 +17,19 @@
 default: &default
  adapter: postgresql
  encoding: unicode
- database: development
  pool: 5
- timeout: 5000 # not mandatory
- username: plast
- password: tsalp
+
+development:
+ <<: *default
+ database: development
+ username: elmirill
+ password:
+
+test:
+ <<: *default
+ database: test
+ username: elmirill
+ password:
+
+production:
+ <<: *default
