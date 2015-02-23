@@ -4,7 +4,7 @@
 		<ul>
 			<li><a href="javascript:toggleDiv('catalogue-type');"><p>По типу</p></a>
 				<ul id="catalogue-type">
-					<li>Глухие</li>
+					<li><%= link_to "Глухие", products_path(filter_kind: "Глухой") %></li>
 					<li>Штабилируемые</li>
 					<li>Вкладываемые</li>
 					<li>Решетчатые</li>
