@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.filter_kind(params[:filter_kind])
+    @products = Product.all # filter_kind(params[:filter_kind])
   end
 
   # GET /products/1
