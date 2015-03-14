@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all # filter_kind(params[:filter_kind])
+    @products = Product.all
   end
 
   # GET /products/1
@@ -69,6 +69,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :gallery, :kind, :application, :size, :capacity, :volume, :parameter, :color, :color_var, :color_var_price_1, :color_var_price_2, :color_var_price_3, :high_var, :high_var_price_1, :high_var_price_2, :high_var_price_3, :spec_var, :spec_var_price_1, :spec_var_price_2, :spec_var_price_3)
+      params.require(:product).permit(:name, :description, :short_description, :gallery, :size, :size_with_cover, :cover_size, :capacity, :volume, :net_volume, :parameters, :color, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :featured)
     end
 end

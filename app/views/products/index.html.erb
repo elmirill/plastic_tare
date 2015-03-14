@@ -10,8 +10,8 @@
     <img src=<%= product.gallery.split("','").first %> class="product-image-index" />
 
     <div class="product-description-index">
-      <% if product.description.present? %>
-        <p><%= product.description %></p>
+      <% if product.short_description.present? %>
+        <p><%= product.short_description %></p>
       <% end %>
       <% if product.size.present? %>
       <p><span class="bold">Размер:</span> <%= product.size %> мм</p>

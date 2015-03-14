@@ -11,23 +11,28 @@
 </p>
 
 <p>
+  <strong>Short description:</strong>
+  <%= @product.short_description %>
+</p>
+
+<p>
   <strong>Gallery:</strong>
   <%= @product.gallery %>
 </p>
 
 <p>
-  <strong>Kind:</strong>
-  <%= @product.kind %>
-</p>
-
-<p>
-  <strong>Application:</strong>
-  <%= @product.application %>
-</p>
-
-<p>
   <strong>Size:</strong>
   <%= @product.size %>
+</p>
+
+<p>
+  <strong>Size with cover:</strong>
+  <%= @product.size_with_cover %>
+</p>
+
+<p>
+  <strong>Cover size:</strong>
+  <%= @product.cover_size %>
 </p>
 
 <p>
@@ -41,6 +46,11 @@
 </p>
 
 <p>
+  <strong>Net volume:</strong>
+  <%= @product.net_volume %>
+</p>
+
+<p>
   <strong>Parameter:</strong>
   <%= @product.parameter %>
 </p>
@@ -51,63 +61,68 @@
 </p>
 
 <p>
-  <strong>Color var:</strong>
-  <%= @product.color_var %>
+  <strong>Var color:</strong>
+  <%= @product.var_color %>
 </p>
 
 <p>
-  <strong>Color var price 1:</strong>
-  <%= @product.color_var_price_1 %>
+  <strong>Var color price 1:</strong>
+  <%= @product.var_color_price_1 %>
 </p>
 
 <p>
-  <strong>Color var price 2:</strong>
-  <%= @product.color_var_price_2 %>
+  <strong>Var color price 2:</strong>
+  <%= @product.var_color_price_2 %>
 </p>
 
 <p>
-  <strong>Color var price 3:</strong>
-  <%= @product.color_var_price_3 %>
+  <strong>Var color price 3:</strong>
+  <%= @product.var_color_price_3 %>
 </p>
 
 <p>
-  <strong>High var:</strong>
-  <%= @product.high_var %>
+  <strong>Var high:</strong>
+  <%= @product.var_high %>
 </p>
 
 <p>
-  <strong>High var price 1:</strong>
-  <%= @product.high_var_price_1 %>
+  <strong>Var high price 1:</strong>
+  <%= @product.var_high_price_1 %>
 </p>
 
 <p>
-  <strong>High var price 2:</strong>
-  <%= @product.high_var_price_2 %>
+  <strong>Var high price 2:</strong>
+  <%= @product.var_high_price_2 %>
 </p>
 
 <p>
-  <strong>High var price 3:</strong>
-  <%= @product.high_var_price_3 %>
+  <strong>Var high price 3:</strong>
+  <%= @product.var_high_price_3 %>
 </p>
 
 <p>
-  <strong>Spec var:</strong>
-  <%= @product.spec_var %>
+  <strong>Var spec:</strong>
+  <%= @product.var_spec %>
 </p>
 
 <p>
-  <strong>Spec var price 1:</strong>
-  <%= @product.spec_var_price_1 %>
+  <strong>Var spec price 1:</strong>
+  <%= @product.var_spec_price_1 %>
 </p>
 
 <p>
-  <strong>Spec var price 2:</strong>
-  <%= @product.spec_var_price_2 %>
+  <strong>Var spec price 2:</strong>
+  <%= @product.var_spec_price_2 %>
 </p>
 
 <p>
-  <strong>Spec var price 3:</strong>
-  <%= @product.spec_var_price_3 %>
+  <strong>Var spec price 3:</strong>
+  <%= @product.var_spec_price_3 %>
+</p>
+
+<p>
+  <strong>Featured:</strong>
+  <%= @product.featured %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

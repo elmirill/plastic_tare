@@ -3,47 +3,53 @@
 one:
   name: MyString
   description: MyText
+  short_description: MyText
   gallery: MyString
-  kind: MyString
-  application: MyString
   size: MyString
+  size_with_cover: MyString
+  cover_size: MyString
   capacity: MyString
   volume: 1
-  parameter: MyString
+  net_volume: 1
+  parameters: MyString
   color: MyString
-  color_var: false
-  color_var_price_1: 1
-  color_var_price_2: 1
-  color_var_price_3: 1
-  high_var: false
-  high_var_price_1: 1
-  high_var_price_2: 1
-  high_var_price_3: 1
-  spec_var: false
-  spec_var_price_1: 1
-  spec_var_price_2: 1
-  spec_var_price_3: 1
+  var_color: false
+  var_color_price_1: 1
+  var_color_price_2: 1
+  var_color_price_3: 1
+  var_high: false
+  var_high_price_1: 1
+  var_high_price_2: 1
+  var_high_price_3: 1
+  var_spec: false
+  var_spec_price_1: 1
+  var_spec_price_2: 1
+  var_spec_price_3: 1
+  featured: false
 
 two:
   name: MyString
   description: MyText
+  short_description: MyText
   gallery: MyString
-  kind: MyString
-  application: MyString
   size: MyString
+  size_with_cover: MyString
+  cover_size: MyString
   capacity: MyString
   volume: 1
-  parameter: MyString
+  net_volume: 1
+  parameters: MyString
   color: MyString
-  color_var: false
-  color_var_price_1: 1
-  color_var_price_2: 1
-  color_var_price_3: 1
-  high_var: false
-  high_var_price_1: 1
-  high_var_price_2: 1
-  high_var_price_3: 1
-  spec_var: false
-  spec_var_price_1: 1
-  spec_var_price_2: 1
-  spec_var_price_3: 1
+  var_color: false
+  var_color_price_1: 1
+  var_color_price_2: 1
+  var_color_price_3: 1
+  var_high: false
+  var_high_price_1: 1
+  var_high_price_2: 1
+  var_high_price_3: 1
+  var_spec: false
+  var_spec_price_1: 1
+  var_spec_price_2: 1
+  var_spec_price_3: 1
+  featured: false

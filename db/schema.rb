@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221182236) do
+ActiveRecord::Schema.define(version: 20150314174708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,26 +36,29 @@ ActiveRecord::Schema.define(version: 20150221182236) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.text     "short_description"
     t.string   "gallery"
-    t.string   "kind"
-    t.string   "application"
     t.string   "size"
+    t.string   "size_with_cover"
+    t.string   "cover_size"
     t.string   "capacity"
     t.integer  "volume"
+    t.integer  "net_volume"
     t.string   "parameter"
     t.string   "color"
-    t.boolean  "color_var"
-    t.integer  "color_var_price_1"
-    t.integer  "color_var_price_2"
-    t.integer  "color_var_price_3"
-    t.boolean  "high_var"
-    t.integer  "high_var_price_1"
-    t.integer  "high_var_price_2"
-    t.integer  "high_var_price_3"
-    t.boolean  "spec_var"
-    t.integer  "spec_var_price_1"
-    t.integer  "spec_var_price_2"
-    t.integer  "spec_var_price_3"
+    t.boolean  "var_color"
+    t.integer  "var_color_price_1"
+    t.integer  "var_color_price_2"
+    t.integer  "var_color_price_3"
+    t.boolean  "var_high"
+    t.integer  "var_high_price_1"
+    t.integer  "var_high_price_2"
+    t.integer  "var_high_price_3"
+    t.boolean  "var_spec"
+    t.integer  "var_spec_price_1"
+    t.integer  "var_spec_price_2"
+    t.integer  "var_spec_price_3"
+    t.boolean  "featured"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
