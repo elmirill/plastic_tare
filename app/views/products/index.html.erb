@@ -20,7 +20,10 @@
       <p><span class="bold">Вместимость:</span> <%= product.capacity %></p>
       <% end %>
       <% if product.volume.present? %>
-      <p><span class="bold">Объем:</span> <%= product.volume %> л</p>
+      <p><span class="bold">Общий объем:</span> <%= product.volume %> л</p>
+      <% end %>
+      <% if product.net_volume.present? %>
+      <p><span class="bold">Полезный объем:</span> <%= product.net_volume %> л</p>
       <% end %>
       <% if product.parameter.present? %>
       <p><span class="bold">Параметры:</span> <%= product.parameter %></p>
