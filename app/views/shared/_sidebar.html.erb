@@ -4,26 +4,20 @@
 		<ul>
 			<li><a href="javascript:toggleDiv('catalogue-type');"><p>По типу</p></a>
 				<ul id="catalogue-type">
-					<li><%= link_to "Глухие", products_path(filter_kind: "Глухой") %></li>
-					<li>Штабилируемые</li>
-					<li>Вкладываемые</li>
-					<li>Решетчатые</li>
-					<li>Перфорированные</li>
-					<li>Крышки</li>
-					<li>Паллеты</li>
+					<% @types.each do |type| %>
+						<%= link_to products_path(filter_type: type.name) do %>
+							<li><%= type.name %></li>
+						<% end %>
+					<% end %>
 				</ul>
 			</li>
-			<li><a href="javascript:toggleDiv('catalogue-sphere');"><p>По сферам применения</p></a>
-				<ul id="catalogue-sphere">
-					<li>Рыбное производство</li>
-					<li>Птицефабрики</li>
-					<li>Мясное производство</li>
-					<li>Хранение овощей </li>
-					<li>Внутрицеховая тара </li>
-					<li>Молочное производство</li>
-					<li>Многоцелевая тара</li>
-					<li>Складская тара</li>
-					<li>Мусорные контейнеры</li>
+			<li><a href="javascript:toggleDiv('catalogue-application');"><p>По сферам применения</p></a>
+				<ul id="catalogue-application">
+					<% @applications.each do |application| %>
+						<%= link_to products_path(filter_application: application.name) do %>
+							<li><%= application.name %></li>
+						<% end %>
+					<% end %>
 				</ul>
 			</li>
 			<li>
@@ -33,8 +27,10 @@
 			</li>
 		</ul>
 		<div id="catalogue-search-wrapper" class="search-wrapper">
-				<input type="text" id="catalogue-search" class="search" placeholder="Поиск по каталогу" />
-				<input type="submit" id="catalogue-search-submit" class="search-submit" name="#" value="" />
+			<%= form_tag(products_path, :method => "get") do %>
+	 			<%= text_field_tag :search, params[:search], id: "catalogue-search", class: "search", placeholder: "Поиск по каталогу" %>
+	  		<%= submit_tag "", :name => nil, id: "catalogue-search-submit", class: "search-submit" %>
+			<% end %>
 		</div>
 	</div>
 

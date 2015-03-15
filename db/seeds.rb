@@ -2,23 +2,23 @@ Product.destroy_all
 Type.destroy_all
 Application.destroy_all
 
-glukh1 = Type.create!(name: 'Глухие')
-shtabel2 = Type.create!(name: 'Штабелируемые')
-vklad3 = Type.create!(name: 'Вкладываемые')
-reshet4 = Type.create!(name: 'Решетчатые')
-perf5 = Type.create!(name: 'Перфорированные')
-krysh6 = Type.create!(name: 'Крышки')
-pall7 = Type.create!(name: 'Паллеты')
+t1 = Type.create!(name: 'Глухие')
+t2 = Type.create!(name: 'Штабелируемые')
+t3 = Type.create!(name: 'Вкладываемые')
+t4 = Type.create!(name: 'Решетчатые')
+t5 = Type.create!(name: 'Перфорированные')
+t6 = Type.create!(name: 'Крышки')
+t7 = Type.create!(name: 'Паллеты')
 
-ryb1 = Application.create!(name: 'Рыбное производство')
-ptits2 = Application.create!(name: 'Птицефабрики')
-myas3 = Application.create!(name: 'Мясное производство')
-ovosh4 = Application.create!(name: 'Хранение овощей')
-vnutr5 = Application.create!(name: 'Внутрицеховая тара')
-moloch6 = Application.create!(name: 'Молочное производство')
-mnog7 = Application.create!(name: 'Многоцелевая тара')
-sklad8 = Application.create!(name: 'Складская тара')
-musor9 = Application.create!(name: 'Мусорные контейнеры')
+a1 = Application.create!(name: 'Рыбное производство')
+a2 = Application.create!(name: 'Птицефабрики')
+a3 = Application.create!(name: 'Мясное производство')
+a4 = Application.create!(name: 'Хранение овощей')
+a5 = Application.create!(name: 'Внутрицеховая тара')
+a6 = Application.create!(name: 'Молочное производство')
+a7 = Application.create!(name: 'Многоцелевая тара')
+a8 = Application.create!(name: 'Складская тара')
+a9 = Application.create!(name: 'Мусорные контейнеры')
 
 Product.create!([{
 	name: "Ящик №10 (Овощной)",
@@ -31,7 +31,7 @@ Product.create!([{
 	# capacity: "",
 	volume: 18,
 	net_volume: 15,
-	parameter: "стенки и дно ящика перфорированные",
+	parameter: "стенки и дно ящика перфорированные.",
 	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
 	var_color: true,
 	var_color_price_1: 252,
@@ -46,11 +46,309 @@ Product.create!([{
 	# var_spec_price_2: ,
 	# var_spec_price_3: ,
 	featured: false,
-	types: [shtabel2, vklad3, perf5],
-	applications: [ryb1]
+	types: [t2, t3, t5],
+	applications: [a1]
 },
 
+{
+	name: "Ящик №5 (Творожный)",
+	# description: "",
+	short_description: "Ящик пластиковый глухой для транспортировки, хранения и охлаждения сырково-творожной продукции, копчёностей, кондитерских изделий.",
+	gallery: "http://plast-tara.ru/files/flib/28.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_29.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_30.jpg",
+	size: "540*400*140",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	volume: 22,
+	# net_volume: ,
+	parameter: "стенки и дно ящика глухие, на стенке ящика есть 2 небольших вентиляционных отверстия (полуокружность диаметром 15 мм).",
+	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
+	var_color: true,
+	var_color_price_1: 210,
+	var_color_price_2: 200,
+	var_color_price_3: 185,
+	var_high: true,
+	var_high_price_1: 310,
+	var_high_price_2: 300,
+	var_high_price_3: 285,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t1, t3],
+	applications: [a6]
+},
 
+{
+	name: "Ящик №1 (овощной)",
+	description: "Ящик пластиковый для транспортировки, хранения и быстрого охлаждения мясной, кисломолочной, рыбной продукции, овощей, фруктов и другой пищевой и непищевой продукции. Ящики штабелируются друг на друга в заполненном виде в несколько ярусов, оптимизируя пространство при товародвижении. В пустом виде эти ящики поворачиваются на 180 градусов и вставляются друг в друга для возвратной транспортировки или складирования. Таким образом, они занимают на 70 % меньше места и дают превосходную экономию.",
+	short_description: "Ящик пластиковый для транспортировки, хранения и быстрого охлаждения мясной, кисломолочной, рыбной продукции, овощей, фруктов и другой пищевой и непищевой продукции.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_17.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_18.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_19.jpg",
+	size: "600*400*180",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	volume: 25,
+	# net_volume: ,
+	parameter: "стенки и дно ящика перфорированные.",
+	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
+	var_color: true,
+	var_color_price_1: 231,
+	var_color_price_2: 221,
+	var_color_price_3: 210,
+	var_high: true,
+	var_high_price_1: 320,
+	var_high_price_2: 306,
+	var_high_price_3: 291,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t2, t3, t5],
+	applications: [a1, a2, a3]
+},
+
+{
+	name: "Ящик №2/п (овощной)",
+	description: "Ящик пластиковый для транспортировки, хранения и быстрого охлаждения мясной, кисломолочной, рыбной продукции, овощей, фруктов и другой пищевой и непищевой продукции. Ящики штабелируются друг на друга в заполненном виде в несколько ярусов, оптимизируя пространство при товародвижении. В пустом виде эти ящики поворачиваются на 180 градусов и вставляются друг в друга для возвратной транспортировки или складирования. Таким образом, они занимают на 70 % меньше места и дают превосходную экономию. Возможна комплектация крышкой.",
+	short_description: "Ящик пластиковый для транспортировки, хранения и быстрого охлаждения мясной, кисломолочной, рыбной продукции, овощей, фруктов и другой пищевой и непищевой продукции.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_20.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_21.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_22.jpg",
+	size: "600*400*200",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	volume: 25,
+	# net_volume: ,
+	parameter: "стенки и дно ящика перфорированные.",
+	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
+	var_color: true,
+	var_color_price_1: 238,
+	var_color_price_2: 217,
+	var_color_price_3: 207,
+	var_high: true,
+	var_high_price_1: 290,
+	var_high_price_2: 270,
+	var_high_price_3: 250,
+	var_spec: true,
+	var_spec_price_1: 228,
+	var_spec_price_2: 217,
+	var_spec_price_3: 207,
+	featured: false,
+	types: [t2, t3, t5],
+	applications: [a1, a2, a3, a4]
+},
+
+{
+	name: "Ящик №3 (овощной)",
+	# description: "",
+	short_description: "Ящик предназначен для упаковывания, транспортирования и хранения мяса и колбасных изделий.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_23.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_25.jpg",
+	# size: "",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	# volume: ,
+	# net_volume: ,
+	# parameter: "",
+	# color: "",
+	var_color: true,
+	var_color_price_1: 296,
+	var_color_price_2: 282,
+	var_color_price_3: 269,
+	var_high: true,
+	var_high_price_1: 389,
+	var_high_price_2: 372,
+	var_high_price_3: 354,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t2, t3, t5],
+	applications: [a2, a3, a6]
+},
+
+{
+	name: "Ящик №4 (Тетрапак)",
+	description: "Ящик предназначен для упаковывания, транспортирования и хранения мяса и колбасных изделий. Ящики штабелируются друг на друга в заполненном виде в несколько ярусов, оптимизируя пространство при товародвижении. Особая конструкция дна ящика, а именно выступающий кант по всему периметру ящика, даёт возможность формировать прочный штабель, который крайне устойчив к поперечному смещению. Перфорированное дно обеспечивает циркуляцию охлаждённого воздуха между пакетов с продукцией. Усиленные углы обеспечивают прочность ящика при эксплуатации.",
+	short_description: "Ящик пластиковый с ячейками. Универсальная конструкция ящика позволяет его использовать для транспортировки, хранения и быстрого охлаждения продукции в упаковке тетрапак, а так же в стеклянной и пластиковой упаковках , а именно, для молочной, ягодно-фруктовой, вино-водочной продукции.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_26.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_27.jpg",
+	size: "420*340*310",
+	# size_with_cover: "",
+	# cover_size: "",
+	capacity: "20 упаковок",
+	# volume: ,
+	# net_volume: ,
+	parameter: "стенки и дно ящика перфорированные.",
+	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
+	var_color: true,
+	var_color_price_1: 330,
+	var_color_price_2: 315,
+	var_color_price_3: 300,
+	var_high: true,
+	var_high_price_1: 431,
+	var_high_price_2: 412,
+	var_high_price_3: 392,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t2, t4],
+	applications: [a6]
+},
+
+{
+	name: "Ящик №6 (Полипак)",
+	description: "Ящик пластиковый глухой для транспортировки, хранения продукции в упаковке «тетрапак», «полипак»; сыпучих продуктов; для технических и бытовых целей. Ящики штабелируются друг на друга в заполненном виде в несколько ярусов, оптимизируя пространство при товародвижении. Особая конструкция дна ящика, а именно выступающий кант по всему периметру ящика, даёт возможность формировать прочный штабель, который крайне устойчив к поперечному смещению. Глухое дно позволяет, в случае разрыва упаковки с продукцией, не загрязнять транспортное средство и складское помещение. При транспортировки пустой тары складируются \"тройками\".",
+	short_description: "Ящик пластиковый глухой для транспортировки, хранения продукции в упаковке «тетрапак», «полипак»; сыпучих продуктов; для технических и бытовых целей.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_31.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_32.jpg",
+	size: "420*340*280",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	# volume: ,
+	# net_volume: ,
+	parameter: "стенки и дно ящика глухие.",
+	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
+	var_color: true,
+	var_color_price_1: 293,
+	var_color_price_2: 279,
+	var_color_price_3: 266,
+	var_high: true,
+	var_high_price_1: 448,
+	var_high_price_2: 427,
+	var_high_price_3: 407,
+	var_spec: true,
+	var_spec_price_1: 256,
+	var_spec_price_2: 245,
+	var_spec_price_3: 233,
+	featured: false,
+	types: [t1, t2],
+	applications: [a6]
+},
+
+{
+	name: "Ящик №7 (Фаршевый)",
+	# description: "",
+	short_description: "Лоток пластиковый используется для длительной заморозки фарша, мясных и молочных продуктов. Повышенная эластичность изделия. Благодаря своей конструкции лоток обладает повышенной прочностью.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_33.gif','http://plast-tara.ru/var/image_cache/wi169__files_flib_34.jpg",
+	size: "420*420*160",
+	# size_with_cover: "",
+	# cover_size: "",
+	capacity: "34 упаковки",
+	volume: 18,
+	# net_volume: ,
+	parameter: "стенки и дно ящика глухие.",
+	color: "'белый, синий;'",
+	var_color: false,
+	# var_color_price_1: ,
+	# var_color_price_2: ,
+	# var_color_price_3: ,
+	var_high: true,
+	var_high_price_1: 374,
+	var_high_price_2: 357,
+	var_high_price_3: 340,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t1, t3],
+	applications: [a3]
+},
+
+{
+	name: "Ящик №11 (Мясной)",
+	description: "Ящик пластиковый глухой для транспортировки, хранения и охлаждения пищевой продукции – мясной, рыбной продукции, кисломолочной продукции, кондитерских и хлебных изделий, сыпучих продуктов. Ящики штабелируются друг на друга в заполненном виде в несколько ярусов, оптимизируя пространство при товародвижении. Особая конструкция дна ящика, а именно выступающий кант по всему периметру ящика, даёт возможность формировать прочный штабель, который крайне устойчив к поперечному смещению. Ящик может комплектоваться крышкой. Конструкция крышки обеспечивает возможность формировать прочный штабель при установке ящиков на крышку в несколько ярусов.",
+	short_description: "Ящик пластиковый глухой для транспортировки, хранения и охлаждения пищевой продукции – мясной, рыбной продукции, кисломолочной продукции, кондитерских и хлебных изделий, сыпучих продуктов.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_38.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_39.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_40.jpg",
+	size: "600*400*200",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	volume: 35,
+	net_volume: 22,
+	parameter: "стенки и дно ящика глухие.",
+	color: "'белый.'",
+	var_color: true,
+	var_color_price_1: 295,
+	var_color_price_2: 281,
+	var_color_price_3: 268,
+	var_high: true,
+	var_high_price_1: 405,
+	var_high_price_2: 386,
+	var_high_price_3: 368,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t1, t2],
+	applications: [a7]
+},
+
+{
+	name: "Ящик №12 (Мясной)",
+	description: "Ящик пластиковый глухой для транспортировки, хранения и охлаждения пищевой продукции – мясной, рыбной продукции, кисломолочной продукции, кондитерских и хлебных изделий, сыпучих продуктов. Ящики штабелируются друг на друга в заполненном виде в несколько ярусов, оптимизируя пространство при товародвижении. Особая конструкция дна ящика, а именно выступающий кант по всему периметру ящика, даёт возможность формировать прочный штабель, который крайне устойчив к поперечному смещению. Ящик может комплектоваться крышкой. Конструкция крышки обеспечивает возможность формировать прочный штабель при установке ящиков на крышку в несколько ярусов.",
+	short_description: "Ящик пластиковый глухой для транспортировки, хранения и охлаждения пищевой продукции – мясной, рыбной продукции, кисломолочной продукции, кондитерских и хлебных изделий, сыпучих продуктов.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_41.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_42.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_43.jpg",
+	size: "600*400*250",
+	# size_with_cover: "",
+	# cover_size: "",
+	# capacity: "",
+	volume: 45,
+	net_volume: 32,
+	parameter: "стенки и дно ящика глухие.",
+	color: "'белый.'",
+	var_color: true,
+	var_color_price_1: 332,
+	var_color_price_2: 317,
+	var_color_price_3: 302,
+	var_high: true,
+	var_high_price_1: 441,
+	var_high_price_2: 421,
+	var_high_price_3: 401,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t1, t2],
+	applications: [a7]
+},
+
+{
+	name: "Ящик №15 (Рыбный)",
+	description: "Ящик пластиковый глухой с крышкой для транспортировки, хранения и охлаждения мясной, молочной, рыбной продукции. Выступающий кант по всему периметру крышки обеспечивает возможность формировать прочный штабель при установке ящиков в заполненном виде в несколько ярусов.",
+	short_description: "Ящик пластиковый глухой с крышкой для транспортировки, хранения и охлаждения мясной, молочной, рыбной продукции.",
+	gallery: "http://plast-tara.ru/var/image_cache/wi169__files_flib_44.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_45.jpg','http://plast-tara.ru/var/image_cache/wi169__files_flib_46.jpg",
+	# size: "",
+	size_with_cover: "600*400*140",
+	cover_size: "600*400*30",
+	# capacity: "",
+	volume: 26,
+	# net_volume: ,
+	parameter: "дно ящика глухое, по стенкам ящика под крышкой расположены небольшие вентиляционные отверстия (щель 8*50 мм).",
+	color: "'стандартный: красный, зелёный, синий;','любой по желанию заказчика от партии 500 шт.'",
+	var_color: true,
+	var_color_price_1: 309,
+	var_color_price_2: 295,
+	var_color_price_3: 281,
+	var_high: true,
+	var_high_price_1: 427,
+	var_high_price_2: 407,
+	var_high_price_3: 388,
+	var_spec: false,
+	# var_spec_price_1: ,
+	# var_spec_price_2: ,
+	# var_spec_price_3: ,
+	featured: false,
+	types: [t1, t3],
+	applications: [a1, a6]
+}
 
 
 ])
