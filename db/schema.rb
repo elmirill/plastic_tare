@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315072131) do
+ActiveRecord::Schema.define(version: 20150315112354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.text     "address_full"
@@ -33,11 +39,25 @@ ActiveRecord::Schema.define(version: 20150315072131) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_applications", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "application_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "product_applications", ["application_id"], name: "index_product_applications_on_application_id", using: :btree
+  add_index "product_applications", ["product_id"], name: "index_product_applications_on_product_id", using: :btree
+
   create_table "product_types", force: :cascade do |t|
-    t.string   "name"
+    t.integer  "product_id"
+    t.integer  "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "product_types", ["product_id"], name: "index_product_types_on_product_id", using: :btree
+  add_index "product_types", ["type_id"], name: "index_product_types_on_type_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -67,9 +87,12 @@ ActiveRecord::Schema.define(version: 20150315072131) do
     t.boolean  "featured"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
-    t.integer  "product_type_id"
   end
 
-  add_index "products", ["product_type_id"], name: "index_products_on_product_type_id", using: :btree
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

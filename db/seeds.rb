@@ -1,13 +1,24 @@
 Product.destroy_all
-ProductType.destroy_all
+Type.destroy_all
+Application.destroy_all
 
-glukh1 = ProductType.create!(name: 'Глухие')
-shtabel2 = ProductType.create!(name: 'Штабелируемые')
-vklad3 = ProductType.create!(name: 'Вкладываемые')
-reshet4 = ProductType.create!(name: 'Решетчатые')
-perf5 = ProductType.create!(name: 'Перфорированные')
-krysh6 = ProductType.create!(name: 'Крышки')
-pall7 = ProductType.create!(name: 'Паллеты')
+glukh1 = Type.create!(name: 'Глухие')
+shtabel2 = Type.create!(name: 'Штабелируемые')
+vklad3 = Type.create!(name: 'Вкладываемые')
+reshet4 = Type.create!(name: 'Решетчатые')
+perf5 = Type.create!(name: 'Перфорированные')
+krysh6 = Type.create!(name: 'Крышки')
+pall7 = Type.create!(name: 'Паллеты')
+
+ryb1 = Application.create!(name: 'Рыбное производство')
+ptits2 = Application.create!(name: 'Птицефабрики')
+myas3 = Application.create!(name: 'Мясное производство')
+ovosh4 = Application.create!(name: 'Хранение овощей')
+vnutr5 = Application.create!(name: 'Внутрицеховая тара')
+moloch6 = Application.create!(name: 'Молочное производство')
+mnog7 = Application.create!(name: 'Многоцелевая тара')
+sklad8 = Application.create!(name: 'Складская тара')
+musor9 = Application.create!(name: 'Мусорные контейнеры')
 
 Product.create!([{
 	name: "Ящик №10 (Овощной)",
@@ -35,10 +46,15 @@ Product.create!([{
 	# var_spec_price_2: ,
 	# var_spec_price_3: ,
 	featured: false,
-	product_type: shtabel2
+	types: [shtabel2, vklad3, perf5],
+	applications: [ryb1]
 },
 
 
 
 
 ])
+
+p "Created #{Product.count} products"
+p "Created #{Type.count} types"
+p "Created #{Application.count} applications"
