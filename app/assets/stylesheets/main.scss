@@ -104,6 +104,10 @@ li a, ul a, img a, h2 a{
 	border: none;
 }
 
+.imglink{
+	border: none;
+}
+
 table{
 font-family: 'PT Sans', sans-serif;
 border-collapse: collapse;
@@ -739,6 +743,30 @@ padding:0px 20px 0px 20px;
 	padding: 0px 0px 10px 0px;
 }
 
+.certs-page:nth-child(odd){
+	padding: 0px 0px 0px 15px;
+}
+
+.certs-page:nth-child(even){
+	padding: 0px 15px 0px 0px;
+}
+
+.delivery-service{
+
+}
+
+.gallery{
+	padding: 20px 0px 20px 0px;
+}
+
+.gallery-image{
+	width:150px;
+}
+
+.gallery-image-link{
+	float: left;
+}
+
 /*******************/
 /*******Footer******/
 /*******************/
@@ -802,6 +830,13 @@ padding:0px 20px 0px 20px;
 	padding-right: 0px;
 }
 
+.certs-page{
+	float: left;
+	width: 50%;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
 
 /*******************/
 /*******Effects*****/

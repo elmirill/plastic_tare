@@ -1,24 +1,22 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<h1><%= @product.name %></h1>
 
-<p>
-  <strong>Short description:</strong>
-  <%= @product.short_description %>
-</p>
+<div class="gallery clearfix">
+  <% images = @product.gallery.split("','") %>
+  <% images.each do |image| %>
+    <%= link_to image_tag("#{image}", class: "gallery-image"), "#", class: "imglink gallery-image-link" %>
+  <% end %>
+</div>
 
-<p>
-  <strong>Gallery:</strong>
-  <%= @product.gallery %>
-</p>
+<% if @product.description.present? or @product.short_description.present? %>
+  <% if @product.description.present? %>
+    <%= @product.description.html_safe %>
+  <% else %>
+    <p><%= @product.short_description %></p>
+  <% end %>
+<% end %>
 
 <p>
   <strong>Size:</strong>

@@ -18,8 +18,17 @@ class Product < ActiveRecord::Base
 
 	protected
 		def set_keywords
-			# self.keywords = [name, description, short_description, size, size_with_cover, cover_size, capacity, volume, net_volume, parameter, color, var_color_price_1, var_color_price_2, var_color_price_3, var_high_price_1, var_high_price_2, var_high_price_3, var_spec_price_1, var_spec_price_2, var_spec_price_3].map(&:downcase).join(' ')
-			self.keywords = [name, short_description].map { |w| w.mb_chars.downcase }.join(' ')
+
+			columns = [name, description, short_description, size, size_with_cover, cover_size, capacity, volume, net_volume, parameter, color, var_color_price_1, var_color_price_2, var_color_price_3, var_high_price_1, var_high_price_2, var_high_price_3, var_spec_price_1, var_spec_price_2, var_spec_price_3]
+
+			keywords = name
+
+			columns.each do |column|
+				keywords = [keywords, column].join(' ') if column.present?
+			end
+
+			self.keywords = keywords.mb_chars.downcase
+			
 		end
 
 end
