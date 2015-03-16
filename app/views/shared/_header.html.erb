@@ -17,10 +17,10 @@
 	<div id="header-main-nav" class="clearfix">
 		<div class="row clearfix">
 			<ul id="menu">
-				<li><a href="">Доставка и оплата</a></li>
-				<li><a href="">Сертификаты</a></li>
+				<li><%= link_to "Доставка и оплата", "http://localhost:3000/delivery" %></li>
+				<li><%= link_to "Сертификаты", "http://localhost:3000/cert" %></li>
 				<li><%= link_to "Контакты", contacts_path %></li>
-				<li><a href="">О компании</a></li>
+				<li><%= link_to "О компании", "http://localhost:3000/about" %></li>
 			</ul>
 			<div class="search-wrapper">
 				<input type="text" id="site-search" class="search" placeholder="Поиск" />

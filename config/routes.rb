@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  resources :pages
+
   resources :products
 
   resources :contacts
 
-  root 'pages#home'
-  resources :pages
+  root 'pages#show', id: 1
 
+  get 'delivery', to: 'pages#show', id:3
+  get 'about', to: 'pages#show', id:2
+  get 'cert', to: 'pages#show', id:4
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
