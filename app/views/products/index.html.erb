@@ -7,15 +7,9 @@
 
     <h3><%= link_to product.name, product %></h3>
 
-    <img src=<%= product.gallery.split("','").first %> class="product-image-index" />
+    <img src=<%= product.gallery.split("','").first if product.gallery.present? %> class="product-image-index" />
 
     <div class="product-description-index">
-      <% if product.short_description.present? %>
-        <p><%= product.short_description %></p>
-      <% end %>
-      <% if product.size.present? %>
-      <p><span class="bold">Размер:</span> <%= product.size %> мм</p>
-      <% end %>
       <% if product.capacity.present? %>
       <p><span class="bold">Вместимость:</span> <%= product.capacity %></p>
       <% end %>
@@ -24,9 +18,6 @@
       <% end %>
       <% if product.net_volume.present? %>
       <p><span class="bold">Полезный объем:</span> <%= product.net_volume %> л</p>
-      <% end %>
-      <% if product.parameter.present? %>
-      <p><span class="bold">Параметры:</span> <%= product.parameter %></p>
       <% end %>
     </div>
     

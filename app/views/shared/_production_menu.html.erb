@@ -1,0 +1,11 @@
+<div class="row">
+	<div id="production_menu">
+		<% categories = Category.all %>
+		<% block_width = 100/Category.count %>
+		<% categories.each do |category| %>
+			<%= link_to products_path(filter_category: category.id) do %>
+				<div class="production_category" style="width:<%= block_width %>%;"><%= category.name %></div>
+			<%end %>	
+		<% end %>
+	</div>
+</div>

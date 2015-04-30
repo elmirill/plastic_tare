@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:types).includes(:applications).search(params[:search]).filter_type(params[:filter_type]).filter_application(params[:filter_application])
+    @products = Product.includes(:types).includes(:applications).search(params[:search]).filter_category(params[:filter_category]).filter_type(params[:filter_type]).filter_application(params[:filter_application])
   end
 
   # GET /products/1
