@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :get_url_params, :get_type_names, :get_application_names
 
   # GET /products
   # GET /products.json
@@ -71,4 +72,17 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :description, :short_description, :gallery, :size, :size_with_cover, :cover_size, :capacity, :volume, :net_volume, :parameters, :color, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :featured)
     end
+
+  def get_url_params
+    url_params = Rack::Utils.parse_query URI(request.original_url).query
+    @curr_cat_id = url_params["filter_category"] if url_params["filter_category"].present?
+  end
+
+  def get_type_names
+    @type_names = Type.all.map{ |t| t.name }
+  end
+
+  def get_application_names
+    @application_names = Application.all.map{ |t| t.name }
+  end
 end

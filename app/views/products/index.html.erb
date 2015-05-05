@@ -1,6 +1,5 @@
 <!-- <p id="notice"><%= notice %></p> -->
-
-<h1>Продукция</h1>
+<h1><%= Category.find(@curr_cat_id).name %></h1>
 
 <% @products.each do |product| %>
   <div class="product-index">

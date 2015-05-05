@@ -1,28 +1,39 @@
 <div id="sidebar" class="clearfix">
-	<h2 class="catalogue-title">Каталог продукции</h2>
+	<!-- <h2 class="catalogue-title"><%= Category.find(@curr_cat_id).name if(params.has_key?(:filter_category)) %></h2> -->
+
 	<div id="catalogue">
 		<ul>
-			<li><a href="javascript:toggleDiv('catalogue-type');"><p>По типу</p></a>
+			<li>
+				<% if Product.filter_category(@curr_cat_id).filter_type(@type_names).present? %>
+					<p>По типу</p>
+				<% end %>
 				<ul id="catalogue-type">
 					<% @types.each do |type| %>
-						<%= link_to products_path(filter_type: type.name) do %>
-							<li><%= type.name %></li>
-						<% end %>
-					<% end %>
-				</ul>
-			</li>
-			<li><a href="javascript:toggleDiv('catalogue-application');"><p>По сферам применения</p></a>
-				<ul id="catalogue-application">
-					<% @applications.each do |application| %>
-						<%= link_to products_path(filter_application: application.name) do %>
-							<li><%= application.name %></li>
+						<% if Product.filter_category(@curr_cat_id).filter_type(type.name).present? %>
+							<%= link_to products_path(filter_category: @curr_cat_id, filter_type: type.name) do %>
+								<li><%= type.name %></li>
+							<% end %>
 						<% end %>
 					<% end %>
 				</ul>
 			</li>
 			<li>
-				<%= link_to products_path do %>
-					<p>Вся продукция</p>
+				<% if Product.filter_category(@curr_cat_id).filter_application(@application_names).present? %>
+					<p>По сферам применения</p>
+				<% end %>
+				<ul id="catalogue-application">
+					<% @applications.each do |application| %>
+						<% if Product.filter_category(@curr_cat_id).filter_application(application.name).present? %>
+							<%= link_to products_path(filter_category: @curr_cat_id, filter_application: application.name) do %>
+								<li><%= application.name %></li>
+							<% end %>
+						<% end %>
+					<% end %>
+				</ul>
+			</li>
+			<li>
+				<%= link_to products_path(filter_category: @curr_cat_id) do %>
+					<p>Все типы и сферы</p>
 				<% end %>
 			</li>
 		</ul>

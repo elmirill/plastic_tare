@@ -574,7 +574,6 @@ border: 1px solid rgba(0,0,0,0.03);
 #catalogue {
 	color:rgba(0,0,0,0.87);
 	margin-bottom: 30px;
-	cursor: pointer;
 }
 
 #catalogue > ul {
@@ -588,7 +587,7 @@ border: 1px solid rgba(0,0,0,0.03);
 	text-decoration: none;
 }
 
-#catalogue > ul > li > a p{
+#catalogue > ul > li > a p, #catalogue > ul > li > p{
 	font-size: 1.15em;
 	padding: 7px 10px 7px 10px;
 	margin: 0px;
