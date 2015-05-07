@@ -75,7 +75,10 @@ class ProductsController < ApplicationController
 
   def get_url_params
     url_params = Rack::Utils.parse_query URI(request.original_url).query
-    @curr_cat_id = url_params["filter_category"] if url_params["filter_category"].present?
+    @curr_cat_id = url_params["filter_category"].to_i if url_params["filter_category"].present?
+    @curr_type_name = url_params["filter_type"] if url_params["filter_type"].present?
+    @curr_app_name = url_params["filter_application"] if url_params["filter_application"].present?
+    @search_request = url_params["search"] if url_params["search"].present?
   end
 
   def get_type_names
@@ -85,4 +88,5 @@ class ProductsController < ApplicationController
   def get_application_names
     @application_names = Application.all.map{ |t| t.name }
   end
+
 end

@@ -1,32 +1,52 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<h1><%= Category.find(@curr_cat_id).name %></h1>
-
-<% @products.each do |product| %>
-  <div class="product-index">
-
-    <h3><%= link_to product.name, product %></h3>
-
-    <img src=<%= product.gallery.split("','").first if product.gallery.present? %> class="product-image-index" />
-
-    <div class="product-description-index">
-      <% if product.capacity.present? %>
-      <p><span class="bold">Вместимость:</span> <%= product.capacity %></p>
-      <% end %>
-      <% if product.volume.present? %>
-      <p><span class="bold">Общий объем:</span> <%= product.volume %> л</p>
-      <% end %>
-      <% if product.net_volume.present? %>
-      <p><span class="bold">Полезный объем:</span> <%= product.net_volume %> л</p>
-      <% end %>
-    </div>
-    
-    <div class="admin-edit-link-right-sub">
-      <%= link_to 'Редактировать', edit_product_path(product), class: "admin-edit-link" %>
-      <%= link_to 'Удалить', product, method: :delete, data: { confirm: 'Уверены?' }, class: "admin-edit-link" %>
-    </div>
-
-  </div>
+<% if @curr_cat_id.present? %>
+  <h1><%= Category.find(@curr_cat_id).name %></h1>
+<% elsif @search_request.present? %>
+  <h1>Поиск по запросу «<%= @search_request %>»</h1>
 <% end %>
+
+<div id ="products-index-wrapper">
+  <% @products.each do |product| %>
+    <%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
+    <div class="product-index">
+
+      <h3><%= product.name %></h3>
+
+      <% if product.length.present? && product.width.present? && product.height.present? && product.volume.present? %>
+        <p class="product-index-dimensions"><%= "#{product.length}x#{product.width}x#{product.height}мм | #{product.volume}л" %></p>
+      <% elsif product.length.present? && product.width.present? && product.height.present? %>
+        <p class="product-index-dimensions"><%= "#{product.length}x#{product.width}x#{product.height}мм" %></p>
+      <% else %>
+        <p class="product-index-dimensions">&nbsp;</p>
+      <% end %>
+
+      <img src="http://localhost:3000/assets/box_menu.png">
+
+      <% if product.var_color || product.var_high || product.var_spec %>
+        <% 
+          prices = []
+          prices << product.var_color_price_1 if product.var_color_price_1.present?
+          prices << product.var_color_price_2 if product.var_color_price_2.present?
+          prices << product.var_color_price_3 if product.var_color_price_3.present?
+          prices << product.var_high_price_1 if product.var_high_price_1.present?
+          prices << product.var_high_price_2 if product.var_high_price_2.present?
+          prices << product.var_high_price_3 if product.var_high_price_3.present?
+          prices << product.var_spec_price_1 if product.var_spec_price_1.present?
+          prices << product.var_spec_price_2 if product.var_spec_price_2.present?
+          prices << product.var_spec_price_3 if product.var_spec_price_3.present?
+        %>
+        <p class="product-index-price">От <%= prices.min %> &#8399;</p>
+      <% else %>
+        <p class="product-index-price">&nbsp;</p>
+      <% end %>
+      
+      <%= link_to '', edit_product_path(product), class: "admin-index-icon-edit" %>
+      <%= link_to '', product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-index-icon-delete" %>
+
+    </div>
+    <% end %>
+  <% end %>
+</div>
 
 <br>
 

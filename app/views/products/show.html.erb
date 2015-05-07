@@ -1,127 +1,144 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-
-<h1><%= @product.name %></h1>
-
-<div class="gallery clearfix">
-  <% images = @product.gallery.split("','") %>
-  <% images.each do |image| %>
-    <%= link_to image_tag("#{image}", class: "gallery-image"), "#", class: "imglink gallery-image-link" %>
+<div id="show-product-title-wrapper">
+<h1 class="show-product-title"><%= @product.name %></h1>
+  <% if @product.color.present? %>
+    <div id="product-colors">
+      <% @product.color.split(',').each do |color| %>
+        <div id="<%= color %>-color" class="product-color"></div>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
   <% end %>
+  <%= link_to '', edit_product_path(@product), class: "admin-icon-edit" %>
+  <%= link_to '', @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" %>
 </div>
+<div class="clearfix"></div>
 
-<% if @product.description.present? or @product.short_description.present? %>
-  <% if @product.description.present? %>
-    <%= @product.description.html_safe %>
+<% if @product.articul? %>
+  <p>Артикул: <%= @product.articul %></p>
+<% end %>
+
+
+<% if @product.length.present? && @product.width.present? && @product.height.present? %>
+  <p> Размер: <%= "#{@product.length}x#{@product.width}x#{@product.height} мм" %></p>
+<% end %>
+
+<% if @product.diameter.present? %>
+  <p>Диаметр: <%= @product.diameter %></p>
+<% end %>
+
+<% if @product.inner_length.present? && @product.inner_width.present? && @product.inner_height.present? %>
+  <p>Внутренний размер: <%= "#{@product.inner_length}x#{@product.inner_width}x#{@product.inner_height} мм" %></p>
+<% end %>
+
+<% if @product.inner_diameter.present? %>
+  <p>Внутренний диаметр: <%= @product.inner_diameter %></p>
+<% end %>
+
+<% if @product.volume.present? %>
+  <p>Объем: <%= @product.volume %> л</p>
+<% end %>
+
+<% if @product.net_volume.present? %>
+  <p>Полезный объем: <%= @product.net_volume %>л</p>
+<% end %>
+
+<% if @product.capacity.present? %>
+  <p>Вместимость: <%= @product.capacity %>л</p>
+<% end %>
+
+<% if @product.weight.present? %>
+  <p>Вес: <%= @product.weight %> кг</p>
+<% end %>
+
+<% if @product.side.present? %>
+  <p>Стенки: <%= @product.side %></p>
+<% end %>
+
+<% if @product.bottom.present? %>
+  <p>Дно: <%= @product.bottom %></p>
+<% end %>
+
+<% unless @product.cover.nil? %>
+  <% if @product.cover %>
+    <p>С крышкой</p>
   <% else %>
-    <p><%= @product.short_description %></p>
+    <p>Без крышки</p>
   <% end %>
 <% end %>
 
-<p>
-  <strong>Size:</strong>
-  <%= @product.size %>
-</p>
+<% if @product.static_load.present? %>
+  <p>Статическая нагрузка: <%= @product.static_load %> кг</p>
+<% end %>
 
-<p>
-  <strong>Size with cover:</strong>
-  <%= @product.size_with_cover %>
-</p>
+<% if @product.dynamic_load.present? %>
+  <p>Динамическая нагрузка: <%= @product.dynamic_load %> кг</p>
+<% end %>
 
-<p>
-  <strong>Cover size:</strong>
-  <%= @product.cover_size %>
-</p>
+<% if @product.rack_load.present? %>
+  <p>Стеллажная нагрузка: <%= @product.rack_load %> кг</p>
+<% end %>
 
-<p>
-  <strong>Capacity:</strong>
-  <%= @product.capacity %>
-</p>
+<% if @product.var_color || @product.var_high || @product.var_spec %>
+  <table class="tg">
+    <tr>
+      <th class="tg-031e"></th>
+      <th class="tg-031e">До 50 т.р.</th>
+      <th class="tg-031e">До 300 т.р.</th>
+      <th class="tg-031e">От 300 т.р.</th>
+    </tr>
+    <% if @product.var_color %>
+      <tr>
+        <td class="tg-031e">Цветной</td>
+        <% if @product.var_color_price_1.present? %>
+          <td class="tg-031e"><%= @product.var_color_price_1 %> &#8399;</td>
+        <% end %>
+        <% if @product.var_color_price_2.present? %>
+          <td class="tg-031e"><%= @product.var_color_price_2 %> &#8399;</td>
+        <% end %>
+        <% if @product.var_color_price_3.present? %>
+          <td class="tg-031e"><%= @product.var_color_price_3 %> &#8399;</td>
+        <% end %>
+      </tr>
+    <% end %>
+    <% if @product.var_high %>
+      <tr>
+        <td class="tg-031e">Высший сорт</td>
+        <% if @product.var_high_price_1.present? %>
+          <td class="tg-031e"><%= @product.var_high_price_1 %> &#8399;</td>
+        <% end %>
+        <% if @product.var_high_price_2.present? %>
+          <td class="tg-031e"><%= @product.var_high_price_2 %> &#8399;</td>
+        <% end %>
+        <% if @product.var_high_price_3.present? %>
+          <td class="tg-031e"><%= @product.var_high_price_3 %> &#8399;</td>
+        <% end %>
+      </tr>
+    <% end %>
+    <% if @product.var_spec %>
+      <tr>
+        <td class="tg-031e">Спецпредложение</td>
+        <% if @product.var_spec_price_1.present? %>
+          <td class="tg-031e"><%= @product.var_spec_price_1 %> &#8399;</td>
+        <% end %>
+        <% if @product.var_spec_price_2.present? %>
+          <td class="tg-031e"><%= @product.var_spec_price_2 %> &#8399;</td>
+        <% end %>
+        <% if @product.var_spec_price_3.present? %>
+          <td class="tg-031e"><%= @product.var_spec_price_3 %> &#8399;</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
 
-<p>
-  <strong>Volume:</strong>
-  <%= @product.volume %>
-</p>
+<br>
 
-<p>
-  <strong>Net volume:</strong>
-  <%= @product.net_volume %>
-</p>
+<% if @product.applications.present? %>
+  <p>Сферы применения: <%= @product.applications.map{ |a| a.name }.join(", ") %></p>
+<% end %>
 
-<p>
-  <strong>Parameter:</strong>
-  <%= @product.parameter %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @product.color %>
-</p>
-
-<p>
-  <strong>Var color:</strong>
-  <%= @product.var_color %>
-</p>
-
-<p>
-  <strong>Var color price 1:</strong>
-  <%= @product.var_color_price_1 %>
-</p>
-
-<p>
-  <strong>Var color price 2:</strong>
-  <%= @product.var_color_price_2 %>
-</p>
-
-<p>
-  <strong>Var color price 3:</strong>
-  <%= @product.var_color_price_3 %>
-</p>
-
-<p>
-  <strong>Var high:</strong>
-  <%= @product.var_high %>
-</p>
-
-<p>
-  <strong>Var high price 1:</strong>
-  <%= @product.var_high_price_1 %>
-</p>
-
-<p>
-  <strong>Var high price 2:</strong>
-  <%= @product.var_high_price_2 %>
-</p>
-
-<p>
-  <strong>Var high price 3:</strong>
-  <%= @product.var_high_price_3 %>
-</p>
-
-<p>
-  <strong>Var spec:</strong>
-  <%= @product.var_spec %>
-</p>
-
-<p>
-  <strong>Var spec price 1:</strong>
-  <%= @product.var_spec_price_1 %>
-</p>
-
-<p>
-  <strong>Var spec price 2:</strong>
-  <%= @product.var_spec_price_2 %>
-</p>
-
-<p>
-  <strong>Var spec price 3:</strong>
-  <%= @product.var_spec_price_3 %>
-</p>
-
-<p>
-  <strong>Featured:</strong>
-  <%= @product.featured %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if @product.description.present? %>
+  <%= @product.description.html_safe %>
+<% end %>

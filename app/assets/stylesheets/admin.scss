@@ -19,3 +19,49 @@
 		float: left;
 		margin: 7px 15px 0px 0px;
 	}
+
+.admin-index-icons{
+	position: absolute;
+	bottom: 17px;
+	border-bottom: none;
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+	.admin-index-icon-edit{
+		@extend .admin-index-icons;
+		left:15px;
+		background-image: image_url('edit-icon-index.png');
+	}
+
+	.admin-index-icon-delete{
+		@extend .admin-index-icons;
+		left:40px;
+		margin-bottom: 1px;
+		background-image: image_url('delete-icon-index.png');
+	}
+
+.admin-icons{
+	position: absolute;
+	right: 0;
+	width: 32px;
+	height: 32px;
+	border-bottom: none;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+	.admin-icon-edit{
+		@extend .admin-icons;
+		margin-top: 11px;
+		margin-right: 45px;
+		background-image: image_url('edit-icon.png');
+	}
+
+	.admin-icon-delete{
+		@extend .admin-icons;
+		margin-top: 10px;
+		background-image: image_url('delete-icon.png');
+	}

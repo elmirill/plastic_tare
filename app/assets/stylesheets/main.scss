@@ -81,8 +81,12 @@ p{
 	line-height: 1.5;
 }
 
+p + ul {
+	margin-top: -16px;
+}
+
 #main-col ul,#main-col ol{
-	padding: 10px 0px 10px 30px;
+	padding: 5px 0px 5px 25px;
 }
 
 li {
@@ -139,6 +143,10 @@ input{
 
 .relative{
 	position: relative;
+}
+
+.no-border{
+	border: none;
 }
 
 /*******************/
@@ -401,14 +409,36 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 .production_category{
 	float: left;
 	text-align: center;
-	background: rgba(231,97,93, 0.7);
-	padding: 30px 10px;
+	background: #E8F5E9;
+	padding: 15px 5px;
+	border-left: 1px solid rgba(0, 0, 0, 0.03);
+	position: relative;
+}
+
+.category_icon{
+	width:75%;
+}
+
+.category_name_menu{
+	height: 40px;
+	margin: 0px;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background: rgba(200,230,201,0.8);
+	line-height: 1.2;
+	display: table;
+	overflow: hidden;
+}
+
+.category_name_menu:hover, .category_name_menu_active{
+	background: #A5D6A7;
 }
 
 #catalogue-search-wrapper{
-	border-bottom: 1px solid rgba(0,0,0,0.05);
-	border-left: 1px solid rgba(0,0,0,0.05);
-	border-right: 1px solid rgba(0,0,0,0.05);
+	border: 1px solid rgba(0,0,0,0.05);
+	margin-bottom: 25px;
 }
 
 #catalogue-search{
@@ -418,6 +448,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	color: rgba(0,0,0,0.87);
 	background-image: image_url('magnSearchGrey.png');
 	background-position: right 7px center;
+	background-color: rgba(255, 255, 255, 0.8);
 	transition:all 0.1s ease;
 	-webkit-transition:all 0.1s ease;
 	-khtml-transition:all 0.1s ease;
@@ -425,7 +456,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 }
 
 #catalogue-search:hover {
-	background: rgba(255, 255, 255, 0.5);
+	background: rgba(255, 255, 255, 1);
 	background-image: image_url('magnSearchGrey.png');
 	background-repeat: no-repeat;
 	background-position: right 7px center;
@@ -554,13 +585,66 @@ padding:30px 0px 60px 40px;
 position: relative;
 }
 
+#show-product-title-wrapper{
+	position: relative;
+}
+
+.show-product-title{
+	float: left;
+}
+
+#product-colors{
+	float: left;
+	margin-left: 30px;
+	margin-top: 20px;
+}
+
+.product-color{
+	height: 16px;
+	width: 16px;
+	float: left;
+	margin-right: 5px;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px .05px rgba(0,0,0,.5);
+}
+
+#blue-color{
+	background: #34659F;
+}
+
+#red-color{
+	background: #B4201C;
+}
+
+#green-color{
+	background: #1A9133;
+}
+
+#white-color{
+	background: #EFEDEE;
+}
+
+#yellow-color{
+	background: #E0C80C;
+}
+
+#grey-color{
+	background: #707676;
+}
+
+#black-color{
+	background: #1A1A1A;
+}
+
 #sidebar{
 width:290px;
 float:left;
 height:100%;
 margin: 0px 0px 0px 0px;
-padding:20px;
-border: 1px solid rgba(0,0,0,0.03);
+padding:25px 20px;
+border-left: 1px solid rgba(0,0,0,0.03);
+border-right: 1px solid rgba(0,0,0,0.03);
+border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 
 .catalogue-title {
@@ -574,6 +658,10 @@ border: 1px solid rgba(0,0,0,0.03);
 #catalogue {
 	color:rgba(0,0,0,0.87);
 	margin-bottom: 30px;
+}
+
+#catalogue p + ul {
+	margin-top: 0px;
 }
 
 #catalogue > ul {
@@ -602,7 +690,6 @@ border: 1px solid rgba(0,0,0,0.03);
 	box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.05);
 }
 
-
 #catalogue ul ul{
 	padding-left: 0px;
 	display: block;
@@ -613,7 +700,7 @@ border: 1px solid rgba(0,0,0,0.03);
 	border-top: 1px solid rgba(0,0,0,0.05);
 }
 
-#catalogue ul ul li:hover{
+#catalogue ul ul li:hover, .catalogue_toggled{
 	transition:all 0.2s ease;
 	-webkit-transition:all 0.2s ease;
 	-khtml-transition:all 0.2s ease;
@@ -626,7 +713,7 @@ border: 1px solid rgba(0,0,0,0.03);
 }
 
 #calc-wrapper {
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }
 
 .calc-title {
@@ -728,25 +815,44 @@ padding:0px 20px 0px 20px;
 	line-height: 1.9;
 }
 
+#products-index-wrapper{
+	margin: -10px 0px 0px -10px;
+}
+
 .product-index{
 	position: relative;
-	padding: 20px 0px;
-	clear: both;
-}
-
-.product-image-index{
 	float: left;
-	width: 230px;
-	padding: 0px 20px 10px 0px;
+	width: calc(25% - 10px);
+	padding: 15px;
+	margin: 10px 0px 0px 10px;
+	box-shadow: 0 1px 10px .05px rgba(0,0,200,.1);
+	-webkit-transition: box-shadow .2s ease-in-out;
+	transition: box-shadow .2s ease-in-out;
 }
 
-.bold{
-	font-weight: bold;
+.product-index:hover{
+	box-shadow: 0 3px 10px 2px rgba(0,0,100,.1);
 }
 
-.product-description-index{
-	float: right;
-	width: calc(100% - 250px);
+.product-index h3 {
+	height: 26px;
+	white-space: nowrap;
+	margin-bottom: 10px;
+}
+
+.product-index img{
+	width: 100%;
+}
+
+.product-index-dimensions{
+	font-size: 0.9em;
+	margin-bottom: 5px;
+}
+
+.product-index-price{
+	color: #D35D57;
+	text-align: right;
+	margin-bottom: 0px;
 }
 
 .product-var{

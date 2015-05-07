@@ -1,5 +1,7 @@
 <div id="sidebar" class="clearfix">
-	<!-- <h2 class="catalogue-title"><%= Category.find(@curr_cat_id).name if(params.has_key?(:filter_category)) %></h2> -->
+
+	<% if(params.has_key?(:filter_category)) %>
+	<!-- <h2 class="catalogue-title"><%= Category.find(@curr_cat_id).name %></h2> -->
 
 	<div id="catalogue">
 		<ul>
@@ -11,7 +13,7 @@
 					<% @types.each do |type| %>
 						<% if Product.filter_category(@curr_cat_id).filter_type(type.name).present? %>
 							<%= link_to products_path(filter_category: @curr_cat_id, filter_type: type.name) do %>
-								<li><%= type.name %></li>
+								<li <%= "class=catalogue_toggled" if type.name == @curr_type_name %>><%= type.name %></li>
 							<% end %>
 						<% end %>
 					<% end %>
@@ -25,7 +27,7 @@
 					<% @applications.each do |application| %>
 						<% if Product.filter_category(@curr_cat_id).filter_application(application.name).present? %>
 							<%= link_to products_path(filter_category: @curr_cat_id, filter_application: application.name) do %>
-								<li><%= application.name %></li>
+								<li <%= "class=catalogue_toggled" if application.name == @curr_app_name %>><%= application.name %></li>
 							<% end %>
 						<% end %>
 					<% end %>
@@ -33,17 +35,21 @@
 			</li>
 			<li>
 				<%= link_to products_path(filter_category: @curr_cat_id) do %>
-					<p>Все типы и сферы</p>
+					<p>Вся продукция категории</p>
 				<% end %>
 			</li>
 		</ul>
+	</div>
+	<% else %>
+		<div style="height:12px;"></div>
+	<% end %>
+
 		<div id="catalogue-search-wrapper" class="search-wrapper">
 			<%= form_tag(products_path, :method => "get") do %>
-	 			<%= text_field_tag :search, params[:search], id: "catalogue-search", class: "search", placeholder: "Поиск по каталогу" %>
+	 			<%= text_field_tag :search, params[:search], id: "catalogue-search", class: "search", placeholder: "Поиск по всему каталогу" %>
 	  		<%= submit_tag "", :name => nil, id: "catalogue-search-submit", class: "search-submit" %>
 			<% end %>
 		</div>
-	</div>
 
 	<div id="calc-wrapper" class="clearfix">
 		<h2 class="calc-title">Калькулятор объема</h2>
