@@ -91,6 +91,7 @@ p + ul {
 
 li {
 	font-family: 'PT Sans', sans-serif;
+	padding-bottom: 5px;
 }
 
 a{
@@ -589,8 +590,26 @@ position: relative;
 	position: relative;
 }
 
+#show-left-col{
+	float: left;
+	width: 50%;
+	margin-bottom: 20px;
+}
+
+#show-right-col{
+	float: right;
+	width: 50%;
+	margin-bottom: 20px;
+}
+
 .show-product-title{
 	float: left;
+}
+
+.show-gallery-item{
+	float: left;
+	width: 33.33%;
+	margin-bottom: 25px;
 }
 
 #product-colors{
@@ -636,6 +655,26 @@ position: relative;
 	background: #1A1A1A;
 }
 
+#show-prices{
+	width: 100%;
+	text-align: left;
+	border: none;
+}
+
+#show-prices td, #show-prices th{
+	padding: 10px;
+	border: 1px solid #FEF5F5;
+}
+
+#show-prices th{
+	font-weight: normal;
+	background: rgba(229,57,53,0.2);
+}
+
+#show-prices td{
+	background: rgba(229,57,53,0.1);
+}
+
 #sidebar{
 width:290px;
 float:left;
@@ -658,6 +697,14 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 #catalogue {
 	color:rgba(0,0,0,0.87);
 	margin-bottom: 30px;
+}
+
+#catalogue ul{
+	list-style: none;
+}
+
+#catalogue ul li{
+	padding: 0px;
 }
 
 #catalogue p + ul {
@@ -706,10 +753,6 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 	-khtml-transition:all 0.2s ease;
 	-moz-transition:all 0.2s ease;
 	box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.05);
-}
-
-#catalogue ul{
-	list-style: none;
 }
 
 #calc-wrapper {

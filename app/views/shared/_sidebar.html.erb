@@ -5,34 +5,34 @@
 
 	<div id="catalogue">
 		<ul>
-			<li>
-				<% if Product.filter_category(@curr_cat_id).filter_type(@type_names).present? %>
+			<% if Product.filter_category(@curr_cat_id).filter_type(@type_names).present? %>
+				<li>
 					<p>По типу</p>
-				<% end %>
-				<ul id="catalogue-type">
-					<% @types.each do |type| %>
-						<% if Product.filter_category(@curr_cat_id).filter_type(type.name).present? %>
-							<%= link_to products_path(filter_category: @curr_cat_id, filter_type: type.name) do %>
-								<li <%= "class=catalogue_toggled" if type.name == @curr_type_name %>><%= type.name %></li>
+					<ul id="catalogue-type">
+						<% @types.each do |type| %>
+							<% if Product.filter_category(@curr_cat_id).filter_type(type.name).present? %>
+								<%= link_to products_path(filter_category: @curr_cat_id, filter_type: type.name) do %>
+									<li <%= "class=catalogue_toggled" if type.name == @curr_type_name %>><%= type.name %></li>
+								<% end %>
 							<% end %>
 						<% end %>
-					<% end %>
-				</ul>
-			</li>
-			<li>
-				<% if Product.filter_category(@curr_cat_id).filter_application(@application_names).present? %>
+					</ul>
+				</li>
+			<% end %>
+			<% if Product.filter_category(@curr_cat_id).filter_application(@application_names).present? %>
+				<li>
 					<p>По сферам применения</p>
-				<% end %>
-				<ul id="catalogue-application">
-					<% @applications.each do |application| %>
-						<% if Product.filter_category(@curr_cat_id).filter_application(application.name).present? %>
-							<%= link_to products_path(filter_category: @curr_cat_id, filter_application: application.name) do %>
-								<li <%= "class=catalogue_toggled" if application.name == @curr_app_name %>><%= application.name %></li>
+					<ul id="catalogue-application">
+						<% @applications.each do |application| %>
+							<% if Product.filter_category(@curr_cat_id).filter_application(application.name).present? %>
+								<%= link_to products_path(filter_category: @curr_cat_id, filter_application: application.name) do %>
+									<li <%= "class=catalogue_toggled" if application.name == @curr_app_name %>><%= application.name %></li>
+								<% end %>
 							<% end %>
 						<% end %>
-					<% end %>
-				</ul>
-			</li>
+					</ul>
+				</li>
+			<% end %>
 			<li>
 				<%= link_to products_path(filter_category: @curr_cat_id) do %>
 					<p>Вся продукция категории</p>
