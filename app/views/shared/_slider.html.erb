@@ -6,7 +6,7 @@
 				<%= image_tag("MOT.png") %>
 				<div id="promo-text">
 					<h1>Складские системы MOT</h1>
-					<h2>От 120 рублей за штуку!&nbsp;&nbsp;&nbsp;&nbsp; <span><a href="#">Подробнее</a></span></h2>
+					<h2>От 120 рублей за штуку!&nbsp;&nbsp;&nbsp;&nbsp; <span><%= link_to "Подробнее", products_path(filter_category: (Category.find_by name: "Складские системы")) %></span></h2>
 					<p>Складские системы для хранения мелких или сыпучих изделий: метизов, деталей, инструментов, медикаментов, продуктов питания, полиграфии.</p>
 				</div>
 			</div>

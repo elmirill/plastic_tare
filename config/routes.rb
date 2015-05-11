@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :products
 
+  resources :categories
+
   resources :contacts
 
   root 'pages#show', id: 1
