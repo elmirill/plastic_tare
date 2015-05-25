@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
 
 	before_save :set_keywords
 
+	# Relationships
 	has_many :product_types
 	has_many :types, through: :product_types
 
@@ -10,6 +11,7 @@ class Product < ActiveRecord::Base
 
 	belongs_to :category
 
+	# Scopes
 	scope :filter_category, ->(category_id){where(products: { category_id: category_id }) if category_id.present?}
 
 	scope :filter_type, ->(type_name){

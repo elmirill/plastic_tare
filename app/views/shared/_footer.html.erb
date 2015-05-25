@@ -1,23 +1,20 @@
 <div id="footer" class="clearfix">
 	<div class="row">
-		<div id="contacts-wrapper" class="footer-wrappers row clearfix">
-			<h2>Контактная информация</h2>
+		<h2>Контактная информация</h2>
+		<div id="form-wrapper" class="footer-wrappers row clearfix">
 			<div id="contact-form" class="clearfix">
 				<input type="text" id="footer-form-name" class="form-field-footer" placeholder="Имя" />
 				<input type="text" id="footer-form-contact" class="form-field-footer" placeholder="Телефон/электропочта" />
 				<textarea id="footer-form-message" class="form-area-footer" placeholder="Сообщение"></textarea>
 				<input type="submit" class="form-button-footer" value="Отправить сообщение" />
 			</div>
+		</div>
+		<div id="contacts-wrapper" class="footer-wrappers clearfix">
 			<div id="footer-contacts">
 				<p>(383) 349-94-84</p>
 				<p>info@plast-tara.ru</p>
 				<p id="address">г. Новосибирск, ул. Станционная 30/А, корпус 10</p>
 			</div>
-		</div>
-		<div id="cert-wrapper" class="footer-wrappers clearfix">
-			<h2>Сертификаты</h2>
-			<%= link_to image_tag("cert1.jpg", class: "certs"), "#{root_url}cert" %>
-			<%= link_to image_tag("cert1.jpg", class: "certs"), "#{root_url}cert" %>
 		</div>
 	</div>
 </div>

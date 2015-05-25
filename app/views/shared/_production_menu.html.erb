@@ -1,24 +1,26 @@
 <div class="row">
-	<div id="production_menu">
-		<% categories = Category.all %>
-		<% block_width = 100.000/Category.count %>
-		<% categories.each do |category| %>
-			<%= link_to products_path(filter_category: category.id) do %>
-				<div class="production_category" style="width:<%= block_width %>%;">
-					<%= image_tag(category.icon, class: "category_icon") %>
+	<div id="production_menu" class="clearfix">
+		<div class="row-no-padding clearfix">
+			<% categories = Category.all %>
+			<% categories.each do |category| %>
+				<%= link_to products_path(filter_category: category.id) do %>
 					<% if category.id == @curr_cat_id %>
-				  	<div class="category_name_menu category_name_menu_active">
-				  <% else %>
-				  	<div class="category_name_menu">
-				  <% end %>
-			     <div style="display: table-cell; vertical-align: middle;">
-			       <div>
-			         <%= category.name %>
-			       </div>
-			     </div>
-			   </div>
-				</div>
-			<%end %>	
-		<% end %>
+						<div class="production_category production_category_active clearfix">
+					<% else %>
+						<div class="production_category clearfix">
+					<% end %>
+						<%= image_tag(category.icon, class: "category_icon") %>
+					 	<div class="category_name_menu">
+					 		<div class="name_menu_aligner">
+				      	<%= category.name %>
+				      </div>
+				    </div>
+					</div>
+				<%end %>	
+			<% end %>
+		</div>
 	</div>
 </div>
+
+
+			       					

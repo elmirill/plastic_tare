@@ -2,14 +2,6 @@
 
 <div id="show-product-title-wrapper">
 <h1 class="show-product-title"><%= @product.name %></h1>
-  <% if @product.color.present? %>
-    <div id="product-colors">
-      <% @product.color.split(',').each do |color| %>
-        <div id="<%= color %>-color" class="product-color"></div>
-      <% end %>
-      <div class="clearfix"></div>
-    </div>
-  <% end %>
   <%= link_to '', edit_product_path(@product), class: "admin-icon-edit" %>
   <%= link_to '', @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" %>
 </div>
@@ -146,13 +138,15 @@
   <% end %>
 
   <br>
-
-  <% if @product.applications.present? %>
-    <% @product.applications.each do |app| %>
-     <div style="background:#C8E6C9; padding:5px; float:left; margin:0px 8px 7px 0px;"><%= app.name %></div>
-    <% end %>
-    <div class="clearfix"></div>
+  <% if @product.color.present? %>
+    <div id="product-colors">
+      <% @product.color.split(',').each do |color| %>
+        <div id="<%= color %>-color" class="product-color"></div>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
   <% end %>
+
 </div>
 <div class="clearfix"></div>
 

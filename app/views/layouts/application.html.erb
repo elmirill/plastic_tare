@@ -52,6 +52,19 @@
   });
 </script>
 
+<!--Fix category menu when scrolled-->
+<script>
+  $(window).scroll(function(){
+      if ($(this).scrollTop() > 262) {
+          $('#production_menu').addClass('production_menu_fixed');
+          $('#main-content').addClass('main-content-fixed');
+      } else {
+          $('#production_menu').removeClass('production_menu_fixed');
+          $('#main-content').removeClass('main-content-fixed');
+      }
+  });
+</script>
+
 <!--Toggle production menu-->
 <script type="text/javascript">
 function toggleDiv(toggleId) {

@@ -3,6 +3,8 @@
   <h1><%= Category.find(@curr_cat_id).name %></h1>
 <% elsif @search_request.present? %>
   <h1>Поиск по запросу «<%= @search_request %>»</h1>
+<% else %>
+  <h1>Каталог продукции</h1>
 <% end %>
 
 <div id ="products-index-wrapper">

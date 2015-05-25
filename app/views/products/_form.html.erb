@@ -11,38 +11,59 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label "Название" %><br>
     <%= f.text_field :name, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Описание" %><br>
-    <%= f.text_area :description, class: "form-area-admin" %>
+    <%= f.label "Категория" %><br>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, class: "form-field-admin") %>
   </div>
   <div class="field">
-    <%= f.label "Короткое описание" %><br>
-    <%= f.text_area :short_description, class: "form-field-admin" %>
+    <%= f.label "Опции цвета" %><br>
+
+    <% color_vars = ["blue","red","green","white","yellow","grey","black"] %>
+    <% color_vars.each do |c| %>
+
+    <% end %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label "Длина" %><br>
+    <%= f.text_field :length, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Галерея" %><br>
-    <%= f.text_field :gallery, class: "form-field-admin" %>
+    <%= f.label "Ширина" %><br>
+    <%= f.text_field :width, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Размер (габариты)" %><br>
-    <%= f.text_field :size, class: "form-field-admin" %>
+    <%= f.label "Высота" %><br>
+    <%= f.text_field :height, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Размер с крышкой" %><br>
-    <%= f.text_field :size_with_cover, class: "form-field-admin" %>
+    <%= f.label "Диаметер" %><br>
+    <%= f.text_field :diameter, class: "form-field-admin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Внутренняя длина" %><br>
+    <%= f.text_field :inner_length, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Размер крышки" %><br>
-    <%= f.text_field :cover_size, class: "form-field-admin" %>
+    <%= f.label "Внутренняя ширина" %><br>
+    <%= f.text_field :inner_width, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Вместительность" %><br>
-    <%= f.text_field :capacity, class: "form-field-admin" %>
+    <%= f.label "Внутренняя высота" %><br>
+    <%= f.text_field :inner_height, class: "form-field-admin" %>
   </div>
+  <div class="field">
+    <%= f.label "Внутренняя диаметер" %><br>
+    <%= f.text_field :inner_diameter, class: "form-field-admin" %>
+  </div>
+
   <div class="field">
     <%= f.label "Объем" %><br>
     <%= f.number_field :volume, class: "form-field-admin" %>
@@ -52,13 +73,54 @@
     <%= f.number_field :net_volume, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Параметры" %><br>
-    <%= f.text_field :parameter, class: "form-field-admin" %>
+    <%= f.label "Вес" %><br>
+    <%= f.number_field :weight, class: "form-field-admin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Стенки" %><br>
+    <%= f.text_field :side, class: "form-field-admin" %>
   </div>
   <div class="field">
-    <%= f.label "Опции цвета" %><br>
-    <%= f.text_field :color, class: "form-field-admin" %>
+    <%= f.label "Дно" %><br>
+    <%= f.text_field :bottom, class: "form-field-admin" %>
   </div>
+  <div class="field">
+    <%= f.label "Типы" %><br>
+    <%= f.text_field :types, class: "form-field-admin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Есть крышка?" %><br>
+    <%= f.check_box :cover %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Статическая нагрузка" %><br>
+    <%= f.number_field :static_load, class: "form-field-admin" %>
+  </div>
+  <div class="field">
+    <%= f.label "Динамическая нагрузка" %><br>
+    <%= f.number_field :dynamic_load, class: "form-field-admin" %>
+  </div>
+  <div class="field">
+    <%= f.label "Стеллажная нагрузка" %><br>
+    <%= f.number_field :rack_load, class: "form-field-admin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Вместительность" %><br>
+    <%= f.text_field :capacity, class: "form-field-admin" %>
+  </div>
+  <div class="field">
+    <%= f.label "Галерея" %><br>
+    <%= f.text_field :gallery, class: "form-field-admin" %>
+  </div>
+  <div class="field">
+    <%= f.label "Описание" %><br>
+    <%= f.text_area :description, class: "form-area-admin" %>
+  </div>
+
   <div class="field">
     <%= f.label "Цветной? (опция)" %><br>
     <%= f.check_box :var_color %>
@@ -107,10 +169,29 @@
     <%= f.label "Цена опции спецпредложения 3" %><br>
     <%= f.number_field :var_spec_price_3, class: "form-field-admin" %>
   </div>
+
+  <div class="field">
+    <%= f.label "Сферы применения" %><br>
+    <%= f.text_field :applications, class: "form-field-admin" %>
+  </div>
+  <div class="field">
+    <%= f.label "Артикул" %><br>
+    <%= f.text_field :articul, class: "form-field-admin" %>
+  </div>
+  <div class="field">
+    <%= f.label "Позиция" %><br>
+    <%= f.number_field :position, class: "form-field-admin" %>
+  </div>
+
   <div class="field">
     <%= f.label "Продвигаемый товар?" %><br>
     <%= f.check_box :featured %>
   </div>
+  <div class="field">
+    <%= f.label "Рекламная кампания" %><br>
+    <%= f.number_field :campaign, class: "form-field-admin" %>
+  </div>
+
   <div class="actions">
     <%= link_to 'Назад', products_path, class: "admin-edit-link-back" %>
     <%= f.submit "Создать/Обновить", class: "form-button-admin" %>

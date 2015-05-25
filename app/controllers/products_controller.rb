@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :short_description, :gallery, :size, :size_with_cover, :cover_size, :capacity, :volume, :net_volume, :parameters, :color, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :featured)
+      params.require(:product).permit(:name, :category, :color, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign)
     end
 
   def get_url_params
