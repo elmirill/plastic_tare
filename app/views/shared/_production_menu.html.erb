@@ -1,24 +1,35 @@
-<div class="row">
+<div id="production-menu-wrapper" class="clearfix">
 	<div id="production_menu" class="clearfix">
-		<div class="row-no-padding clearfix">
-			<% categories = Category.all %>
-			<% categories.each do |category| %>
-				<%= link_to products_path(filter_category: category.id) do %>
-					<% if category.id == @curr_cat_id %>
-						<div class="production_category production_category_active clearfix">
-					<% else %>
-						<div class="production_category clearfix">
-					<% end %>
-						<%= image_tag(category.icon, class: "category_icon") %>
-					 	<div class="category_name_menu">
-					 		<div class="name_menu_aligner">
-				      	<%= category.name %>
-				      </div>
-				    </div>
-					</div>
-				<%end %>	
-			<% end %>
+		<div class="row clearfix">
+			<div id="production-menu-inner" class="clearfix">
+				<% categories = Category.all %>
+				<% categories.each do |category| %>
+					<%= link_to products_path(filter_category: category.id) do %>
+						<% if category.id == @curr_cat_id %>
+							<div class="production_category production_category_active clearfix">
+						<% else %>
+							<div class="production_category clearfix">
+						<% end %>
+							<%= image_tag(category.icon, class: "category_icon") %>
+						 	<div class="category_name_menu">
+						 		<div class="name_menu_aligner">
+					      	<%= category.name %>
+					      </div>
+					    </div>
+						</div>
+					<%end %>	
+				<% end %>
+			</div>	
 		</div>
+	</div>
+</div>
+
+<div id="cat-menu-appearer" style="width:100%; display:none;" class="row clearfix">
+	<div style="width:20%;" class="clearfix">
+		<%= image_tag('box_menu.png', class: "category-icon-hidden") %>
+	 	<div style="height:45px; line-height:1.2; font-size:1em;">
+	 		1
+    </div>
 	</div>
 </div>
 

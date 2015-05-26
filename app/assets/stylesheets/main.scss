@@ -142,6 +142,10 @@ input{
 	display: none;
 }
 
+.reveal{ 
+	display: block !important;
+}
+
 .relative{
 	position: relative;
 }
@@ -159,7 +163,7 @@ input{
 	width: 100%;
 	height: 140px;
 	position: relative;
-	z-index: 2;
+	z-index: 3;
 }
 
 #header-top {
@@ -171,7 +175,7 @@ input{
 float:left;
 margin-right: 20px;
 position: absolute;
-z-index: 3;
+z-index: 4;
 top:7px;
 width:160px;
 margin-left: -5px;
@@ -264,7 +268,7 @@ font-style: italic;
 
 #header-main-nav{
 height: 60px;
-z-index: 2;
+z-index: 3;
 }
 
 #header-main-nav li{
@@ -277,6 +281,7 @@ z-index: 2;
 	top: 0px;
 	width: 100%;
 	box-shadow: 0px 0px 9px 4px rgba(0,0,0,0.30);
+	z-index: 3;
 }
 
 #menu{
@@ -406,17 +411,28 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	height:30px;
 }
 
+#production-menu-wrapper{ 
+	position: relative;
+}
+
 #production_menu{
+	z-index: 2;
+}
+
+#production-menu-inner{ 
 	background: #E8F5E9;
 	border-left: 1px solid rgba(0, 0, 0, 0.03);
-	z-index: 1;
+}
+
+.production-menu-inner-fixed{ 
+	box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
+	border: none !important;
 }
 
 .production_menu_fixed{ 
 	position: fixed;
-	margin-top: -262px;
-	box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.2);
-	border-left: 1px solid rgba(0, 0, 0, 0.03);
+	top:25px;
+	width: 100%;
 }
 
 .production_category{
@@ -438,6 +454,14 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	width:75%;
 }
 
+.category-icon-hidden{
+	width:75%;
+}
+
+.category-icon-fixed{ 
+	display: none;
+}
+
 .category_name_menu{
 	height: 40px;
 	margin-bottom: 5px;
@@ -445,6 +469,10 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	/*background: rgba(200,230,201,0.8);*/
 	line-height: 1.2;
 	font-size: 1em;
+}
+
+.category-name-menu-fixed{ 
+	margin-bottom: 0px !important;
 }
 
 .name_menu_aligner{ 
@@ -594,7 +622,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 }
 
 .main-content-fixed{
-	padding-top: 213px !important;
+	/*padding-top: 210px !important;*/
 }
 
 #main-col{
@@ -973,7 +1001,7 @@ max-width:1210px;
 }
 
 #footer-contacts {
-
+ 
 }
 
 #footer-contacts p {
