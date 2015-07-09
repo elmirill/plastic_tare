@@ -421,6 +421,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 
 #production-menu-inner{ 
 	background: #E8F5E9;
+//	background: rgba(229,115,115,1);
 	border-left: 1px solid rgba(0, 0, 0, 0.03);
 }
 
@@ -446,7 +447,15 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	position: relative;
 }
 
+.production_category_fixed{
+	background: #A0D0A2;
+}
+
 .production_category_active, .production_category:hover{ 
+	background: #c0e2c1;
+}
+
+.production_category_active_fixed, .production_category:hover{ 
 	background: #c0e2c1;
 }
 
