@@ -15,21 +15,29 @@
 <body>
 
 <%= render partial: "shared/header" %>
-<%= render partial: "shared/slider" %>
+<!--<%= render partial: "shared/slider" %>-->
 <%= render partial: "shared/production_menu" %>
 
 <div id="main-content" class="row clearfix">
 	<%= render partial: "shared/sidebar" %>
 
 	<div id="main-col" class="clearfix">
-	<%= yield %>
+	
+		<% flash.each do |name, msg| %>
+			<% if msg.is_a?(String) %>
+				<div class="alert alert-<%= name.to_s == 'notice' ? 'info' : 'danger' %>">
+					<%= content_tag :div, msg, :id => "flash_#{name}" %>
+				</div>
+			<% end %>
+		<% end %>
+
+		<%= yield %>
+	
 	</div>
 
 </div>
 
 <%= render partial: "shared/footer" %>
-
-
 
 <!--Fix navbar when scrolled-->
 <script>

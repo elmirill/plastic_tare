@@ -1,5 +1,5 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
+<%= form_for @product, html: { multipart: true } do |f| %>
+	<% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
@@ -10,190 +10,249 @@
       </ul>
     </div>
   <% end %>
-
-
-  <div class="field">
-    <%= f.label "Название" %><br>
-    <%= f.text_field :name, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Категория" %><br>
-    <%= f.collection_select(:category_id, Category.all, :id, :name, class: "form-field-admin") %>
-  </div>
-  <div class="field">
-    <%= f.label "Опции цвета" %><br>
-
-    <% color_vars = ["blue","red","green","white","yellow","grey","black"] %>
-    <% color_vars.each do |c| %>
-
-    <% end %>
-
+  
+  <div class="actions">
+		<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+			<i class="glyphicon glyphicon-ok"></i> 
+		<% end %>
+		<%= link_to @product, class: "admin-icon-return" do %>
+			<i class="glyphicon glyphicon-arrow-left"></i>
+		<% end %>
   </div>
 
-  <div class="field">
-    <%= f.label "Длина" %><br>
-    <%= f.text_field :length, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Ширина" %><br>
-    <%= f.text_field :width, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Высота" %><br>
-    <%= f.text_field :height, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Диаметер" %><br>
-    <%= f.text_field :diameter, class: "form-field-admin" %>
-  </div>
+	<div class="row">
+		<div class="field col-xs-8">
+			<%= f.label "Название" %><br>
+			<%= f.text_field :name, class: "form-field-admin" %>
+		</div>
 
-  <div class="field">
-    <%= f.label "Внутренняя длина" %><br>
-    <%= f.text_field :inner_length, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Внутренняя ширина" %><br>
-    <%= f.text_field :inner_width, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Внутренняя высота" %><br>
-    <%= f.text_field :inner_height, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Внутренняя диаметер" %><br>
-    <%= f.text_field :inner_diameter, class: "form-field-admin" %>
-  </div>
+		<div class="field col-sm-4">
+			<%= f.label "Категория" %><br>
+			<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: "form-field-admin"}) %>
+		</div>
+	</div>
 
-  <div class="field">
-    <%= f.label "Объем" %><br>
-    <%= f.number_field :volume, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Полезный объем" %><br>
-    <%= f.number_field :net_volume, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Вес" %><br>
-    <%= f.number_field :weight, class: "form-field-admin" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Стенки" %><br>
-    <%= f.text_field :side, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Дно" %><br>
-    <%= f.text_field :bottom, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Типы" %><br>
-    <%= f.text_field :types, class: "form-field-admin" %>
-  </div>
+	<!--
+		<div class="field">
+			<% f.label "Опции цвета" %><br>
+			<% color_vars = ["blue","red","green","white","yellow","grey","black"] %>
+			<% color_vars.each do |c| %>
 
-  <div class="field">
-    <%= f.label "Есть крышка?" %><br>
-    <%= f.check_box :cover %>
-  </div>
+			<% end %>
+		</div>
+	-->
 
-  <div class="field">
-    <%= f.label "Статическая нагрузка" %><br>
-    <%= f.number_field :static_load, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Динамическая нагрузка" %><br>
-    <%= f.number_field :dynamic_load, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Стеллажная нагрузка" %><br>
-    <%= f.number_field :rack_load, class: "form-field-admin" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Вместительность" %><br>
-    <%= f.text_field :capacity, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Галерея" %><br>
-    <%= f.text_field :gallery, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Описание" %><br>
-    <%= f.text_area :description, class: "form-area-admin" %>
-  </div>
+	<div class="row">
+		<div class="field col-md-3 col-sm-6">
+		
+			<%= f.label "Обложка" %><br>
+			<%= f.file_field :thumbnail, class: "form-field-admin" %>
+			
+			<% if @product.thumbnail.url != 'box_menu.png' && @product.persisted? %>
+				<%= image_tag @product.thumbnail.url, class: "col-md-12" %>
+				<div class="admin-delete-photo">
+					Удалить?&nbsp;&nbsp;<%= f.check_box(:delete_thumbnail) %>
+				</div>
+			<% end %>
+			
+		</div>
+		<div class="product-photos">
 
-  <div class="field">
-    <%= f.label "Цветной? (опция)" %><br>
-    <%= f.check_box :var_color %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена цветной опции 1" %><br>
-    <%= f.number_field :var_color_price_1, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена цветной опции 2" %><br>
-    <%= f.number_field :var_color_price_1, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена цветной опции 3" %><br>
-    <%= f.number_field :var_color_price_1, class: "form-field-admin" %>
-  </div>
-  <div class="field product-var">
-    <%= f.label "Высший сорт? (опция)" %><br>
-    <%= f.check_box :var_high %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена опции высшего класса 1" %><br>
-    <%= f.number_field :var_high_price_1, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена опции высшего класса 2" %><br>
-    <%= f.number_field :var_high_price_2, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена опции высшего класса 3" %><br>
-    <%= f.number_field :var_high_price_3, class: "form-field-admin" %>
-  </div>
-  <div class="field product-var">
-    <%= f.label "Спецпредложение? (опция)" %><br>
-    <%= f.check_box :var_spec %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена опции спецпредложения 1" %><br>
-    <%= f.number_field :var_spec_price_1, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена опции спецпредложения 2" %><br>
-    <%= f.number_field :var_spec_price_2, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Цена опции спецпредложения 3" %><br>
-    <%= f.number_field :var_spec_price_3, class: "form-field-admin" %>
-  </div>
+			<%= f.simple_fields_for :product_photos do |photo| %>
+				<%= render 'product_photo_fields', f: photo %>
+			<% end %>
 
-  <div class="field">
-    <%= f.label "Сферы применения" %><br>
-    <%= f.text_field :applications, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Артикул" %><br>
-    <%= f.text_field :articul, class: "form-field-admin" %>
-  </div>
-  <div class="field">
-    <%= f.label "Позиция" %><br>
-    <%= f.number_field :position, class: "form-field-admin" %>
-  </div>
+			<%= link_to_add_association 'Добавить фотографию', f, :product_photos,
+class: "btn btn-default admin-add-photo" %>
 
-  <div class="field">
-    <%= f.label "Продвигаемый товар?" %><br>
-    <%= f.check_box :featured %>
-  </div>
-  <div class="field">
-    <%= f.label "Рекламная кампания" %><br>
-    <%= f.number_field :campaign, class: "form-field-admin" %>
-  </div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Длина" %><br>
+			<%= f.text_field :length, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Ширина" %><br>
+			<%= f.text_field :width, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Высота" %><br>
+			<%= f.text_field :height, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Диаметр" %><br>
+			<%= f.text_field :diameter, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Внутренняя длина" %><br>
+			<%= f.text_field :inner_length, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Внутренняя ширина" %><br>
+			<%= f.text_field :inner_width, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Внутренняя высота" %><br>
+			<%= f.text_field :inner_height, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Внутренний диаметр" %><br>
+			<%= f.text_field :inner_diameter, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Объем" %><br>
+			<%= f.number_field :volume, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Полезный объем" %><br>
+			<%= f.number_field :net_volume, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Вместительность" %><br>
+			<%= f.text_field :capacity, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Вес" %><br>
+			<%= f.number_field :weight, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Стенки" %><br>
+			<%= f.text_field :side, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Дно" %><br>
+			<%= f.text_field :bottom, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Есть крышка?" %><br>
+			<%= f.check_box :cover %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Статическая нагрузка" %><br>
+			<%= f.number_field :static_load, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Динамическая нагрузка" %><br>
+			<%= f.number_field :dynamic_load, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Стеллажная нагрузка" %><br>
+			<%= f.number_field :rack_load, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<div class="field">
+		<%= f.label "Описание" %><br>
+		<%= f.cktext_area :description, ckeditor: { language: 'ru' } %>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цветной?" %><br>
+			<%= f.check_box :var_color %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена цветной опции 1" %><br>
+			<%= f.number_field :var_color_price_1, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена цветной опции 2" %><br>
+			<%= f.number_field :var_color_price_1, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена цветной опции 3" %><br>
+			<%= f.number_field :var_color_price_1, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Высший сорт?" %><br>
+			<%= f.check_box :var_high %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена опции высшего класса 1" %><br>
+			<%= f.number_field :var_high_price_1, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена опции высшего класса 2" %><br>
+			<%= f.number_field :var_high_price_2, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена опции высшего класса 3" %><br>
+			<%= f.number_field :var_high_price_3, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Спецпредложение?" %><br>
+			<%= f.check_box :var_spec %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена опции спецпредложения 1" %><br>
+			<%= f.number_field :var_spec_price_1, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена опции спецпредложения 2" %><br>
+			<%= f.number_field :var_spec_price_2, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3 col-xs-6">
+			<%= f.label "Цена опции спецпредложения 3" %><br>
+			<%= f.number_field :var_spec_price_3, class: "form-field-admin" %>
+		</div>
+	</div>
+
+
+	<!--
+		<div class="field">
+			<% f.label "Артикул" %><br>
+			<% f.text_field :articul, class: "form-field-admin" %>
+		</div>
+	-->
+
+	<div class="row">
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Позиция" %><br>
+			<%= f.number_field :position, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Продвигаемый товар?" %><br>
+			<%= f.check_box :featured %>
+		</div>
+		<div class="field col-sm-4 col-xs-6">
+			<%= f.label "Рекламная кампания" %><br>
+			<%= f.number_field :campaign, class: "form-field-admin" %>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="field col-xs-12">
+			<%= f.label "Ключи для поиска" %><br>
+			<%= f.text_area :meta, class: "form-field-admin" %>
+		</div>
+	</div>
+
+	<br>
 
   <div class="actions">
     <%= link_to 'Назад', products_path, class: "admin-edit-link-back" %>
-    <%= f.submit "Создать/Обновить", class: "form-button-admin" %>
+    <%= f.submit "Создать/Обновить", class: "btn btn-primary" %>
   </div>
 <% end %>

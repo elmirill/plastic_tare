@@ -1,0 +1,27 @@
+<h1>Создать нового администратора</h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label "Электропочта" %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-field-admin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Пароль" %>
+    <% if @minimum_password_length %>
+    <em>(минимум <%= @minimum_password_length %> символов)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-field-admin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Пароль еще раз" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-field-admin" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Создать", class: "form-button-admin" %>
+  </div>
+<% end %>

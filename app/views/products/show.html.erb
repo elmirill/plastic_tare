@@ -2,8 +2,16 @@
 
 <div id="show-product-title-wrapper">
 <h1 class="show-product-title"><%= @product.name %></h1>
-  <%= link_to '', edit_product_path(@product), class: "admin-icon-edit" %>
-  <%= link_to '', @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" %>
+ 	<% if admin_signed_in? %>
+ 		<div data-no-turbolinks>
+ 			<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
+					<i class="glyphicon glyphicon-pencil"></i>
+			<% end %>
+			<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
+				<i class="glyphicon glyphicon-trash"></i>
+			<% end %>
+ 		</div>
+	<% end %>
 </div>
 <div class="clearfix"></div>
 
@@ -11,11 +19,15 @@
   Артикул: <%= @product.articul %>
 <% end %>
 
-<% if true %>
-  <%= image_tag("box_menu.png", class: "show-gallery-item") %>
-  <%= image_tag("box_menu.png", class: "show-gallery-item") %>
-  <%= image_tag("box_menu.png", class: "show-gallery-item") %>
+
+<% @product.product_photos.each do |pic| %>
+	<div class="show-gallery">
+		<%= link_to pic.photo.url(:original) do %>
+			<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-sm-6" %>
+		<% end %>
+	</div>
 <% end %>
+
 <div class="clearfix"></div>
 
 <div id="show-left-col">
@@ -96,13 +108,13 @@
         <tr>
           <td>Цветной</td>
           <% if @product.var_color_price_1.present? %>
-            <td><%= @product.var_color_price_1 %> &#8399;</td>
+            <td><%= @product.var_color_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
           <% if @product.var_color_price_2.present? %>
-            <td><%= @product.var_color_price_2 %> &#8399;</td>
+            <td><%= @product.var_color_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
           <% if @product.var_color_price_3.present? %>
-            <td><%= @product.var_color_price_3 %> &#8399;</td>
+            <td><%= @product.var_color_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
         </tr>
       <% end %>
@@ -110,13 +122,13 @@
         <tr>
           <td>Высший сорт</td>
           <% if @product.var_high_price_1.present? %>
-            <td><%= @product.var_high_price_1 %> &#8399;</td>
+            <td><%= @product.var_high_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
           <% if @product.var_high_price_2.present? %>
-            <td><%= @product.var_high_price_2 %> &#8399;</td>
+            <td><%= @product.var_high_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
           <% if @product.var_high_price_3.present? %>
-            <td><%= @product.var_high_price_3 %> &#8399;</td>
+            <td><%= @product.var_high_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
         </tr>
       <% end %>
@@ -124,13 +136,13 @@
         <tr>
           <td>Спецпредложение</td>
           <% if @product.var_spec_price_1.present? %>
-            <td><%= @product.var_spec_price_1 %> &#8399;</td>
+            <td><%= @product.var_spec_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
           <% if @product.var_spec_price_2.present? %>
-            <td><%= @product.var_spec_price_2 %> &#8399;</td>
+            <td><%= @product.var_spec_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
           <% if @product.var_spec_price_3.present? %>
-            <td><%= @product.var_spec_price_3 %> &#8399;</td>
+            <td><%= @product.var_spec_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
           <% end %>
         </tr>
       <% end %>

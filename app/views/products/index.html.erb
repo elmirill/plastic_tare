@@ -10,7 +10,7 @@
 <div id ="products-index-wrapper">
   <% @products.each do |product| %>
     <%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
-    <div class="product-index">
+    <div class="product-index col-lg-3 col-md-4 col-sm-6">
 
       <h3><%= product.name %></h3>
 
@@ -22,7 +22,7 @@
         <p class="product-index-dimensions">&nbsp;</p>
       <% end %>
 
-      <%= image_tag('box_menu.png') %>
+      <%= image_tag product.thumbnail.url %>
 
       <% if product.var_color || product.var_high || product.var_spec %>
         <% 
@@ -37,14 +37,22 @@
           prices << product.var_spec_price_2 if product.var_spec_price_2.present?
           prices << product.var_spec_price_3 if product.var_spec_price_3.present?
         %>
-        <p class="product-index-price">От <%= prices.min %> &#8399;</p>
+        <p class="product-index-price">
+        	От <%= prices.min %> <span><i class="glyphicon glyphicon-ruble"></i></span>
+        </p>
       <% else %>
         <p class="product-index-price">&nbsp;</p>
       <% end %>
       
-      <%= link_to '', edit_product_path(product), class: "admin-index-icon-edit" %>
-      <%= link_to '', product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-index-icon-delete" %>
-
+      <% if admin_signed_in? %>
+				<%= link_to edit_product_path(product), class: "admin-index-icon-edit" do %>
+					<i class="glyphicon glyphicon-pencil"></i>
+				<% end %>
+				<%= link_to product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-index-icon-delete" do %>
+					<i class="glyphicon glyphicon-trash"></i>
+				<% end %>
+			<% end %>
+   
     </div>
     <% end %>
   <% end %>
@@ -52,4 +60,6 @@
 
 <br>
 
-<%= link_to 'Новый продукт', new_product_path, class: "admin-edit-link-right" %>
+<% if admin_signed_in? %>
+	<%= link_to 'Новый продукт', new_product_path, class: "admin-edit-link-right" %>
+<% end %>

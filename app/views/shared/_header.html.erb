@@ -7,27 +7,36 @@
 
 		<div id="contacts-header">
 			<h2>+7 383 349-94-84</h2>
-			<p><a href="#">Заказать звонок</a></p>
+			<p><a href="#footer">Заказать звонок</a></p>
 		</div>
 
-		<h1 id="descript">Производство пластиковой тары</h1>
+		<h1 id="descript" class="hidden-xs">Производство пластиковой тары</h1>
 
 	</div>
 	
 	<div id="header-main-nav" class="clearfix">
 		<div class="row clearfix">
-			<ul id="menu">
+		
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class='icon-bar'></span>
+				<span class='icon-bar'></span>
+				<span class='icon-bar'></span>
+			</button>
+		
+			<ul id="menu" class="nav navbar-nav collapse navbar-collapse">
 				<li><%= link_to "Доставка и оплата", "#{root_url}delivery" %></li>
-				<li><%= link_to "Прайс", "#" %></li>
+				<li><%= link_to "Прайс", "https://s3.eu-central-1.amazonaws.com/purple-waves/plast-tara/files/Price_04.02.15.xls" %></li>
 				<li><%= link_to "Сертификаты", "#{root_url}cert" %></li>
-				<li><%= link_to "Контакты", contacts_path %></li>
+				<li><%= link_to "Контакты", '#footer' %></li>
 				<li><%= link_to "О компании", "#{root_url}about" %></li>
 			</ul>
+			
 			<!-- <div class="search-wrapper">
 				<input type="text" id="site-search" class="search" placeholder="Поиск" />
 				<input type="submit" id="site-search-submit" class="search-submit" name="#" value="" />
 			</div> -->
-			<div id="callme-shrinked" class="hidden"><p>+<a href="#">7 383 349-94-84</a></p></div>
+			<div id="callme-shrinked" class="hidden"><p>+<a href="#footer">7 383 349-94-84</a></p></div>
 		</div>
 	</div>
 </div>

@@ -1,0 +1,10 @@
+<div class="nested-fields col-md-3 col-sm-6 relative">
+	<%= f.input :photo, input_html: { class: "form-field-admin" }, label: "Фотография" %>
+	
+	<%= image_tag f.object.photo(:thumb), class: "col-md-12" %>
+	
+	<%= f.text_field :caption, class: "form-field-admin", placeholder: "Описание" %>
+	<%= link_to_remove_association f, class: "admin-icon-remove-photos", data: { confirm: "Уверены? Необратимо." } do %>
+		<i class="glyphicon glyphicon-remove"></i>
+	<% end %>
+</div>

@@ -51,27 +51,12 @@
 			<% end %>
 		</div>
 
-<!-- 	<div id="calc-wrapper" class="clearfix">
-		<h2 class="calc-title">Калькулятор объема</h2>
-		<select class="calc-dropdown">
-		  <option value="volvo">Ящик №1 (овощной)</option>
-		  <option value="saab">Ящик №2/п (овощной)</option>
-		  <option value="mercedes">Ящик №3 (овощной)</option>
-		  <option value="audi">Ящик №4 (Тетрапак)</option>
-		  <option value="audi">Ящик №5 (Творожный)</option>
-		  <option value="audi">Ящик №6 (Полипак)</option>
-		</select>
-		<input type="text" id="" class="calc-quantity" />
-		<select class="calc-dropdown">
-		  <option value="volvo">Ящик №1 (овощной)</option>
-		  <option value="saab">Ящик №2/п (овощной)</option>
-		  <option value="mercedes">Ящик №3 (овощной)</option>
-		  <option value="audi">Ящик №4 (Тетрапак)</option>
-		  <option value="audi">Ящик №5 (Творожный)</option>
-		  <option value="audi">Ящик №6 (Полипак)</option>
-		</select>
-		<input type="text" id="" class="calc-quantity" />
-		<input type="submit" id="additem" class="calc-button" value="Добавить" />
-		<input type="submit" id="calculate" class="calc-button" value="Посчитать" />
-	</div> -->
+	<br>
+
+	<% if admin_signed_in? %>
+		<%= link_to "Выйти из админки", destroy_admin_session_path, method: :delete, id: "admin-link" %>
+	<% else %>
+		<%= link_to "Войти в админку", new_admin_session_path, id: "admin-link" %>
+	<% end %>
+
 </div>

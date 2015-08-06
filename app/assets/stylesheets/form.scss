@@ -3,7 +3,6 @@
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
 	font-family:'PT Sans', sans-serif;
-	font-size:1em;
 	border: 1px solid rgba(0, 0, 0, 0.2);
 	transition:all 0.2s ease;
 	-webkit-transition:all 0.2s ease;
@@ -18,7 +17,7 @@
 		margin:0px 10px 20px 0px;
 		padding: 7px 10px;
 		width:50%;
-		min-width: 350px;
+//		min-width: 350px;
 	}
 
 		.form-field-footer{
@@ -54,34 +53,10 @@
 
 		.form-area-admin{
 			@extend .form-area;
-			height: 120px;
+			height: 400px;
 		}
 
-	.form-button{
-		@extend .form;
-		float: right;
-		height: 34px;
-		padding: 7px 10px;
-		font-size: 1em;
-		font-family: 'PT Sans', sans-serif;
-		border: 1px solid rgba(0,0,0,0.05);
-		cursor: pointer;
-	}
 
-	.form-button:hover{
-		opacity: 0.8;
-	}
-
-		.form-button-footer{
-			@extend .form-button;
-			width:45%;
-			width:calc(50% - 10px);
-		}
-
-		.form-button-admin{
-			@extend .form-button;
-			float: left;
-		}
 
 
 
@@ -91,4 +66,10 @@
 
 #footer-form-contact{
 	margin-left: 10px;
+}
+
+.field, .nested-fields {
+	.col-md-12 {
+		padding: 0px 0px 20px 0px;
+	}
 }
