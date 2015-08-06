@@ -1250,3 +1250,151 @@ max-width:1210px;
 .admin-delete-photo {
 	margin-bottom: 25px;
 }
+
+//FOrm
+
+.form{
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	font-family:'PT Sans', sans-serif;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	transition:all 0.2s ease;
+	-webkit-transition:all 0.2s ease;
+	-khtml-transition:all 0.2s ease;
+	-moz-transition:all 0.2s ease;
+}
+
+
+	.form-field{
+		@extend .form;
+		float: left;
+		margin:0px 10px 20px 0px;
+		padding: 7px 10px;
+		width:50%;
+//		min-width: 350px;
+	}
+
+		.form-field-footer{
+			@extend .form-field;
+			border: 0px;
+			width:45%;
+			width:calc(50% - 10px);
+			min-width: initial;
+			margin:0px 0px 20px 0px;
+		}
+
+		.form-field-admin{
+			@extend .form-field;
+			width: 100%;
+			margin:0px 0px 20px 0px;
+			float: none;
+		}
+
+	.form-area{
+		@extend .form;
+		width:100%;
+		min-width: 350px;
+		height: 200px;
+		margin-bottom:20px;
+		padding: 7px 10px;
+	}
+
+		.form-area-footer{
+			@extend .form-area;
+			border: 0px;
+			height: 150px;
+		}
+
+		.form-area-admin{
+			@extend .form-area;
+			height: 400px;
+		}
+
+#footer-form-name{
+	margin-right: 10px;
+}
+
+#footer-form-contact{
+	margin-left: 10px;
+}
+
+.field, .nested-fields {
+	.col-md-12 {
+		padding: 0px 0px 20px 0px;
+	}
+}
+
+
+//Colors
+
+/* Main Color */
+
+#header{
+	background: #FCFFFC;
+}
+
+#header-main-nav{
+	background: #388E3C;
+}
+
+#menu li a:hover{
+	background: #2E7D32;
+}
+
+#sidebar{
+	//background: #F9F5FF;
+	background: #E8F5E9;
+}
+
+#catalogue {
+	background: #C8E6C9;
+}
+
+#catalogue > ul > li > a p:hover, #catalogue ul ul li:hover, .catalogue_toggled{
+	background: #A5D6A7;
+}
+
+.calc-dropdown {
+	background: #C8E6C9;
+}
+
+#additem  {
+	background: #66BB6A;
+}
+
+.calc-quantity {
+
+}
+
+
+/* Additional Color */
+
+
+#callme-shrinked p, #callme-shrinked a{
+	color: #FFEBEE;
+} 
+
+#calculate  {
+	background: #E53935;
+	color:rgba(255,255,255,0.95);
+}
+
+.form-button, .form-button-footer, .form-button-admin {
+	background: #E57373;
+}
+
+.form-field-footer, .form-area-footer {
+	background: rgba(255,255,255,0.85);
+}
+
+
+/* Neutral Colors */
+
+#footer h2 {
+	color:rgba(255,255,255,0.85);
+}
+
+#footer-contacts p {
+	color:rgba(255,255,255,0.85);
+}
