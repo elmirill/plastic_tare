@@ -51,7 +51,7 @@
 			<%= f.file_field :thumbnail, class: "form-field-admin" %>
 			
 			<% if @product.thumbnail.url != 'box_menu.png' && @product.persisted? %>
-				<%= image_tag @product.thumbnail.url, class: "col-md-12" %>
+				<%= image_tag @product.thumbnail.url(:thumb), class: "col-md-12" %>
 				<div class="admin-delete-photo">
 					Удалить?&nbsp;&nbsp;<%= f.check_box(:delete_thumbnail) %>
 				</div>

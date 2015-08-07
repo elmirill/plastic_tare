@@ -232,6 +232,12 @@ input[type="checkbox"] {
 	margin: 0 auto;
 }
 
+//Margins and Paddings
+
+.mbottom30{
+	margin-bottom: 30px;
+}
+
 /*******************/
 /******Header*******/
 /*******************/
@@ -637,6 +643,10 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 /****Main Content***/
 /*******************/
 
+#content {
+	position: relative;
+}
+
 #slider{
 	width:100%;
 	height:300px; 
@@ -735,7 +745,6 @@ width: calc(100% - 290px);
 float:right;
 height:100%;
 padding:30px 0px 60px 40px;
-position: relative;
 }
 
 #show-product-title-wrapper{
@@ -756,12 +765,6 @@ position: relative;
 
 .show-product-title{
 	float: left;
-}
-
-.show-gallery{
-	.col-md-4 {
-		margin-bottom: 30px;
-	}
 }
 
 #product-colors{
@@ -1032,14 +1035,6 @@ max-width:1210px;
 	}
 }
 
-.certs-page:nth-child(odd){
-	padding: 0px 0px 0px 15px;
-}
-
-.certs-page:nth-child(even){
-	padding: 0px 15px 0px 0px;
-}
-
 .delivery-service{
 
 }
@@ -1155,7 +1150,7 @@ max-width:1210px;
 		@extend .admin-edit-link;
 		position: absolute;
 		right: 0px;
-		top: 30px;
+		top: 0px;
 	}
 
 		.admin-edit-link-right-sub {
@@ -1223,14 +1218,14 @@ max-width:1210px;
 
 	.admin-icon-submit{
 		@extend .admin-icons;
-		top: 35px;
+		top: 5px;
 		margin-right: 40px;
 		background-color: transparent;
 	}
 
 	.admin-icon-return{
 		@extend .admin-icons;
-		top: 35px;
+		top: 5px;
 		margin-right: 5px;
 		background-color: transparent;
 	}

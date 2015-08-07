@@ -19,11 +19,16 @@
   Артикул: <%= @product.articul %>
 <% end %>
 
+<% if @product.thumbnail.url != 'box_menu.png' %>
+	<%= link_to @product.thumbnail.url(:original) do %>
+		<%= image_tag @product.thumbnail.url(:thumb), class: "col-md-4 col-sm-6 mbottom30" %>
+	<% end %>
+<% end %>
 
 <% @product.product_photos.each do |pic| %>
 	<div class="show-gallery">
 		<%= link_to pic.photo.url(:original) do %>
-			<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-sm-6" %>
+			<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-sm-6 mbottom30" %>
 		<% end %>
 	</div>
 <% end %>

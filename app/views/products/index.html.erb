@@ -22,7 +22,7 @@
         <p class="product-index-dimensions">&nbsp;</p>
       <% end %>
 
-      <%= image_tag product.thumbnail.url %>
+      <%= image_tag product.thumbnail.url(:thumb) %>
 
       <% if product.var_color || product.var_high || product.var_spec %>
         <% 

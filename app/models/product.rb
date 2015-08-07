@@ -5,12 +5,17 @@ class Product < ActiveRecord::Base
 	
 	
 	has_attached_file :thumbnail, styles: {
-														original: {
+														thumb: {
 															geometry: "250x210>",
 															quality: "60",
 															format: "JPG"
-														}		
-													}, convert_options: { original: "-gravity center -extent 250x210"}, 																default_url: 'box_menu.png'
+														},
+														original: {
+															geometry: "1000x1000>",
+															quality: "60",
+															format: "JPG"
+														}
+													}, convert_options: { thumb: "-gravity center -extent 250x210"}, 																default_url: 'box_menu.png'
 	validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
 
 	# Relationships

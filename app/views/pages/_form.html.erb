@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="actions">
+		<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+			<i class="glyphicon glyphicon-ok"></i> 
+		<% end %>
+		<%= link_to @page, class: "admin-icon-return" do %>
+			<i class="glyphicon glyphicon-arrow-left"></i>
+		<% end %>
+  </div>
 
   <div class="field">
     <%= f.label "Заголовок" %><br>
