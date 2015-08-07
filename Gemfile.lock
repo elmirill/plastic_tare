@@ -209,6 +209,7 @@ DEPENDENCIES
   cocoon (~> 1.2.6)
   coffee-rails (~> 4.1.0)
   devise (~> 3.5.1)
+  i18n (~> 0.7.0)
   jbuilder (~> 2.0)
   jquery-rails
   paperclip (~> 4.3.0)

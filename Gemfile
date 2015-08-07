@@ -16,6 +16,7 @@ gem 'paperclip', '~> 4.3.0'
 gem 'cocoon', '~> 1.2.6'
 gem 'simple_form', '~> 3.1.0'
 gem 'aws-sdk', '< 2.0'
+gem 'i18n', '~> 0.7.0'
 
 group :development, :test do
   gem 'byebug'
