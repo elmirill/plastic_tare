@@ -101,71 +101,73 @@
   <ul>
 </div>
 
-<div id="show-right-col">
-  <% if @product.var_color || @product.var_high || @product.var_spec %>
-    <table id="show-prices">
-      <tr>
-        <th></th>
-        <th>До 50 т.р.</th>
-        <th>До 300 т.р.</th>
-        <th>От 300 т.р.</th>
-      </tr>
-      <% if @product.var_color %>
-        <tr>
-          <td>Цветной</td>
-          <% if @product.var_color_price_1.present? %>
-            <td><%= @product.var_color_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-          <% if @product.var_color_price_2.present? %>
-            <td><%= @product.var_color_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-          <% if @product.var_color_price_3.present? %>
-            <td><%= @product.var_color_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-        </tr>
-      <% end %>
-      <% if @product.var_high %>
-        <tr>
-          <td>Высший сорт</td>
-          <% if @product.var_high_price_1.present? %>
-            <td><%= @product.var_high_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-          <% if @product.var_high_price_2.present? %>
-            <td><%= @product.var_high_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-          <% if @product.var_high_price_3.present? %>
-            <td><%= @product.var_high_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-        </tr>
-      <% end %>
-      <% if @product.var_spec %>
-        <tr>
-          <td>Спецпредложение</td>
-          <% if @product.var_spec_price_1.present? %>
-            <td><%= @product.var_spec_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-          <% if @product.var_spec_price_2.present? %>
-            <td><%= @product.var_spec_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-          <% if @product.var_spec_price_3.present? %>
-            <td><%= @product.var_spec_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
+<% if @product.var_color || @product.var_high || @product.var_spec || @product.color.present? %>
+	<div id="show-right-col">
+		<% if @product.var_color || @product.var_high || @product.var_spec %>
+			<table id="show-prices">
+				<tr>
+					<th></th>
+					<th>До 50 т.р.</th>
+					<th>До 300 т.р.</th>
+					<th>От 300 т.р.</th>
+				</tr>
+				<% if @product.var_color %>
+					<tr>
+						<td>Цветной</td>
+						<% if @product.var_color_price_1.present? %>
+							<td><%= @product.var_color_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+						<% if @product.var_color_price_2.present? %>
+							<td><%= @product.var_color_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+						<% if @product.var_color_price_3.present? %>
+							<td><%= @product.var_color_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+					</tr>
+				<% end %>
+				<% if @product.var_high %>
+					<tr>
+						<td>Высший сорт</td>
+						<% if @product.var_high_price_1.present? %>
+							<td><%= @product.var_high_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+						<% if @product.var_high_price_2.present? %>
+							<td><%= @product.var_high_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+						<% if @product.var_high_price_3.present? %>
+							<td><%= @product.var_high_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+					</tr>
+				<% end %>
+				<% if @product.var_spec %>
+					<tr>
+						<td>Спецпредложение</td>
+						<% if @product.var_spec_price_1.present? %>
+							<td><%= @product.var_spec_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+						<% if @product.var_spec_price_2.present? %>
+							<td><%= @product.var_spec_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+						<% if @product.var_spec_price_3.present? %>
+							<td><%= @product.var_spec_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+						<% end %>
+					</tr>
+				<% end %>
+			</table>
+		<% end %>
 
-  <br>
-  <% if @product.color.present? %>
-    <div id="product-colors">
-      <% @product.color.split(',').each do |color| %>
-        <div id="<%= color %>-color" class="product-color"></div>
-      <% end %>
-      <div class="clearfix"></div>
-    </div>
-  <% end %>
+		<br>
+		<% if @product.color.present? %>
+			<div id="product-colors">
+				<% @product.color.split(',').each do |color| %>
+					<div id="<%= color %>-color" class="product-color"></div>
+				<% end %>
+				<div class="clearfix"></div>
+			</div>
+		<% end %>
 
-</div>
+	</div>
+<% end %>
 <div class="clearfix"></div>
 
 <% if @product.description.present? %>
