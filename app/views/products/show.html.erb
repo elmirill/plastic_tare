@@ -1,16 +1,17 @@
 <!-- <p id="notice"><%= notice %></li> -->
+<div data-no-turbolinks>
+	<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
+			<i class="glyphicon glyphicon-pencil"></i>
+	<% end %>
+	<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
+		<i class="glyphicon glyphicon-trash"></i>
+	<% end %>
+</div>
 
 <div id="show-product-title-wrapper">
 <h1 class="show-product-title"><%= @product.name %></h1>
  	<% if admin_signed_in? %>
- 		<div data-no-turbolinks>
- 			<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
-					<i class="glyphicon glyphicon-pencil"></i>
-			<% end %>
-			<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
-				<i class="glyphicon glyphicon-trash"></i>
-			<% end %>
- 		</div>
+
 	<% end %>
 </div>
 <div class="clearfix"></div>
@@ -21,14 +22,14 @@
 
 <% if @product.thumbnail.url != 'box_menu.png' %>
 	<%= link_to @product.thumbnail.url(:original), class: "imglink" do %>
-		<%= image_tag @product.thumbnail.url(:thumb), class: "col-md-4 col-sm-6 mbottom30" %>
+		<%= image_tag @product.thumbnail.url(:thumb), class: "col-md-4 col-xs-6 mbottom30" %>
 	<% end %>
 <% end %>
 
 <% @product.product_photos.each do |pic| %>
 	<div class="show-gallery">
 		<%= link_to pic.photo.url(:original), class: "imglink" do %>
-			<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-sm-6 mbottom30" %>
+			<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-xs-6 mbottom30" %>
 		<% end %>
 	</div>
 <% end %>

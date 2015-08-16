@@ -403,6 +403,9 @@ z-index: 3;
 	box-shadow: 0px 0px 9px 4px rgba(0,0,0,0.30);
 	z-index: 3;
 }
+.nav>li>a:hover, .nav>li>a:focus {
+	background-color: inherit;
+}
 
 #menu{
 margin:0px;
@@ -1256,6 +1259,7 @@ max-width:1210px;
 	font-size: 26px;
 	border: 0px;
 	color: #D35D57;
+	z-index: 99;
 	&:hover, &:active {
 		color: #388E3C;
 	}
