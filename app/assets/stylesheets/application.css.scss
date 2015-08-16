@@ -60,6 +60,9 @@ a, a img {
 	outline: none;
 	border: none;
 }
+img {
+	max-width: 100%;
+}
 
 h1, h2, h3, h4, h5, h6{
 	font-family: 'PT Serif', serif;
@@ -129,6 +132,7 @@ a{
 	}
 	li, ul, img, div{
 		border: none;
+		text-decoration: none;
 	}
 }
 
@@ -138,6 +142,7 @@ li a, ul a, img a, h2 a{
 
 .imglink{
 	border: none;
+	text-decoration: none;
 }
 
 table{
@@ -776,6 +781,48 @@ padding:30px 0px 60px 40px;
 	width: 50%;
 	margin-bottom: 20px;
 }
+
+@media (max-width: 1100px) {
+	#show-left-col{
+		float: none;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	#show-right-col{
+		float: none;
+		width: 100%;
+		margin-bottom: 60px;
+	}
+}
+@media (max-width: 855px) {
+	#show-left-col{
+		float: left;
+		width: 50%;
+		margin-bottom: 20px;
+	}
+
+	#show-right-col{
+		float: right;
+		width: 50%;
+		margin-bottom: 20px;
+	}
+}
+@media (max-width: 740px) {
+	#show-left-col{
+		float: none;
+		width: 100%;
+		margin-bottom: 20px;
+	}
+
+	#show-right-col{
+		float: none;
+		width: 100%;
+		margin-bottom: 60px;
+	}
+}
+@me
+
 
 .show-product-title{
 	float: left;
