@@ -1,4 +1,4 @@
-<div id="production-menu-wrapper" class="clearfix">
+<div id="production-menu-wrapper" class="clearfix collapse navbar-collapse">
 	<div id="production_menu" class="clearfix">
 		<div class="row clearfix">
 			<div id="production-menu-inner" class="clearfix">
@@ -10,7 +10,7 @@
 						<% else %>
 							<div class="production_category clearfix">
 						<% end %>
-								<%= image_tag(category.icon, class: "category_icon hidden-xs") %>
+								<%= image_tag(category.icon, class: "category_icon hidden-sm hidden-xs") %>
 						 	<div class="category_name_menu">
 						 		<div class="name_menu_aligner">
 					      	<%= category.name %>
