@@ -126,9 +126,10 @@ a{
 	color:rgba(0,0,0,0.87);
 	border-bottom: solid 1px;
 	text-decoration: none;
-	&:hover {
+	&:hover, &:focus {
 		text-decoration: none;
 		color: inherit;
+		outline:none;
 	}
 	li, ul, img, div{
 		border: none;
@@ -191,7 +192,7 @@ input[type="checkbox"] {
 }
 .btn-default {
 	background-color: #ccc;
-	&:hover, &:active {
+	&:hover, &:active, &:focus {
 		background-color: #ddd;
 		color :inherit;
 		border: 1px solid rgba(0, 0, 0, 0.05);
@@ -200,7 +201,7 @@ input[type="checkbox"] {
 .btn-primary {
 	color: #333;
 	background-color: #E57373;
-	&:hover, &:active {
+	&:hover, &:active, &:focus {
 		background-color: #A0D0A2;
 		color :inherit;
 		border: 1px solid rgba(0, 0, 0, 0.05);
@@ -564,7 +565,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	float: left;
 	text-align: center;
 	background: #E8F5E9;
-	padding: 15px 5px 0px 5px;
+	padding: 5px 5px 0px 5px;
 	width: 20%;
 	border-right: 1px solid rgba(0, 0, 0, 0.04);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -585,6 +586,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 
 .category_icon{
 	width:75%;
+	padding-top: 10px;
 }
 
 .category-icon-hidden{
@@ -1205,7 +1207,7 @@ max-width:1210px;
 	-webkit-transition:all 0.2s ease;
 	-khtml-transition:all 0.2s ease;
 	-moz-transition:all 0.2s ease;
-	&:hover, &:active {
+	&:hover, &:active, &:focus {
 		color: #388E3C;
 	}
 }
@@ -1260,7 +1262,7 @@ max-width:1210px;
 	border: 0px;
 	color: #D35D57;
 	z-index: 99;
-	&:hover, &:active {
+	&:hover, &:active, &:focus {
 		color: #388E3C;
 	}
 }
@@ -1504,7 +1506,6 @@ max-width:1210px;
 	.production_category {
 		float: none;
 		width: 100%;
-		padding-top: 5px;
 		padding-left: 20px;
 		text-align: left;
 	}
