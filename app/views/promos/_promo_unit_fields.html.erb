@@ -1,0 +1,32 @@
+<div class="nested-fields relative">
+	<div class="row">
+		<div class="col-xs-8">
+			<%= f.input :title, input_html: { class: "form-field-admin" }, label: "Заголовок" %>
+		</div>
+		<div class="col-xs-4">
+			<%= f.label "Активна?" %>
+			<%= f.input :active, input_html: { class: "checkbox-standalone" }, label: "" %>
+		</div>
+		<div class="col-xs-12">
+			<%= f.input :subtitle, input_html: { class: "form-field-admin" }, label: "Подзаголовок" %>
+		</div>
+		<div class="col-xs-12">
+			<%= f.input :description, input_html: { class: "form-area admin-promo-area" }, label: "Описание" %>
+		</div>
+		<div class="col-xs-12">
+			<%= f.input :link, input_html: { class: "form-field-admin" }, label: "Ссылка" %>
+		</div>
+		<div class="col-xs-6">
+			<%= f.input :image, input_html: { class: "form-field-admin" }, label: "Изображение" %>
+		</div>
+		<% if f.object.image.present? %>
+			<div class="col-xs-3 col-xs-offset-1">
+				<%= image_tag f.object.image, class:"admin-promo-photo" %>
+			</div>
+		<% end %>
+
+			<%= link_to_remove_association f, data: { confirm: "Уверены? Необратимо." } do %>
+				<i class="glyphicon glyphicon-remove admin-icon-delete"></i>
+			<% end %>
+	</div>
+</div>

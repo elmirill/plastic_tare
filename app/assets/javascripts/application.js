@@ -16,4 +16,6 @@
 //= require ckeditor/init
 //= require cocoon
 //= require turbolinks
+//= require bxslider
 //= require_tree .
+

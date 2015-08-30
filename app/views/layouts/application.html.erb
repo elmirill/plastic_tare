@@ -64,7 +64,7 @@
 </script>
 
 <!--Fix category menu when scrolled-->
-<% @slider ? height_shift = 562 : height_shift = 245 %>
+<% @slider ? height_shift = 502 : height_shift = 245 %>
 <script>
 	$(window).scroll(function(){
 			if ($(this).scrollTop() > <%= height_shift %> && $(window).width() > 855) {
@@ -92,6 +92,17 @@
 function toggleDiv(toggleId) {
    $("#"+toggleId).slideToggle(200);
 }
+</script>
+
+<!--Initialize bxSlider-->
+<script>
+	$(document).ready(function(){
+  	$('.bxslider').bxSlider({
+			auto:($(".bxslider > li").length > 1) ? true: false,
+			autoHover: true,
+			pager: false
+		});
+	});
 </script>
 
 </body>

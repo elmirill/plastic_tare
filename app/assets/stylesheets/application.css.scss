@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bxslider
  */
 
 @import "bootstrap-sprockets";
@@ -162,7 +163,7 @@ padding:3px 5px 3px 5px;
 input{
 	outline:none;
 }
-form {
+form, .nested-fields {
 	.row {
 		padding: 10px 0px 0px 0px;
 		margin: 20px 0px;
@@ -242,6 +243,9 @@ input[type="checkbox"] {
 
 .mbottom30{
 	margin-bottom: 30px;
+}
+.mright30{
+	margin-right: 30px;
 }
 
 /*******************/
@@ -557,7 +561,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 
 .production_menu_fixed{ 
 	position: fixed;
-	top:25px;
+	top:35px;
 	width: 100%;
 }
 
@@ -672,13 +676,22 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 }
 
 #slider{
-	width:100%;
-	height:300px; 
-	//background:#aaa; 
-	background: image_url('banner-bg.jpg');
-	background-size: cover;
-	background-position: center;
-	padding:0px 20px 0px 20px;
+
+}
+.bx-wrapper {
+	margin: 0px !important;
+	.bx-viewport {
+		box-shadow: none !important;
+		border: 0px !important;
+		left: 0 !important;
+		background: none !important;
+		width:100% !important;
+		height:300px !important; 
+		background: image_url('banner-bg.jpg') !important;
+		background-size: cover !important;
+		background-position: center !important;
+		padding:0px 20px 0px 20px !important;
+	}
 }
 
 #promo{
@@ -686,26 +699,31 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	height: 100%;
 }
 
-.banner-arrow{
-	height: 100px;
-	position: absolute;
-	top:97px;
-	transition:all 0.2s ease;
-	-webkit-transition:all 0.2s ease;
-	-khtml-transition:all 0.2s ease;
-	-moz-transition:all 0.2s ease;
+.bx-arrows{
+	height: 100px !important;
+	width: 34px !important;
+	margin-top: -50px !important;
+	transition:all 0.2s ease !important;
+	-webkit-transition:all 0.2s ease !important;
+	-khtml-transition:all 0.2s ease !important;
+	-moz-transition:all 0.2s ease !important;
+	text-decoration: none !important;
+	border: 0px;
+	z-index: 1 !important;
+	&:hover {
+		opacity: 0.7 !important;
+		background-position: auto !important;
+	}
 }
-
-.banner-arrow:hover{
-	opacity: 0.7;
+.bx-prev {
+	@extend .bx-arrows;
+	left: 35px !important;
+	background: url(/assets/arrow-left.png) !important;
 }
-
-#arrow-left{
-	left: 25px;
-}
-
-#arrow-right{
-	right: 25px;
+.bx-next {
+	@extend .bx-arrows;
+	right: 35px !important;
+	background: url(/assets/arrow-right.png) !important;
 }
 
 #promo-content{
@@ -733,6 +751,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	-webkit-transition:all 0.2s ease;
 	-khtml-transition:all 0.2s ease;
 	-moz-transition:all 0.2s ease;
+	line-height: 50px;
 }
 
 #promo-text h2 span a:hover{
@@ -748,7 +767,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 }
 
 #promo-content h2{
-	margin: 0px 0px 30px 0px;
+	margin: 0px 0px 10px 0px;
 	color: #FF6D69;
 }
 
@@ -1224,6 +1243,11 @@ max-width:1210px;
 			top: 20px;
 		}
 
+		.admin-edit-link-right-promo {
+			@extend .admin-edit-link-right;
+			z-index: 2;
+		}
+
 	.admin-edit-link-back {
 		@extend .admin-edit-link;
 		float: left;
@@ -1261,7 +1285,7 @@ max-width:1210px;
 	font-size: 26px;
 	border: 0px;
 	color: #D35D57;
-	z-index: 99;
+	z-index: 1;
 	&:hover, &:active, &:focus {
 		color: #388E3C;
 	}
@@ -1296,11 +1320,9 @@ max-width:1210px;
 		margin-right: 5px;
 		background-color: transparent;
 	}
-
 #admin-link {
 	margin-left: 10px;
 }
-
 .admin-add-photo {
 	margin-top: 27px;
 	margin-left: 18px;
@@ -1308,9 +1330,15 @@ max-width:1210px;
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
-
 .admin-delete-photo {
 	margin-bottom: 25px;
+}
+.admin-promo-photo {
+	height: 150px;
+	margin-bottom: 20px;
+}
+.admin-promo-area {
+	height: 100px !important;
 }
 
 //FOrm
@@ -1385,7 +1413,9 @@ max-width:1210px;
 		padding: 0px 0px 20px 0px;
 	}
 }
-
+.checkbox-standalone {
+	margin: 0px !important;
+}
 
 //Colors
 

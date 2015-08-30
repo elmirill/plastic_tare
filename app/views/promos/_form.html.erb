@@ -1,0 +1,39 @@
+<%= simple_form_for(@promo, html: { multipart: true }) do |f| %>
+  <% if @promo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@promo.errors.count, "error") %> prohibited this promo from being saved:</h2>
+
+      <ul>
+      <% @promo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="actions">
+		<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+			<i class="glyphicon glyphicon-ok"></i> 
+		<% end %>
+		<%= link_to root_path, class: "admin-icon-return" do %>
+			<i class="glyphicon glyphicon-arrow-left"></i>
+		<% end %>
+  </div>
+  
+	<%= f.hidden_field :name %>
+
+	<div class="promo-units">
+		<%= f.simple_fields_for :promo_units do |unit| %>
+			<%= render 'promo_unit_fields', f: unit %>
+			<br>
+		<% end %>
+
+		<%= link_to_add_association 'Добавить акцию', f, :promo_units,
+		class: "btn btn-default" %>
+	</div>
+	<br><br>
+  <div class="actions">
+    <%= link_to 'Назад', root_path, class: "admin-edit-link-back" %>
+    <%= f.submit "Обновить", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+	resources :promos, only: [:edit, :update]
+
   devise_for :admins
   resources :pages
   resources :products
