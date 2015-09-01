@@ -30,19 +30,19 @@
 			<%= f.label "Категория" %><br>
 			<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: "form-field-admin"}) %>
 		</div>
-	</div>
-
-
-	<!--
-		<div class="field">
-			<% f.label "Опции цвета" %><br>
-			<% color_vars = ["blue","red","green","white","yellow","grey","black"] %>
-			<% color_vars.each do |c| %>
-
+	</div>	
+	
+		<div class="row">
+		<div class="field col-xs-12 mbottom20">
+			<%= f.label "Опции цвета" %><br>
+			<% colors = ['blue', 'red', 'green', 'white', 'yellow', 'grey', 'black'] %>
+			<% colors.each do |col| %>
+				<div class="div-color-selector-<%= col %> div-color-selector">
+					<%= check_box_tag 'product[color][]', col, (true if @product.color.include? col), class: "color-selector" %>
+				</div>
 			<% end %>
 		</div>
-	-->
-
+	</div>
 
 	<div class="row">
 		<div class="field col-md-3 col-sm-6">
@@ -246,6 +246,18 @@ class: "btn btn-default admin-add-photo" %>
 		<div class="field col-xs-12">
 			<%= f.label "Ключи для поиска" %><br>
 			<%= f.text_area :meta, class: "form-field-admin" %>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="field col-xs-12 mbottom20">
+			<%= f.label "Сопутствующие товары" %><br>
+			<% @products.each do |product| %>
+				<div class="col-lg-4 col-sm-6">
+					<%= check_box_tag 'product[related_product_ids][]', product.id, @product.related_product_ids.include?(product.id) %>
+					<%= product.name %>&nbsp;&nbsp;
+				</div>
+			<% end %>
 		</div>
 	</div>
 

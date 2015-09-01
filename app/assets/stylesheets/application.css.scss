@@ -244,6 +244,9 @@ input[type="checkbox"] {
 .mbottom30{
 	margin-bottom: 30px;
 }
+.mbottom20{
+	margin-bottom: 20px;
+}
 .mright30{
 	margin-right: 30px;
 }
@@ -866,31 +869,37 @@ padding:30px 0px 60px 40px;
 	box-shadow: 0 1px 3px .05px rgba(0,0,0,.5);
 }
 
-#blue-color{
+.div-color-selector {
+	float: left;
+	border-radius: 50%;
+	margin-right: 3px;
+	box-shadow: 0 2px 3px 0.05px rgba(0, 0, 0, 0.5);
+}
+.color-selector {
+	margin: 6px !important;
+	padding: 0px !important;
+	height: 15px !important;
+	width: 15px !important;
+}
+#blue-color, .div-color-selector-blue {
 	background: #34659F;
 }
-
-#red-color{
+#red-color, .div-color-selector-red{
 	background: #B4201C;
 }
-
-#green-color{
+#green-color, .div-color-selector-green{
 	background: #1A9133;
 }
-
-#white-color{
-	background: #EFEDEE;
+#white-color, .div-color-selector-white{
+	background: #F6F6F6;
 }
-
-#yellow-color{
+#yellow-color, .div-color-selector-yellow{
 	background: #E0C80C;
 }
-
-#grey-color{
+#grey-color, .div-color-selector-grey{
 	background: #707676;
 }
-
-#black-color{
+#black-color, .div-color-selector-black{
 	background: #1A1A1A;
 }
 

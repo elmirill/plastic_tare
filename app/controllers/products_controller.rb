@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :get_url_params, :get_type_names, :get_application_names
 	before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+	before_action :get_all_products, only: [:new, :create, :edit, :update]
 
   # GET /products
   # GET /products.json
@@ -71,7 +72,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :category, :color, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign, :thumbnail, :delete_thumbnail, :category_id, :meta, product_photos_attributes: [:id, :photo, :caption, :_destroy])
+      params.require(:product).permit(:name, :category, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign, :thumbnail, :delete_thumbnail, :category_id, :meta, related_product_ids: [], color: [], product_photos_attributes: [:id, :photo, :caption, :_destroy])
     end
 
   def get_url_params
@@ -89,5 +90,9 @@ class ProductsController < ApplicationController
   def get_application_names
     @application_names = Application.all.map{ |t| t.name }
   end
+	
+	def get_all_products
+		@products = Product.all.order('name ASC')
+	end
 
 end

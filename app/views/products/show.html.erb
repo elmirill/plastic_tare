@@ -79,7 +79,7 @@
       <li>Дно: <%= @product.bottom %></li>
     <% end %>
 
-    <% unless @product.cover.nil? %>
+		<% unless @product.cover.nil? || @product.name == "Крышка для ящика" %>
       <% if @product.cover %>
         <li>С крышкой</li>
       <% else %>
@@ -159,7 +159,7 @@
 		<br>
 		<% if @product.color.present? %>
 			<div id="product-colors">
-				<% @product.color.split(',').each do |color| %>
+				<% @product.color.split(/\W+/).delete_if(&:blank?).each do |color| %>
 					<div id="<%= color %>-color" class="product-color"></div>
 				<% end %>
 				<div class="clearfix"></div>
@@ -172,4 +172,15 @@
 
 <% if @product.description.present? %>
   <%= @product.description.html_safe %>
+<% end %>
+
+<br>
+
+<% if @product.category.name == "Ящики" %>
+	<h2>
+		Сопутствующие товары	
+	</h2>
+		<% @product.related_products.each do |product| %>
+			<%= render 'product_module', product: product  %>
+		<% end %>
 <% end %>

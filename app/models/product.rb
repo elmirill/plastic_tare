@@ -26,6 +26,9 @@ class Product < ActiveRecord::Base
 	has_many :applications, through: :product_applications
 	
 	has_many :product_photos
+	
+	has_many :related_product_associations, class_name: "RelatedProduct"
+	has_many :related_products, through: :related_product_associations, source: :related_product
 
 	belongs_to :category
 	
