@@ -36,9 +36,13 @@
 		<div class="field col-xs-12 mbottom20">
 			<%= f.label "Опции цвета" %><br>
 			<% colors = ['blue', 'red', 'green', 'white', 'yellow', 'grey', 'black'] %>
+			<% curr_color = [] %>
+			<% if @product.color.present? %>
+				<% curr_color = @product.color %>
+			<% end %>
 			<% colors.each do |col| %>
 				<div class="div-color-selector-<%= col %> div-color-selector">
-					<%= check_box_tag 'product[color][]', col, (true if @product.color.include? col), class: "color-selector" %>
+					<%= check_box_tag 'product[color][]', col, (true if curr_color.include? col), class: "color-selector" %>
 				</div>
 			<% end %>
 		</div>

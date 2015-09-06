@@ -848,7 +848,6 @@ padding:30px 0px 60px 40px;
 		margin-bottom: 60px;
 	}
 }
-@me
 
 
 .show-product-title{
@@ -948,15 +947,43 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 
 #catalogue {
 	color:rgba(0,0,0,0.87);
-	margin-bottom: 30px;
+	margin-bottom: 25px;
+}
+#catalogue input[type="checkbox"] {
+	margin-top: 0px;
+}
+#catalogue input[type="number"] {
+	width: calc( 50% - 35px );
+}
+#catalogue .boxed {
+	margin-top: 5px;
+}
+#catalogue .btn-primary {
+	width: 100%;
+	margin-top: 5px;
+}
+#catalogue .li-full {
+	padding: 0px;
+}
+#catalogue .li-full h3 {
+	padding: 12px 15px 10px 15px;
+	margin: 10px 0px 0px 0px;
+	border-top: 1px solid rgba(0,0,0,0.05);
 }
 
 #catalogue ul{
 	list-style: none;
 }
+#catalogue h2{
+	padding: 0px 15px 0px 15px;
+}
+#catalogue h3{
+	font-family: 'PT-sans', sans-serif;
+}
 
 #catalogue ul li{
-	padding: 0px;
+	padding: 0px 15px 10px 15px;
+	white-space: nowrap;
 }
 
 #catalogue p + ul {
@@ -964,24 +991,23 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 
 #catalogue > ul {
-	padding: 0px;
+	padding: 15px 0px 0px 0px;
 	border-bottom: 1px solid rgba(0,0,0,0.05);
-	border-left: 1px solid rgba(0,0,0,0.05);
-	border-right: 1px solid rgba(0,0,0,0.05);
+	border: 1px solid rgba(0,0,0,0.05);
 }
 
 #catalogue > ul > li > a {
 	text-decoration: none;
 }
 
-#catalogue > ul > li > a p, #catalogue > ul > li > p{
+#catalogue > ul > li > a h3, #catalogue > ul > li > h3{
 	font-size: 17px;
-	padding: 7px 10px 7px 10px;
+	padding: 5px 0px 5px 0px;
 	margin: 0px;
-	border-top: 1px solid rgba(0,0,0,0.05); 
+//	border-top: 1px solid rgba(0,0,0,0.05); 
 }
 
-#catalogue > ul > li > a p:hover{
+#catalogue > ul > li > a h3:hover{
 	transition:all 0.2s ease;
 	-webkit-transition:all 0.2s ease;
 	-khtml-transition:all 0.2s ease;
@@ -1129,9 +1155,18 @@ max-width:1210px;
 		font-size: 13px;
 	}
 }
-
-.delivery-service{
-
+.sort {
+	font-size: 21px;	
+	font-family: 'PT Sans', sans-serif;
+	white-space: nowrap;
+}
+.sort > a {
+	font-size: 18px;	
+	color: #D35D57;
+	border-bottom: 0px;
+	&:hover, &:active, &:focus {
+		color: #388E3C;
+	}
 }
 
 .gallery{
@@ -1451,7 +1486,7 @@ max-width:1210px;
 	background: #C8E6C9;
 }
 
-#catalogue > ul > li > a p:hover, #catalogue ul ul li:hover, .catalogue_toggled{
+#catalogue > ul > li > a h3:hover, #catalogue ul ul li:hover, .catalogue_toggled{
 	background: #A5D6A7;
 }
 

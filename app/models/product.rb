@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
 	attr_accessor :delete_thumbnail
 	before_validation { thumbnail.clear if delete_thumbnail == '1' }
-	before_save :set_keywords
+	before_save :set_keywords, :set_min_price
 	
 	
 	has_attached_file :thumbnail, styles: {
@@ -37,27 +37,48 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :product_photos, reject_if: :all_blank, allow_destroy: true
 
 	# Scopes
-	scope :filter_category, ->(category_id){where(products: { category_id: category_id }) if category_id.present?}
-
-	scope :filter_type, ->(type_name){
-		joins(:types).where(types: { name: type_name }) if type_name.present?
-	}
-	scope :filter_application, ->(application_name){
-		joins(:applications).where(applications: { name: application_name }) if application_name.present?
-	}
+	
 	scope :search, ->(search){ where('keywords LIKE ?', "%#{search.downcase}%") if search.present? }
+	
+	scope :filter_category, ->(category_id){where(products: { category_id: category_id }) if category_id.present?}
+	
+	scope :filter_types, ->(types){ 
+		joins(:types).where(types: { name: types }).distinct.group('products.id').having('count(*) = ?', types.each.count) if types.present?
+		} 
+
+	scope :filter_volume, ->(minvol, maxvol){where(products: { volume: minvol..maxvol }) if minvol.present? && maxvol.present? }
+	scope :filter_length, ->(minlen, maxlen){where(products: { length: minlen..maxlen }) if minlen.present? && maxlen.present? }
+	scope :filter_width, ->(minwid, maxwid){where(products: { width: minwid..maxwid }) if minwid.present? && maxwid.present? }
+	scope :filter_height, ->(minheig, maxheig){where(products: { height: minheig..maxheig }) if minheig.present? && maxheig.present? }
+	scope :filter_diameter, ->(mindiam, maxdiam){where(products: { diameter: mindiam..maxdiam }) if mindiam.present? && maxdiam.present? }
+	scope :filter_cover, ->(cover){where(products: { cover: true }) if cover.present? }
+	
 
 	private
 	
-		def set_keywords
+	def set_keywords
 #			columns = [name, category, color, length, width, height, diameter, inner_length, inner_width, inner_height, inner_diameter, volume, net_volume, weight, side, bottom, types, cover, static_load, dynamic_load, rack_load, capacity, description, var_color_price_1, var_color_price_2, var_color_price_3, var_high_price_1, var_high_price_2, var_high_price_3, var_spec_price_1, var_spec_price_2, var_spec_price_3, applications, articul]
-			columns = [name, meta]
+		columns = [name, meta]
 
-			keywords = name
-			columns.each do |column|
-				keywords = [keywords, column].join(' ') if column.present?
-			end
-			self.keywords = keywords.mb_chars.downcase
+		keywords = name
+		columns.each do |column|
+			keywords = [keywords, column].join(' ') if column.present?
 		end
+		self.keywords = keywords.mb_chars.downcase
+	end
+	
+	def set_min_price
+		prices = []
+		prices << var_color_price_1 if var_color_price_1.present?
+		prices << var_color_price_2 if var_color_price_2.present?
+		prices << var_color_price_3 if var_color_price_3.present?
+		prices << var_high_price_1 if var_high_price_1.present?
+		prices << var_high_price_2 if var_high_price_2.present?
+		prices << var_high_price_3 if var_high_price_3.present?
+		prices << var_spec_price_1 if var_spec_price_1.present?
+		prices << var_spec_price_2 if var_spec_price_2.present?
+		prices << var_spec_price_3 if var_spec_price_3.present?
+		self.min_price = prices.min
+	end
 
 end

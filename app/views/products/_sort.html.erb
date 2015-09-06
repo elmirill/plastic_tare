@@ -1,0 +1,17 @@
+<span class="sort">
+	По цене&nbsp;
+	<%= link_to params.merge(sort: 'min_price ASC') do %>
+		<i class="glyphicon glyphicon glyphicon-sort-by-attributes"></i>&nbsp;
+	<% end %>
+	<%= link_to params.merge(sort: 'min_price DESC') do %>
+		<i class="glyphicon glyphicon glyphicon-sort-by-attributes-alt"></i>
+	<% end %>
+	&nbsp;
+	По объему&nbsp;
+	<%= link_to params.merge(sort: 'volume ASC') do %>
+		<i class="glyphicon glyphicon glyphicon-sort-by-attributes"></i>&nbsp;
+	<% end %>
+	<%= link_to params.merge(sort: 'volume DESC') do %>
+		<i class="glyphicon glyphicon glyphicon-sort-by-attributes-alt"></i>
+	<% end %>
+</span>

@@ -1,10 +1,10 @@
 <!-- <p id="notice"><%= notice %></p> -->
 <% if @curr_cat_id.present? %>
-  <h1><%= Category.find(@curr_cat_id).name %></h1>
+<h1><%= Category.find(@curr_cat_id).name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= render 'sort' %></h1>
 <% elsif @search_request.present? %>
   <h1>Поиск по запросу «<%= @search_request %>»</h1>
 <% else %>
-  <h1>Каталог продукции</h1>
+  <h1>Каталог продукции <%= render 'sort' %></h1>
 <% end %>
 
 <div id ="products-index-wrapper">
@@ -18,3 +18,5 @@
 <% if admin_signed_in? %>
 	<%= link_to 'Новый продукт', new_product_path, class: "admin-edit-link-right" %>
 <% end %>
+
+

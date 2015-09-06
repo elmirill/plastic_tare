@@ -1,13 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :get_url_params, :get_type_names, :get_application_names
+  before_action :get_url_params
 	before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 	before_action :get_all_products, only: [:new, :create, :edit, :update]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.includes(:types).includes(:applications).search(params[:search]).filter_category(params[:filter_category]).filter_type(params[:filter_type]).filter_application(params[:filter_application])
+		@products = Product.search(params[:search]).filter_category(params[:filter_category]).filter_types(params[:types]).filter_volume(params[:minvol], params[:maxvol]).filter_length(params[:minlen], params[:maxlen]).filter_width(params[:minwid], params[:maxwid]).filter_height(params[:minheig], params[:maxheig]).filter_diameter(params[:mindiam], params[:maxdiam]).filter_cover(params[:cover]).order(params[:sort])
   end
 
   # GET /products/1
@@ -78,21 +78,16 @@ class ProductsController < ApplicationController
   def get_url_params
     url_params = Rack::Utils.parse_query URI(request.original_url).query
     @curr_cat_id = url_params["filter_category"].to_i if url_params["filter_category"].present?
-    @curr_type_name = url_params["filter_type"] if url_params["filter_type"].present?
-    @curr_app_name = url_params["filter_application"] if url_params["filter_application"].present?
     @search_request = url_params["search"] if url_params["search"].present?
   end
 
   def get_type_names
     @type_names = Type.all.map{ |t| t.name }
   end
-
-  def get_application_names
-    @application_names = Application.all.map{ |t| t.name }
-  end
 	
 	def get_all_products
 		@products = Product.all.order('name ASC')
 	end
+	
 
 end

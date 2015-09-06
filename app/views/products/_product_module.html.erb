@@ -2,11 +2,19 @@
 	<div class="product-index col-lg-3 col-md-4 col-sm-6">
 
 		<h3><%= product.name %></h3>
-
-		<% if product.length.present? && product.width.present? && product.height.present? && product.volume.present? %>
-			<p class="product-index-dimensions"><%= "#{product.length}x#{product.width}x#{product.height}мм | #{product.volume}л" %></p>
-		<% elsif product.length.present? && product.width.present? && product.height.present? %>
-			<p class="product-index-dimensions"><%= "#{product.length}x#{product.width}x#{product.height}мм" %></p>
+		
+		<% if product.diameter.present? && product.height.present? %>
+			<% if product.volume.present? %>
+		<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм | #{product.volume}л" %></p>
+			<% else %>
+		<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм" %></p>
+			<% end %>
+		<% elsif product.length.present? && product.width.present? && product.height.present?  %>
+			<% if product.volume.present? %>
+				<p class="product-index-dimensions"><%= "#{product.length}x#{product.width}x#{product.height}мм | #{product.volume}л" %></p>
+			<% else %>
+				<p class="product-index-dimensions"><%= "#{product.length}x#{product.width}x#{product.height}мм" %></p>
+			<% end %>
 		<% else %>
 			<p class="product-index-dimensions">&nbsp;</p>
 		<% end %>
