@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
 	attr_accessor :delete_thumbnail
 	before_validation { thumbnail.clear if delete_thumbnail == '1' }
 	before_save :set_keywords, :set_min_price
+	validates :name, presence: true, uniqueness: true
 	
 	
 	has_attached_file :thumbnail, styles: {
@@ -25,7 +26,7 @@ class Product < ActiveRecord::Base
 	has_many :product_applications
 	has_many :applications, through: :product_applications
 	
-	has_many :product_photos
+	has_many :product_photos, dependent: :delete_all
 	
 	has_many :related_product_associations, class_name: "RelatedProduct"
 	has_many :related_products, through: :related_product_associations, source: :related_product
@@ -38,7 +39,7 @@ class Product < ActiveRecord::Base
 
 	# Scopes
 	
-	scope :search, ->(search){ where('keywords LIKE ?', "%#{search.downcase}%") if search.present? }
+	scope :search, ->(search){ where('keywords LIKE ?', "%#{search.mb_chars.downcase}%") if search.present? }
 	
 	scope :filter_category, ->(category_id){where(products: { category_id: category_id }) if category_id.present?}
 	

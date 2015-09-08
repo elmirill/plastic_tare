@@ -30,9 +30,21 @@
 			<%= f.label "Категория" %><br>
 			<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: "form-field-admin"}) %>
 		</div>
+	</div>
+	
+	<div class="row">
+		<div class="field col-xs-12 mbottom20">
+			<%= f.label "Типы" %><br>
+			<% @types.each do |type| %>
+				<div class="col-lg-3 col-md-4 col-xs-6">
+					<%= check_box_tag 'product[type_ids][]', type.id, @product.type_ids.include?(type.id) %>
+					<%= type.name %>&nbsp;&nbsp;
+				</div>
+			<% end %>
+		</div>
 	</div>	
 	
-		<div class="row">
+	<div class="row">
 		<div class="field col-xs-12 mbottom20">
 			<%= f.label "Опции цвета" %><br>
 			<% colors = ['blue', 'red', 'green', 'white', 'yellow', 'grey', 'black'] %>
@@ -127,7 +139,7 @@ class: "btn btn-default admin-add-photo" %>
 		</div>
 		<div class="field col-sm-3 col-xs-6">
 			<%= f.label "Вес" %><br>
-			<%= f.number_field :weight, class: "form-field-admin" %>
+			<%= f.number_field :weight, step: "any", class: "form-field-admin" %>
 		</div>
 	</div>
 
@@ -177,11 +189,11 @@ class: "btn btn-default admin-add-photo" %>
 		</div>
 		<div class="field col-sm-3 col-xs-6">
 			<%= f.label "Цена цветной опции 2" %><br>
-			<%= f.number_field :var_color_price_1, class: "form-field-admin" %>
+			<%= f.number_field :var_color_price_2, class: "form-field-admin" %>
 		</div>
 		<div class="field col-sm-3 col-xs-6">
 			<%= f.label "Цена цветной опции 3" %><br>
-			<%= f.number_field :var_color_price_1, class: "form-field-admin" %>
+			<%= f.number_field :var_color_price_3, class: "form-field-admin" %>
 		</div>
 	</div>
 

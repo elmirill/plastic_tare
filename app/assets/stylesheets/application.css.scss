@@ -721,12 +721,12 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 .bx-prev {
 	@extend .bx-arrows;
 	left: 35px !important;
-	background: url(/assets/arrow-left.png) !important;
+	background: image-url("arrow-left.png") !important;
 }
 .bx-next {
 	@extend .bx-arrows;
 	right: 35px !important;
-	background: url(/assets/arrow-right.png) !important;
+	background: image-url("arrow-right.png") !important;
 }
 
 #promo-content{

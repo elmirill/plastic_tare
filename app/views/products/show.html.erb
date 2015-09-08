@@ -82,14 +82,16 @@
     <% if @product.bottom.present? %>
       <li>Дно: <%= @product.bottom %></li>
     <% end %>
-
-		<% unless @product.cover.nil? || @product.name == "Крышка для ящика" %>
-      <% if @product.cover %>
-        <li>С крышкой</li>
-      <% else %>
-        <li>Без крышки</li>
-      <% end %>
-    <% end %>
+		
+		<% if @product.category.name == "Ящики" %>
+			<% unless @product.cover.nil? %>
+				<% if @product.cover %>
+					<li>С крышкой</li>
+				<% else %>
+					<li>Без крышки</li>
+				<% end %>
+			<% end %>
+		<% end %>
 
     <% if @product.static_load.present? %>
       <li>Статическая нагрузка: <%= @product.static_load %> кг</li>
@@ -183,11 +185,11 @@
 
 <br><br><br>
 
-<% if @product.category.name == "Ящики" %>
+		<% if @product.related_products.present? %>
 	<h2>
 		Сопутствующие товары	
 	</h2>
-		<% @product.related_products.each do |product| %>
+		<% @product.related_products.order('name ASC').each do |product| %>
 			<%= render 'product_module', product: product  %>
 		<% end %>
 <% end %>

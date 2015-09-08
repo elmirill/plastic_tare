@@ -3,11 +3,12 @@ class ProductsController < ApplicationController
   before_action :get_url_params
 	before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 	before_action :get_all_products, only: [:new, :create, :edit, :update]
+	before_action :get_all_types, only: [:new, :create, :edit, :update]
 
   # GET /products
   # GET /products.json
   def index
-		@products = Product.search(params[:search]).filter_category(params[:filter_category]).filter_types(params[:types]).filter_volume(params[:minvol], params[:maxvol]).filter_length(params[:minlen], params[:maxlen]).filter_width(params[:minwid], params[:maxwid]).filter_height(params[:minheig], params[:maxheig]).filter_diameter(params[:mindiam], params[:maxdiam]).filter_cover(params[:cover]).order(params[:sort])
+		@products = Product.search(params[:search]).filter_category(params[:filter_category]).filter_types(params[:types]).filter_volume(params[:minvol], params[:maxvol]).filter_length(params[:minlen], params[:maxlen]).filter_width(params[:minwid], params[:maxwid]).filter_height(params[:minheig], params[:maxheig]).filter_diameter(params[:mindiam], params[:maxdiam]).filter_cover(params[:cover]).order('name ASC').order(params[:sort])
   end
 
   # GET /products/1
@@ -72,7 +73,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :category, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign, :thumbnail, :delete_thumbnail, :category_id, :meta, related_product_ids: [], color: [], product_photos_attributes: [:id, :photo, :caption, :_destroy])
+      params.require(:product).permit(:name, :category, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign, :thumbnail, :delete_thumbnail, :category_id, :meta, type_ids: [], related_product_ids: [], color: [], product_photos_attributes: [:id, :photo, :caption, :_destroy])
     end
 
   def get_url_params
@@ -87,6 +88,10 @@ class ProductsController < ApplicationController
 	
 	def get_all_products
 		@products = Product.all.order('name ASC')
+	end
+	
+	def get_all_types
+		@types = Type.all
 	end
 	
 

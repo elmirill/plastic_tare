@@ -3,11 +3,15 @@
 
 		<h3><%= product.name %></h3>
 		
-		<% if product.diameter.present? && product.height.present? %>
-			<% if product.volume.present? %>
-		<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм | #{product.volume}л" %></p>
+		<% if product.diameter.present? %>
+			<% if product.volume.present? && product.height.present? %>
+				<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм | #{product.volume}л" %></p>
+			<% elsif product.volume.present? %>
+				<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}мм | #{product.volume}л" %></p>
+			<% elsif product.height.present?  %>
+				<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм" %></p>
 			<% else %>
-		<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм" %></p>
+				<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}мм" %></p>
 			<% end %>
 		<% elsif product.length.present? && product.width.present? && product.height.present?  %>
 			<% if product.volume.present? %>
