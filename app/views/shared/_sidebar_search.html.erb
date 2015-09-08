@@ -1,0 +1,6 @@
+<div id="catalogue-search-wrapper" class="search-wrapper">
+	<%= form_tag(products_path, :method => "get") do %>
+		<%= text_field_tag :search, params[:search], id: "catalogue-search", class: "search", placeholder: "Поиск по всему каталогу" %>
+		<%= submit_tag "", :name => nil, id: "catalogue-search-submit", class: "search-submit" %>
+	<% end %>
+</div>

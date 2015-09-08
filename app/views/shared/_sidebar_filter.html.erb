@@ -1,0 +1,69 @@
+<% if(params.has_key?(:filter_category)) %>
+<!-- <h2 class="catalogue-title"><%= Category.find(@curr_cat_id).name %></h2> -->
+
+<div id="catalogue">
+	<ul>
+		<% if category_types_present? %>
+		<h2>Фильтр категории</h2>
+			<li>
+				<h3>Тип</h3>
+
+				<%= form_tag products_path, method: :get do %>
+					<% Type.all.each do |type| %>
+						<% if Product.filter_category(@curr_cat_id).filter_types(Array.wrap(type.name)).present? %>
+							<% type_params = Array.new %>
+							<% if params[:types].present? %>
+								<% params[:types].each do |t| %>
+									<% type_params << t %>
+								<% end %>
+							<% end %>
+							<%= check_box_tag('types[]', type.name, (true if type_params.include?(type.name))) %>
+							<%= type.name %> <br>
+						<% end %>
+					<% end %>
+			</li>
+			<li>		
+				<h3>Объем</h3>
+				<%= number_field_tag('minvol', params[:minvol]) %> л&nbsp;&nbsp; —&nbsp;
+				<%= number_field_tag('maxvol', params[:maxvol]) %> л
+			</li>	
+			<li>
+				<h3>Длина</h3>
+				<%= number_field_tag('minlen', params[:minlen]) %> мм —
+				<%= number_field_tag('maxlen', params[:maxlen]) %> мм
+			</li>	
+			<li>
+				<h3>Ширина</h3>
+				<%= number_field_tag('minwid', params[:minwid]) %> мм —
+				<%= number_field_tag('maxwid', params[:maxwid]) %> мм
+			</li>	
+			<li>
+				<h3>Высота</h3>
+				<%= number_field_tag('minheig', params[:minheig]) %> мм —
+				<%= number_field_tag('maxheig', params[:maxheig]) %> мм
+			</li>	
+			<li>
+				<h3>Диаметр</h3>
+				<%= number_field_tag('mindiam', params[:mindiam]) %> мм —
+				<%= number_field_tag('maxdiam', params[:maxdiam]) %> мм
+			</li>	
+			<li>
+				<h3 class="boxed"><%= check_box_tag('cover', true, (true if params[:cover].present?)) %>&nbsp;С крышкой</h3>
+			</li>	
+			<li>
+				<input name="filter_category" value="<%= params[:filter_category] %>" type="hidden">
+				<%= submit_tag "Фильтровать", class: "btn btn-primary" %>
+			</li>
+				<% end %>
+		<% end %>
+
+		<li class="li-full">
+			<%= link_to products_path(filter_category: @curr_cat_id) do %>
+				<h3>Вся продукция категории</h3>
+			<% end %>
+		</li>
+	</ul>
+</div>
+<% else %>
+	<div style="height:12px;"></div>
+<% end %>

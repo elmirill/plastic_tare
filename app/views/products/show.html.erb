@@ -1,17 +1,21 @@
 <!-- <p id="notice"><%= notice %></li> -->
-<div data-no-turbolinks>
-	<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
-			<i class="glyphicon glyphicon-pencil"></i>
-	<% end %>
-	<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
-		<i class="glyphicon glyphicon-trash"></i>
-	<% end %>
-</div>
+
 
 <div id="show-product-title-wrapper">
 <h1 class="show-product-title"><%= @product.name %></h1>
+	<%= link_to "#add_to_cart", class: "admin-icon-cart" do %>
+					<i class="glyphicon glyphicon-shopping-cart"></i>
+			<% end %>
  	<% if admin_signed_in? %>
-
+		<div data-no-turbolinks>
+			<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
+					<i class="glyphicon glyphicon-pencil"></i>
+			<% end %>
+			<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
+				<i class="glyphicon glyphicon-trash"></i>
+			<% end %>
+		</div>
+		<span class="admin-icon-divider">|</span>
 	<% end %>
 </div>
 <div class="clearfix"></div>
@@ -175,6 +179,9 @@
 <% end %>
 
 <br>
+<%= link_to "Добавить в корзину", "#add_to_cart", class: "btn btn-primary" %>
+
+<br><br><br>
 
 <% if @product.category.name == "Ящики" %>
 	<h2>

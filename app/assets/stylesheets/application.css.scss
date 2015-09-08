@@ -934,7 +934,11 @@ padding:25px 20px;
 border-left: 1px solid rgba(0,0,0,0.03);
 border-right: 1px solid rgba(0,0,0,0.03);
 border-bottom: 1px solid rgba(0,0,0,0.03);
-
+}
+#cart {
+	border: 1px solid rgba(0,0,0,0.05);
+	padding: 15px;
+	background: #C8E6C9;
 }
 
 .catalogue-title {
@@ -1310,13 +1314,18 @@ max-width:1210px;
 
 	.admin-index-icon-edit{
 		@extend .admin-index-icons;
-		left:15px;
+		left:55px;
 	}
 
 	.admin-index-icon-delete{
 		@extend .admin-index-icons;
-		left:40px;
+		left:80px;
 		margin-bottom: 1px;
+	}
+	.admin-index-icons-devider {
+		@extend .admin-index-icons;
+		left:42px;
+		font-size: 20px;
 	}
 
 .admin-icons{
@@ -1343,12 +1352,13 @@ max-width:1210px;
 	.admin-icon-edit{
 		@extend .admin-icons;
 		margin-top: 3px;
-		margin-right: 45px;
+		margin-right: 110px;
 	}
 
 	.admin-icon-delete{
 		@extend .admin-icons;
 		margin-top: 3px;
+		margin-right: 65px;
 	}
 
 	.admin-icon-submit{
@@ -1363,6 +1373,16 @@ max-width:1210px;
 		top: 5px;
 		margin-right: 5px;
 		background-color: transparent;
+	}
+	.admin-icon-cart {
+		@extend .admin-icons;
+		margin-top: 3px;
+	}
+	.admin-icon-divider {
+		@extend .admin-icons;
+		margin-right: 40px;
+		font-size: 32px;
+		margin-top: -6px;
 	}
 #admin-link {
 	margin-left: 10px;

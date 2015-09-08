@@ -41,7 +41,12 @@
 			<p class="product-index-price">&nbsp;</p>
 		<% end %>
 
+		<%= link_to "#add_to_cart", class: "admin-index-icons" do %>
+				<i class="glyphicon glyphicon-shopping-cart"></i>
+		<% end %>
+		
 		<% if admin_signed_in? %>
+			<span class="admin-index-icons-devider">|</span>
 			<%= link_to edit_product_path(product), class: "admin-index-icon-edit" do %>
 				<i class="glyphicon glyphicon-pencil"></i>
 			<% end %>

@@ -1,0 +1,6 @@
+<br>
+<% if admin_signed_in? %>
+	<%= link_to "Выйти из админки", destroy_admin_session_path, method: :delete, id: "admin-link" %>
+<% else %>
+	<%= link_to "Войти в админку", new_admin_session_path, id: "admin-link" %>
+<% end %>
