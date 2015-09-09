@@ -19,7 +19,7 @@ class Product < ActiveRecord::Base
 													}, convert_options: { thumb: "-gravity center -extent 250x210"}, 																default_url: 'box_menu.png'
 	validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
 
-	# Relationships
+	# Relationships 
 	has_many :product_types
 	has_many :types, through: :product_types
 
