@@ -21,12 +21,17 @@
   </div>
 
 	<div class="row">
-		<div class="field col-xs-8">
+		<div class="field col-sm-7">
 			<%= f.label "Название" %><br>
 			<%= f.text_field :name, class: "form-field-admin" %>
 		</div>
+		
+		<div class="field col-sm-2 mbottom20">
+			<%= f.label "Активен?" %><br>
+			<%= f.check_box :active %>
+		</div>
 
-		<div class="field col-sm-4">
+		<div class="field col-sm-3">
 			<%= f.label "Категория" %><br>
 			<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: "form-field-admin"}) %>
 		</div>

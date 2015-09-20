@@ -1,8 +1,11 @@
-<%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
+<% if product.active? %>
+	
 	<div class="product-index col-lg-3 col-md-4 col-sm-6">
-
-		<h3><%= product.name %></h3>
 		
+		<%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
+			<h3><%= product.name %></h3>
+		<% end %>
+
 		<% if product.diameter.present? %>
 			<% if product.volume.present? && product.height.present? %>
 				<p class="product-index-dimensions">&#8709;<%= "#{product.diameter}x#{product.height}мм | #{product.volume}л" %></p>
@@ -22,8 +25,9 @@
 		<% else %>
 			<p class="product-index-dimensions">&nbsp;</p>
 		<% end %>
-
-		<%= image_tag product.thumbnail.url(:thumb) %>
+		<%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
+			<%= image_tag product.thumbnail.url(:thumb) %>
+		<% end %>
 
 		<% if product.var_color || product.var_high || product.var_spec %>
 			<% 
@@ -45,10 +49,16 @@
 			<p class="product-index-price">&nbsp;</p>
 		<% end %>
 
-		<%= link_to "#add_to_cart", class: "admin-index-icons" do %>
+		<%= form_for @order_item, remote: true do |f| %>
+			<%= f.hidden_field :product_id, value: product.id %>
+			<%= f.hidden_field :color_quantity, value: 0 %>
+			<%= f.hidden_field :high_quantity, value: 0 %>
+			<%= f.hidden_field :spec_quantity, value: 0 %>
+			<%= button_tag(type: 'submit', class: "admin-index-icons") do %>
 				<i class="glyphicon glyphicon-shopping-cart"></i>
+			<% end %>
 		<% end %>
-		
+
 		<% if admin_signed_in? %>
 			<span class="admin-index-icons-devider">|</span>
 			<%= link_to edit_product_path(product), class: "admin-index-icon-edit" do %>

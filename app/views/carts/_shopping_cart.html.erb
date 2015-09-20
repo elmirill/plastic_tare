@@ -1,0 +1,13 @@
+<h1>Корзина</h1>
+
+<% if @order_items.size == 0 %>
+  <p>
+		В корзине пусто. Пожалуйста, <%= link_to "вернитесь в каталог", products_path(filter_category: Category.first.id) %> чтобы добавить товары.
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+	<h2>Итого: <%= current_order.total %> <i class='glyphicon glyphicon-ruble'></i></h2>
+	<%= link_to "Отправить заказ", "#", class: "btn btn-primary" %>
+<% end %>

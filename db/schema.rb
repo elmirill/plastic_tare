@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906185846) do
+ActiveRecord::Schema.define(version: 20150919231231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,26 @@ ActiveRecord::Schema.define(version: 20150906185846) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "description"
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.integer  "color_quantity"
+    t.integer  "high_quantity"
+    t.integer  "spec_quantity"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.float    "item_total"
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.float    "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pages", force: :cascade do |t|
@@ -120,8 +140,8 @@ ActiveRecord::Schema.define(version: 20150906185846) do
     t.integer  "var_spec_price_2"
     t.integer  "var_spec_price_3"
     t.boolean  "featured"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.text     "keywords"
     t.string   "articul"
     t.integer  "length"
@@ -148,6 +168,7 @@ ActiveRecord::Schema.define(version: 20150906185846) do
     t.datetime "thumbnail_updated_at"
     t.text     "meta"
     t.integer  "min_price"
+    t.boolean  "active",                 default: true
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -188,6 +209,8 @@ ActiveRecord::Schema.define(version: 20150906185846) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "products"
   add_foreign_key "product_photos", "products"
   add_foreign_key "promo_units", "promos"
 end

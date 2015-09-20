@@ -1,8 +1,10 @@
-<br>
-<div id="cart">
-	<h2>Корзина</h2>
-	<% if true %>
-		Пока что в корзине пусто <br>
-		<%= link_to "Перейти", "/cart" %>
-	<% end %>
-</div>
+<h2>Корзина</h2>
+<% if current_order.order_items.size > 0 %>
+	<div class="cart-text">
+		<%= link_to "#{current_order.order_items.size} товар(ов), 
+		#{current_order.total} <i class='glyphicon glyphicon-ruble'></i>".html_safe,
+		cart_path, class: "btn btn-primary" %>
+	</div>
+<% else %>
+	Пока что в корзине пусто
+<% end %>

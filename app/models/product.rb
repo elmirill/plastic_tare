@@ -30,6 +30,8 @@ class Product < ActiveRecord::Base
 	
 	has_many :related_product_associations, class_name: "RelatedProduct"
 	has_many :related_products, through: :related_product_associations, source: :related_product
+	
+	has_many :order_items
 
 	belongs_to :category
 	
