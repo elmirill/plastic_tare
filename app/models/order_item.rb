@@ -15,6 +15,10 @@ class OrderItem < ActiveRecord::Base
 		total_price = color_quantity * color_price + high_quantity * high_price + spec_quantity * spec_price
 	end
 	
+	def item_vol
+		((color_quantity + high_quantity + spec_quantity) *  (product.length * product.width * product.height) / 1000000000.00).round(2)
+	end
+	
 	def var_price(var)
 		if product.send("var_#{var}_price_1") * self.send("#{var}_quantity") > 50000
 			if product.send("var_#{var}_price_2") * self.send("#{var}_quantity") > 300000
@@ -53,5 +57,6 @@ class OrderItem < ActiveRecord::Base
 	
 	def finalize
 		self[:item_total] = total_price
+		self[:item_vol] = item_vol
 	end
 end

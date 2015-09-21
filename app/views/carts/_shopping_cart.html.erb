@@ -1,4 +1,7 @@
-<h1>Корзина</h1>
+<h1>
+	Корзина&nbsp;
+	<%= link_to "Сравнение товаров", "#", class: "cart-title-link" %>
+</h1>
 
 <% if @order_items.size == 0 %>
   <p>
@@ -8,6 +11,11 @@
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
   <% end %>
-	<h2>Итого: <%= current_order.total %> <i class='glyphicon glyphicon-ruble'></i></h2>
-	<%= link_to "Отправить заказ", "#", class: "btn btn-primary" %>
+  
+	<br>
+	<h2 class="cart-total-price">Итого: <%= current_order.total %> <i class='glyphicon glyphicon-ruble'></i></h2>
+	<h2 class="cart-total-vol">Общий объем: <%= current_order.total_vol %> м3</h2>
+	<div class="clearfix"></div>
+	<%= link_to "Отправить заказ", "#", class: "btn btn-primary cart-submit" %>
+	
 <% end %>

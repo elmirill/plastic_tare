@@ -1,9 +1,13 @@
 <div class="row cart-row">
-	<div class="col-xs-4">
+	<div class="row">
 		<h3><%= product.name %></h3>
-		<div class="cart-thumb"><%= image_tag product.thumbnail.url(:thumb) %></div>
 	</div>
-	<div class="col-xs-8">
+	<div class="col-md-4 col-sm-5 col-xs-4">
+		<%= link_to product do %>
+			<%= image_tag product.thumbnail.url(:thumb), class: "cart-thumb" %>
+		<% end %>
+	</div>
+	<div class="col-md-8 col-sm-7 col-xs-8">
 		<%= form_for order_item, remote: true do |f| %>
 			<% if product.var_color? %>
 				<h4>Цветной</h4>
@@ -22,12 +26,13 @@
 			<% end %>
 			<%= f.hidden_field :product_id, value: product.id %>
 			
-			<div class="btn-group">
+			<div class="cart-buttons btn-group">
       <%= f.submit "Пересчитать", remote: true, class: "btn btn-primary" %>
 				<%= link_to "Удалить", order_item, { data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "btn btn-default" } %>
-       </div>
-       
-			<h4>Общая цена: <%= order_item.item_total %> <i class='glyphicon glyphicon-ruble'></i></h4>
+      </div>
+      <div class="cart-item-total">
+				<h4>Общая цена: <%= order_item.item_total %> <i class='glyphicon glyphicon-ruble'></i></h4>
+			</div>
 		<% end %>
 	</div>
 </div>
