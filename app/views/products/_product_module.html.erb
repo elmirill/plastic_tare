@@ -72,7 +72,7 @@
 			<%= link_to edit_product_path(product), class: "admin-index-icon-edit" do %>
 				<i class="glyphicon glyphicon-pencil"></i>
 			<% end %>
-			<%= link_to product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-index-icon-delete" do %>
+			<%= link_to product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-index-icon-delete", filter_category: @curr_cat_id do %>
 				<i class="glyphicon glyphicon-trash"></i>
 			<% end %>
 		<% end %>

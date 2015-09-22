@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :categories
 #  resources :contacts
 	resources :promos, only: [:edit, :update]
-	resource :cart, only: [:show]
+	resource :cart, only: [:show] do
+		collection do
+			get 'empty'
+		end
+	end
   resources :order_items, only: [:create, :update, :destroy]
   root 'pages#show', id: 1
 

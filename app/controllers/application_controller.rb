@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 	before_action :get_types_and_applications, :get_promo, :create_order_item
-	helper_method :current_order, :order_item_by_product_id, :product_in_cart?
+	helper_method :current_order, :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text
 	
 
   def get_types_and_applications
@@ -37,6 +37,30 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def tovar_pluralize(num)
-		
+		q = num.to_s
+		if [11,12,13,14].any? { |e| q[-2, 2].to_i == e } || 
+			 [0,5,6,7,8,9].any? { |e| q[-1, 1].to_i == e }
+			"товаров"
+		elsif q[-1, 1].to_i == 1
+			"товар"
+		else
+			"товара"
+		end
 	end
+	
+	def cart_size 
+		current_order.order_items.size	
+	end
+	
+	def cart_button_text
+		if current_order.total > 0
+			"#{cart_size} #{tovar_pluralize(cart_size)}, #{current_order.total}
+			<i class='glyphicon glyphicon-ruble'></i>".html_safe
+		else
+			"#{cart_size} #{tovar_pluralize(cart_size)}"
+		end
+	end
+	
+	
+	
 end

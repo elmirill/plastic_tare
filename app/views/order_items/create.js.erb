@@ -1,6 +1,5 @@
 <% if @order.errors.any? || @order_item.errors.any? %>
-alert("not valid.")
+alert("Произошла ошибка или продукт уже в корзине")
 <% else %>
   $("#cart").html("<%= escape_javascript(render 'shared/sidebar_cart') %>")
-
 <% end %>

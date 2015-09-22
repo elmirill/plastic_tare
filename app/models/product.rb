@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
 	has_attached_file :thumbnail, styles: {
 														thumb: {
 															geometry: "250x210>",
-															quality: "60",
+															quality: "80",
 															format: "JPG"
 														},
 														original: {

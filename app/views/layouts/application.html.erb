@@ -105,5 +105,27 @@ function toggleDiv(toggleId) {
 	});
 </script>
 
+<script>
+	$("#comp-title-link").click(function() {
+		$("#comp-title-link").addClass("hidden");
+		$("#cart-title-link").removeClass("hidden");
+		$("#comp-title").removeClass("hidden");
+		$("#cart-title").addClass("hidden");
+		$("#cart-rows").addClass("hidden");
+		$("#cart-comparison").removeClass("hidden")
+		});
+</script>
+
+<script>
+	$("#cart-title-link").click(function() {
+		$("#comp-title-link").removeClass("hidden");
+		$("#cart-title-link").addClass("hidden");
+		$("#comp-title").addClass("hidden");
+		$("#cart-title").removeClass("hidden");
+		$("#cart-rows").removeClass("hidden");
+		$("#cart-comparison").addClass("hidden")
+		});
+</script>
+
 </body>
 </html>

@@ -2,7 +2,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
 	
-	validate :any_quantity_present?
+	validates :product_id, uniqueness: { message: "Уже в корзине" }
 	validate :product_present?
 	validate :order_present?
 	
@@ -32,16 +32,6 @@ class OrderItem < ActiveRecord::Base
 	end
 	
 	private
-
-	def any_quantity_present?
-		unless %w(color_quantity high_quantity spec_quantity).all? { |attrmatch| 
-		(self[attrmatch].is_a? Integer) || self[attrmatch].nil? || self[attrmatch] == 0 }
-			unless %w(color_quantity high_quantity spec_quantity).any? { |attrabove|
-			self[attrabove] > 0 }
-				errors.add :base, "Укажите корректное количество."
-			end
-		end
-	end
 	
 	def product_present?
 		if product.nil?
