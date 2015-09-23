@@ -51,3 +51,4 @@ class OrderItem < ActiveRecord::Base
 		self[:item_vol] = item_vol
 	end
 end
+
