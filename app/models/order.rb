@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-	has_many :order_items
+	has_many :order_items, dependent: :delete_all
 	before_save :update_total
 	
 	def total
