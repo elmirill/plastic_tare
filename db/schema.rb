@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922222902) do
+ActiveRecord::Schema.define(version: 20150923071806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20150922222902) do
     t.integer  "spec_quantity"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
-    t.float    "item_total"
+    t.integer  "item_total"
     t.decimal  "item_vol",       precision: 20, scale: 2
   end
 

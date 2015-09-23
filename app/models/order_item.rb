@@ -13,6 +13,7 @@ class OrderItem < ActiveRecord::Base
 		high_price = product.var_high? ? self.var_price("high") : 0
 		spec_price = product.var_spec? ? self.var_price("spec") : 0
 		total_price = color_quantity * color_price + high_quantity * high_price + spec_quantity * spec_price
+		total_price.to_i
 	end
 	
 	def item_vol
