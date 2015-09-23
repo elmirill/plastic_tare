@@ -1,13 +1,13 @@
 <div class="row cart-row">
 	<div class="row">
-		<h3><%= product.name %></h3>
+		<h3 class="cart-title"><%= product.name %></h3>
 	</div>
-	<div class="col-md-4 col-sm-5 col-xs-4">
+	<div class="col-md-3 col-sm-4 col-xs-3 cart-thumb-wrapper">
 		<%= link_to product do %>
 			<%= image_tag product.thumbnail.url(:thumb), class: "cart-thumb" %>
 		<% end %>
 	</div>
-	<div class="col-md-8 col-sm-7 col-xs-8">
+	<div class="col-md-8 col-sm-7 col-xs-8 cart-form-wrapper">
 		<%= form_for order_item, remote: true do |f| %>
 			<% if product.var_color? %>
 				<h4>Цветной</h4>
@@ -15,9 +15,9 @@
 																												min: 0, class: "form-control" %>
 			<% end %>
 			<% if product.var_high? %>
-				<h4>Высший сорт</h4>
+				<h4>Высший сорт
 				<%= f.number_field :high_quantity, value: order_item.high_quantity.to_i,
-																												min: 0, class: "form-control" %>
+																												min: 0, class: "form-control" %></h4>
 			<% end %>
 			<% if product.var_spec? %>
 				<h4>Спецпредложение</h4>

@@ -106,25 +106,20 @@ function toggleDiv(toggleId) {
 </script>
 
 <script>
-	$("#comp-title-link").click(function() {
-		$("#comp-title-link").addClass("hidden");
-		$("#cart-title-link").removeClass("hidden");
-		$("#comp-title").removeClass("hidden");
-		$("#cart-title").addClass("hidden");
-		$("#cart-rows").addClass("hidden");
-		$("#cart-comparison").removeClass("hidden")
-		});
-</script>
-
-<script>
-	$("#cart-title-link").click(function() {
-		$("#comp-title-link").removeClass("hidden");
-		$("#cart-title-link").addClass("hidden");
-		$("#comp-title").addClass("hidden");
-		$("#cart-title").removeClass("hidden");
-		$("#cart-rows").removeClass("hidden");
-		$("#cart-comparison").addClass("hidden")
-		});
+	$(document).ready(function() {
+		function align() {
+			var parentHeight = closest('.cart-row').height();
+			var childHeight = closest('.cart-thumb').height();
+			var titleHeight = closest('.cart-title').outerHeight();
+			$(this).css('margin-top', (parentHeight - childHeight) / 2 - titleHeight);
+		}
+		
+		$('.cart-thumb').each(align);
+	});
+	
+	
+	
+	
 </script>
 
 </body>
