@@ -1,0 +1,5 @@
+<% if @comparison.errors.any? || @comparison_item.errors.any? %>
+alert("Максимум три товара.")
+<% else %>
+  $("#comparison").html("<%= escape_javascript(render 'shared/sidebar_comparison') %>")
+<% end %>

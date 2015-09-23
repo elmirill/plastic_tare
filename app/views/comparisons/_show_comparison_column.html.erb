@@ -1,0 +1,61 @@
+<% if @comparison_items.size == 3 %>
+		<div class="comp-wrapper comp-product-wrapper-3">
+	<% else %>
+		<div class="comp-wrapper comp-product-wrapper-2">
+	<% end %>
+	<table class="comp comp-product">
+		<tr><th title="<%= c.product.name %>"><%= c.product.name %></th></tr>
+		<tr><td class="comp-thumb-td comp-product-thumb-td text-center">
+			<%= link_to c.product, title: c.product.name do %>
+				<%= image_tag c.product.thumbnail.url(:thumb), class: "comp-thumb" %>
+			<% end %>
+		</td></tr>
+		<tr><td><%= c.product.length? ? "#{c.product.length} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.width? ? "#{c.product.width} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.height? ? "#{c.product.height} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.diameter? ? "#{c.product.diameter} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.inner_length? ? "#{c.product.inner_length} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.inner_width? ? "#{c.product.inner_width} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.inner_height? ? "#{c.product.inner_height} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.inner_diameter? ? "#{c.product.inner_diameter} мм" : "—" %></td></tr>
+		<tr><td><%= c.product.volume? ? "#{c.product.volume} л" : "—" %></td></tr>
+		<tr><td><%= c.product.weight? ? "#{c.product.weight} кг" : "—" %></td></tr>
+		<tr><td><%= c.product.static_load? ? "#{c.product.static_load} кг" : "—" %></td></tr>
+		<tr><td><%= c.product.dynamic_load? ? "#{c.product.dynamic_load} кг" : "—" %></td></tr>
+		<tr><td><%= c.product.rack_load? ? "#{c.product.rack_load} кг" : "—" %></td></tr>
+		<tr><td><%= c.product.cover? ? "С крышкой" : "—" %></td></tr>
+		<tr><td>
+			<% if c.product.color.present? %>
+				<div class="product-colors">
+					<% c.product.color.split(/\W+/).delete_if(&:blank?).each do |color| %>
+						<div id="<%= color %>-color" class="product-color"></div>
+					<% end %>
+					<div class="clearfix"></div>
+				</div> &nbsp;
+			<% else %>
+				—
+			<% end %>
+		</td></tr>
+		<tr><td><%= c.product.var_color_price_1? ? "#{c.product.var_color_price_1} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_color_price_2? ? "#{c.product.var_color_price_2} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_color_price_3? ? "#{c.product.var_color_price_3} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_high_price_1? ? "#{c.product.var_high_price_1} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_high_price_2? ? "#{c.product.var_high_price_2} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_high_price_3? ? "#{c.product.var_high_price_3} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_spec_price_1? ? "#{c.product.var_spec_price_1} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_spec_price_2? ? "#{c.product.var_spec_price_2} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+		<tr><td><%= c.product.var_spec_price_3? ? "#{c.product.var_spec_price_3} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
+	</table>
+	<%= link_to "Удалить", c, { data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "btn btn-default comp-button" } %>
+	<% if current_order.order_items.any? { |oi| oi.product_id == c.product.id } %>
+	<%= link_to "Удалить из корзины", order_item_by_product_id(c.product.id), data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "btn btn-primary comp-button" %>
+	<% else %>
+		<%= form_for @new_order_item, remote: true do |f| %>
+			<%= f.hidden_field :product_id, value: c.product.id %>
+			<%= f.hidden_field :color_quantity, value: 0 %>
+			<%= f.hidden_field :high_quantity, value: 0 %>
+			<%= f.hidden_field :spec_quantity, value: 0 %>
+			<%= f.submit "В корзину", class: "btn btn-primary comp-button" %>
+	<% end %>
+<% end %>
+</div>

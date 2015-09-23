@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-	before_action :get_types_and_applications, :get_promo, :create_order_item
-	helper_method :current_order, :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text
+	before_action :get_types_and_applications, :get_promo, :create_order_item, :create_comparison_item
+	helper_method :current_order, :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text, :current_comparison, :comparison_item_by_product_id
 	
 
   def get_types_and_applications
@@ -24,12 +24,28 @@ class ApplicationController < ActionController::Base
     end
   end
 	
+	def current_comparison
+    if !session[:comparison_id].nil?
+      Comparison.find(session[:comparison_id])
+    else
+      Comparison.new
+    end
+  end
+	
 	def create_order_item
 		@new_order_item = current_order.order_items.new
 	end
 	
+	def create_comparison_item
+		@new_comparison_item = current_comparison.comparison_items.new
+	end
+	
 	def order_item_by_product_id(product)
 		OrderItem.where(product_id: product).first
+	end
+	
+	def comparison_item_by_product_id(product)
+		ComparisonItem.where(product_id: product).first
 	end
 	
 	def product_in_cart?(product)

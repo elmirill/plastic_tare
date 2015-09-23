@@ -21,7 +21,7 @@
   </div>
 
 	<div class="row">
-		<div class="field col-sm-7">
+		<div class="field col-sm-5">
 			<%= f.label "Название" %><br>
 			<%= f.text_field :name, class: "form-field-admin" %>
 		</div>
@@ -34,6 +34,11 @@
 		<div class="field col-sm-3">
 			<%= f.label "Категория" %><br>
 			<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: "form-field-admin"}) %>
+		</div>
+		
+		<div class="field col-sm-2">
+			<%= f.label "Позиция" %><br>
+			<%= f.number_field :position, step: "any", class: "form-field-admin" %>
 		</div>
 	</div>
 	
@@ -249,15 +254,11 @@ class: "btn btn-default admin-add-photo" %>
 	-->
 
 	<div class="row">
-		<div class="field col-sm-4 col-xs-6">
-			<%= f.label "Позиция" %><br>
-			<%= f.number_field :position, class: "form-field-admin" %>
-		</div>
-		<div class="field col-sm-4 col-xs-6">
+		<div class="field col-xs-6">
 			<%= f.label "Продвигаемый товар?" %><br>
 			<%= f.check_box :featured %>
 		</div>
-		<div class="field col-sm-4 col-xs-6">
+		<div class="field col-xs-6">
 			<%= f.label "Рекламная кампания" %><br>
 			<%= f.number_field :campaign, class: "form-field-admin" %>
 		</div>

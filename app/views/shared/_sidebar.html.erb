@@ -1,11 +1,18 @@
 <div id="sidebar" class="clearfix">
 
 	<%= render 'shared/sidebar_filter' %>
+	
+<!--	<%= render 'shared/sidebar_applications' %>-->
 
 	<%= render 'shared/sidebar_search' %>
 	
 	<br>
-	<div id="cart">
+	<div id="comparison" class="sidebar-widget">
+		<%= render 'shared/sidebar_comparison' %>
+	</div>	
+
+	<br>
+	<div id="cart" class="sidebar-widget">
 		<%= render 'shared/sidebar_cart' %>
 	</div>
 

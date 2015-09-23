@@ -1,0 +1,49 @@
+<h1>Сравнение товаров
+	
+	<%= link_to empty_comparison_path, method: :get, class: "icon-empty", data: { confirm: "Очистить сравнение?" } do %>
+		<i class="glyphicon glyphicon-erase"></i>
+	<% end %>
+</h1>
+
+
+<% if @comparison_items.size == 0 %>
+  <p>
+		Пожалуйста, <%= link_to "вернитесь в каталог", products_path(filter_category: Category.first.id) %> чтобы добавить товары к сравнению.
+  </p>
+  
+<% else %>
+	<div class="comp-wrapper comp-keys-wrapper">
+		<table class="comp comp-keys">
+			<tr><th>Наименование</th></tr>
+			<tr><td class="comp-thumb-td">Изображение</td></tr>
+			<tr><td>Длина</td></tr>
+			<tr><td>Ширина</td></tr>
+			<tr><td>Высота</td></tr>
+			<tr><td>Диаметр</td></tr>
+			<tr><td>Внешняя длина</td></tr>
+			<tr><td>Внешняя ширина</td></tr>
+			<tr><td>Внешняя высота</td></tr>
+			<tr><td>Внешний диаметр</td></tr>
+			<tr><td>Объем</td></tr>
+			<tr><td>Вес</td></tr>
+			<tr><td>Статическая нагрузка</td></tr>
+			<tr><td>Динамическая нагрузка</td></tr>
+			<tr><td>Стеллажная нагрузка</td></tr>
+			<tr><td>С крышкой?</td></tr>
+			<tr><td>Цвета</td></tr>
+			<tr><td>Цветной до 50 т.р.</td></tr>
+			<tr><td>Цветной до 300 т.р.</td></tr>
+			<tr><td>Цветной от 300 т.р.</td></tr>
+			<tr><td>Высший сорт до 50 т.р.</td></tr>
+			<tr><td>Высший сорт до 300 т.р.</td></tr>
+			<tr><td>Высший сорт от 300 т.р.</td></tr>
+			<tr><td>Спецпредложение до 50 т.р.</td></tr>
+			<tr><td>Спецпредложение до 300 т.р.</td></tr>
+			<tr><td>Спецпредложение от 300 т.р.</td></tr>
+		</table>
+	</div>
+	
+	<% @comparison_items.each do |c| %>
+<%= render 'comparisons/show_comparison_column', c: c %>
+	<% end %>
+<% end %>

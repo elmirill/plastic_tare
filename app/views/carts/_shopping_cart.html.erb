@@ -1,8 +1,4 @@
-<h1>
-	<span id="cart-title">Корзина&nbsp;</span>
-	<span id="comp-title" class="hidden">Сравнение товаров&nbsp;</span>
-	<%= link_to "Корзина", "#", id: "cart-title-link", class: "hidden" %>
-	<%= link_to "Сравнение товаров", "#", id: "comp-title-link" %>
+<h1>Корзина
 	
 	<%= link_to empty_cart_path, method: :get, class: "icon-empty", data: { confirm: "Очистить корзину?" } do %>
 		<i class="glyphicon glyphicon-erase"></i>
@@ -15,11 +11,6 @@
   </p>
   
 <% else %>
-	<div id="cart-comparison" class="hidden">
-		<% @order_items.each do |order_item| %>
-			<%= render 'carts/cart_comparison', product: order_item.product, order_item: order_item %>
-		<% end %>
-	</div>
 	
 	<div id="cart-rows">
 		<% @order_items.each do |order_item| %>

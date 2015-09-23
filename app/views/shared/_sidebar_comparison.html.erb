@@ -1,0 +1,16 @@
+<h2>Сравнение товаров</h2>
+<% if current_comparison.comparison_items.size > 0 %>
+	<ul>
+		<% current_comparison.comparison_items.each do |comparison_item| %>
+			<li>
+				<%= comparison_item.product.name %>
+				<%= link_to comparison_item_by_product_id(comparison_item.product.id), method: :delete, remote: true, class: "inline-icons" do %>
+					<i title="В сравнении. Удалить?" class="glyphicon glyphicon-remove"></i>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+	<%= link_to "Перейти к сравнению", comparison_path, class: "btn btn-primary" %>
+<% else %>
+	В сравнении товаров пусто.
+<% end %>

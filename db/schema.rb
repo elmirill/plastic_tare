@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921001345) do
+ActiveRecord::Schema.define(version: 20150922222902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(version: 20150921001345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "icon"
+  end
+
+  create_table "comparison_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "comparison_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "comparison_items", ["comparison_id"], name: "index_comparison_items_on_comparison_id", using: :btree
+  add_index "comparison_items", ["product_id"], name: "index_comparison_items_on_product_id", using: :btree
+
+  create_table "comparisons", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -149,7 +164,7 @@ ActiveRecord::Schema.define(version: 20150921001345) do
     t.integer  "length"
     t.integer  "width"
     t.integer  "height"
-    t.integer  "position"
+    t.float    "position"
     t.integer  "campaign"
     t.float    "weight"
     t.string   "side"
@@ -211,6 +226,8 @@ ActiveRecord::Schema.define(version: 20150921001345) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comparison_items", "comparisons"
+  add_foreign_key "comparison_items", "products"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "product_photos", "products"

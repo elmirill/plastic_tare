@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-		@products = Product.search(params[:search]).filter_category(params[:filter_category]).filter_types(params[:types]).filter_volume(params[:minvol], params[:maxvol]).filter_length(params[:minlen], params[:maxlen]).filter_width(params[:minwid], params[:maxwid]).filter_height(params[:minheig], params[:maxheig]).filter_diameter(params[:mindiam], params[:maxdiam]).filter_cover(params[:cover]).order('name ASC').order(params[:sort])
+		@products = Product.search(params[:search]).filter_category(params[:filter_category]).filter_types(params[:types]).filter_volume(params[:minvol], params[:maxvol]).filter_length(params[:minlen], params[:maxlen]).filter_width(params[:minwid], params[:maxwid]).filter_height(params[:minheig], params[:maxheig]).filter_diameter(params[:mindiam], params[:maxdiam]).filter_cover(params[:cover]).order(params[:sort]).order('position ASC')
   end
 
   # GET /products/1
