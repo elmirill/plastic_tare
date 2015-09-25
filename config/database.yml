@@ -21,9 +21,10 @@ default: &default
 
 development:
  <<: *default
- database: development
+ host: localhost
+ database: plastic_tare_dev
  username: elmirill
- password:
+ password: password
 
 test:
  <<: *default
