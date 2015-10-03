@@ -46,7 +46,7 @@
 		<tr><td><%= c.product.var_spec_price_2? ? "#{c.product.var_spec_price_2} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
 		<tr><td><%= c.product.var_spec_price_3? ? "#{c.product.var_spec_price_3} <i class='glyphicon glyphicon-ruble'>".html_safe : "—" %></td></tr>
 	</table>
-	<%= link_to "Удалить", c, { data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "btn btn-default comp-button" } %>
+	<%= link_to "Удалить", c, method: :delete, remote: true, class: "btn btn-default comp-button" %>
 	<% if current_order.order_items.any? { |oi| oi.product_id == c.product.id } %>
 	<%= link_to "Удалить из корзины", order_item_by_product_id(c.product.id), data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "btn btn-primary comp-button" %>
 	<% else %>

@@ -6,8 +6,8 @@
 	
 	<div class="product-show-cart">
 		<% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
-		<%= link_to order_item_by_product_id(@product.id), data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "admin-icon-cart-delete" do %>
-			<i title="В корзине. Удалить?" class="glyphicon glyphicon-ok"></i>
+		<%= link_to order_item_by_product_id(@product.id), method: :delete, remote: true, class: "admin-icon-cart" do %>
+			<i title="В корзине. Удалить?" class="glyphicon glyphicon-shopping-cart added"></i>
 		<% end %>
 	<% else %>
 		<%= form_for @new_order_item, remote: true do |f| %>
@@ -24,8 +24,8 @@
 	
 	<div class="product-show-comparison">
 		<% if current_comparison.comparison_items.any? { |ci| ci.product_id == @product.id } %>
-			<%= link_to comparison_item_by_product_id(@product.id), data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "admin-icon-comp-delete" do %>
-				<i title="В сравнении. Удалить?" class="glyphicon glyphicon-ok"></i>
+			<%= link_to comparison_item_by_product_id(@product.id), method: :delete, remote: true, class: "admin-icon-comp" do %>
+				<i title="В сравнении. Удалить?" class="glyphicon glyphicon-stats added"></i>
 			<% end %>
 		<% else %>
 			<%= form_for @new_comparison_item, remote: true do |f| %>

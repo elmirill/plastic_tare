@@ -1,6 +1,11 @@
+<% if product.active? || admin_signed_in?  %>
 <% if product.active? %>
+	<% module_class = "product-index" %>
+<% else %>
+	<% module_class = "product-index product-inactive" %>
+<% end %>
 	
-	<div class="product-index col-lg-3 col-md-4 col-sm-6">
+<div id="product-index-<%= product.id %>" class="<%= module_class %> col-lg-3 col-md-4 col-sm-6">
 		
 		<%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
 			<h3 title="<%= product.name %>"><%= product.name %></h3>
@@ -52,7 +57,7 @@
 		<div class="module-comparison">
 			<% if current_comparison.comparison_items.any? { |ci| ci.product_id == product.id } %>
 				<%= link_to comparison_item_by_product_id(product.id), method: :delete, remote: true, class: "admin-index-icons" do %>
-					<i title="В сравнении. Удалить?" class="glyphicon glyphicon-ok"></i>
+					<i title="В сравнении. Удалить?" class="glyphicon glyphicon-stats added"></i>
 				<% end %>
 			<% else %>
 				<%= form_for @new_comparison_item, remote: true do |f| %>
@@ -67,7 +72,7 @@
 		<div class="module-cart">
 			<% if current_order.order_items.any? { |oi| oi.product_id == product.id } %>
 				<%= link_to order_item_by_product_id(product.id), method: :delete, remote: true, class: "admin-index-icon-cart" do %>
-					<i title="В корзине. Удалить?" class="glyphicon glyphicon-ok"></i>
+					<i title="В корзине. Удалить?" class="glyphicon glyphicon-shopping-cart added"></i>
 				<% end %>
 			<% else %>
 				<%= form_for @new_order_item, remote: true do |f| %>

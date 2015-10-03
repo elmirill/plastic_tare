@@ -105,22 +105,5 @@ function toggleDiv(toggleId) {
 	});
 </script>
 
-<script>
-	$(document).ready(function() {
-		function align() {
-			var parentHeight = closest('.cart-row').height();
-			var childHeight = closest('.cart-thumb').height();
-			var titleHeight = closest('.cart-title').outerHeight();
-			$(this).css('margin-top', (parentHeight - childHeight) / 2 - titleHeight);
-		}
-		
-		$('.cart-thumb').each(align);
-	});
-	
-	
-	
-	
-</script>
-
 </body>
 </html>
