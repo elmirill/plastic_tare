@@ -2,7 +2,7 @@ class OrderItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :order
 	
-	validates :product_id, uniqueness: { message: "Уже в корзине" }
+	validates_uniqueness_of :product_id, scope: :order_id
 	validate :product_present?
 	validate :order_present?
 	
