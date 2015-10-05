@@ -50,7 +50,7 @@ set :deploy_server,   "calcium.locum.ru"
 set :bundle_without,  [:development, :test]
 
 set :user,            "hosting_plast-tara"
-set :login,           "plat-tara"
+set :login,           "plast-tara"
 set :use_sudo,        false
 set :deploy_to,       "/home/#{user}/projects/#{application}"
 set :unicorn_conf,    "/etc/unicorn/#{application}.#{login}.rb"
