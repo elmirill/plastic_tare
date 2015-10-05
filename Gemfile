@@ -18,10 +18,7 @@ gem 'simple_form', '~> 3.1.0'
 gem 'aws-sdk', '< 2.0'
 gem 'i18n', '~> 0.7.0'
 gem 'bxslider-rails', '~> 4.1.0'
-gem 'capistrano', '~> 3.4.0'
-gem 'capistrano-rvm', '~> 0.1.2'
-gem 'capistrano-bundler', '~> 1.1.4'
-gem 'capistrano-rails', '~> 1.1.3'
+gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
 
 group :development, :test do
   gem 'byebug'
