@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'price_lists/show'
+
   get 'comparison_items/create'
 
   get 'comparison_items/update'
@@ -25,11 +27,12 @@ Rails.application.routes.draw do
 		end
 	end
   resources :comparison_items, only: [:create, :update, :destroy]
+	resources :price_lists, only: [:edit, :update]
   root 'pages#show', id: 1
 
   get 'delivery', to: 'pages#show', id:3
   get 'about', to: 'pages#show', id:2
   get 'cert', to: 'pages#show', id:4
-
-
+	get 'price', to: 'price_lists#edit'
+	
 end

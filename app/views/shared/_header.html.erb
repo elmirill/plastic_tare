@@ -27,7 +27,13 @@
 		
 			<ul id="menu" class="nav navbar-nav collapse navbar-collapse">
 				<li><%= link_to "Доставка и оплата", "#{root_url}delivery" %></li>
-				<li><%= link_to "Прайс", "https://s3.eu-central-1.amazonaws.com/purple-waves/plast-tara/files/Price_04.02.15.xls" %></li>
+				<li>
+					<% if admin_signed_in? %>
+						<%= link_to "Прайс", price_path %>
+					<% else %>
+						<%= link_to "Прайс", @price_list.price.url %>
+					<% end %>
+				</li>
 				<li><%= link_to "Сертификаты", "#{root_url}cert" %></li>
 				<li><%= link_to "Контакты", '#footer' %></li>
 				<li><%= link_to "О компании", "#{root_url}about" %></li>
