@@ -41,7 +41,7 @@ ssh_options[:forward_agent] = true
 
 # Имя вашего проекта в панели управления.
 # Не меняйте это значение без необходимости, оно используется дальше.
-set :application,     "plast-tara"
+set :application,     "plastic-tare"
 
 # Сервер размещения проекта.
 set :deploy_server,   "calcium.locum.ru"
