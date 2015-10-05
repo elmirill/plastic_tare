@@ -34,3 +34,7 @@ test:
 
 production:
  <<: *default
+ host: postgresql6.locum.ru
+ database: plast-ta_plast93
+ username: plast-ta_plast93
+ password: Gfn7KfhXnh
