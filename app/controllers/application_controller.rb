@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-	before_action :get_types_and_applications, :get_promo, :create_order_item, :create_comparison_item, :set_price
+	before_action :get_types_and_applications, :get_promo, :create_order_item, :create_comparison_item, :set_price, :set_contact_form
 	helper_method :current_order, :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text, :current_comparison, :comparison_item_by_product_id
 	
 
@@ -80,5 +80,9 @@ class ApplicationController < ActionController::Base
 	def set_price
 		@price_list = PriceList.find(1)
 	end
+
+	def set_contact_form
+		@contact_form = ContactForm.new
+  end
 	
 end

@@ -1,0 +1,24 @@
+<div id="contact-form" class="clearfix">
+<!--
+	<input type="text" id="footer-form-name" class="form-field-footer" placeholder="Имя" />
+	<input type="text" id="footer-form-contact" class="form-field-footer" placeholder="Телефон/электропочта" />
+	<textarea id="footer-form-message" class="form-area-footer" placeholder="Сообщение"></textarea>
+	<input type="submit" class="btn btn-primary btn-footer" value="Отправить сообщение" />
+-->
+	
+	
+	<%= form_for @contact_form do |f| %>
+	<%= f.text_field :name, required: true, class: "form-field-footer",
+																								 									placeholder: "Имя" %>
+	<%= f.text_field :contact, required: true, class: "form-field-footer",
+																								 placeholder: "Телефон/электропочта" %>
+	<%= f.text_area :message, as: :text, required: true, class: "form-area-footer",
+																														placeholder: "Сообщение" %>
+    <div class= "hidden">
+			<%= f.text_area :nickname, hint: 'Оставь поле пустым!' %>
+    </div>
+    <div>
+      <%= f.submit 'Отправить сообщение', class: "btn btn-primary btn-footer" %>
+    </div>
+  <% end %>
+</div>

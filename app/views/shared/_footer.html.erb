@@ -2,12 +2,7 @@
 	<div class="row">
 		<h2 id="contacts">Контактная информация</h2>
 		<div id="form-wrapper" class="col-md-6 footer-wrappers clearfix">
-			<div id="contact-form" class="clearfix">
-				<input type="text" id="footer-form-name" class="form-field-footer" placeholder="Имя" />
-				<input type="text" id="footer-form-contact" class="form-field-footer" placeholder="Телефон/электропочта" />
-				<textarea id="footer-form-message" class="form-area-footer" placeholder="Сообщение"></textarea>
-				<input type="submit" class="btn btn-primary btn-footer" value="Отправить сообщение" />
-			</div>
+			<%= render "contact_forms/form" %>
 		</div>
 		<div id="contacts-wrapper" class="col-md-6 footer-wrappers clearfix">
 			<div id="footer-contacts">

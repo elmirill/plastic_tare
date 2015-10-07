@@ -19,6 +19,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'i18n', '~> 0.7.0'
 gem 'bxslider-rails', '~> 4.1.0'
 gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
+gem 'mail_form', '~> 1.5.1'
 
 group :development, :test do
   gem 'byebug'

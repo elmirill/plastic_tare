@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2 style="margin-bottom:20px;">Заказ с сайта plast-tara.ru</h2>
+		<% @order.order_items.each do |oi| %>
+			<h3 style="font-weight:normal;"><%= oi.product.name %></h3>
+			<% if oi.color_quantity > 0 %>
+				<p><b>Цветной:</b> <%= oi.color_quantity %>шт. х <%= oi.var_price("color") %> руб. = <%= oi.color_quantity * oi.var_price("color") %> руб.</p>
+			<% end %>
+			<% if oi.high_quantity > 0 %>
+				<p><b>Высший сорт:</b> <%= oi.high_quantity %>шт. х <%= oi.var_price("high") %> руб. = <%= oi.high_quantity * oi.var_price("high") %> руб.</p>
+			<% end %>
+			<% if oi.spec_quantity > 0 %>
+				<p><b>Спецпредложение:</b> <%= oi.spec_quantity %>шт. х <%= oi.var_price("spec") %> руб. = <%= oi.spec_quantity * oi.var_price("spec") %> руб.</p>
+			<% end %>
+		<% end %>
+		<h3 style="margin-top:20px;">Итого: <%= @order.total %> руб.</h3>
+  </body>
+</html>
