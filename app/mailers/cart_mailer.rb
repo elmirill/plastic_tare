@@ -3,6 +3,6 @@ class CartMailer < ApplicationMailer
 	
 	def send_cart_contents(order)
 		@order = order
-		mail(to: "ant.khay@gmail.com", subject: 'Заказ с сайта plat-tara.ru')
+		mail(from: "#{@order.customer_name} <plast.tara.site@gmail.com>", to: "ant.khay@gmail.com", subject: "Заказ ##{@order.id} с сайта plast-tara.ru")
 	end
 end

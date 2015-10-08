@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	
   get 'contact_forms/new'
   get 'contact_forms/create'
   get 'price_lists/show'
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#show', id:2
   get 'cert', to: 'pages#show', id:4
 	get 'price', to: 'price_lists#edit'
-	get 'mail_cart', to: 'carts#mail_cart', as: 'mail_cart'
 
   devise_for :admins
   resources :pages
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :categories
 #  resources :contacts
 	resources :promos, only: [:edit, :update]
-	resource :cart, only: [:show] do
+	resource :order do
 		collection do
 			get 'empty'
 		end

@@ -1,0 +1,38 @@
+<h1>Корзина
+	
+	<%= link_to empty_order_path, method: :get, class: "icon-empty", data: { confirm: "Очистить корзину?" } do %>
+		<i class="glyphicon glyphicon-erase"></i>
+	<% end %>
+</h1>
+
+<% if @order_items.size == 0 %>
+  <p>
+		В корзине пусто. Пожалуйста, <%= link_to "вернитесь в каталог", products_path(filter_category: Category.first.id) %> чтобы добавить товары.
+  </p>
+  
+<% else %>
+
+	<div id="cart-rows">
+		<% @order_items.each do |order_item| %>
+		<%= render 'orders/cart_row', product: order_item.product, order_item: order_item %>
+		<% end %>
+	</div>
+
+	<br>
+	<h2 class="cart-total-price">Итого: <%= @order.total %> <i class='glyphicon glyphicon-ruble'></i></h2>
+	<div class="clearfix"></div>
+	
+	<br>
+	<%= form_for @order do |f| %>
+		<div class="mail-cart-info col-sm-4">
+			<%= f.text_field :customer_name, required: true, placeholder: "Ваше имя", class: "form-field-cart" %>
+			<%= f.text_field :customer_contact, required: true, placeholder: "Контактная информация", class: "form-field-cart" %>
+		</div>
+		<div class="mail-cart-message col-sm-8">
+			<%= f.text_area :customer_message, placeholder: "Сообщение (опционально)", class: "form-area-cart" %>
+		</div>
+
+		<%= f.submit "Отправить заказ", class: "btn btn-primary cart-submit" %>
+	<% end %>
+	
+<% end %>

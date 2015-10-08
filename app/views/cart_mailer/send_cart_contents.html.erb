@@ -4,9 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h2 style="margin-bottom:20px;">Заказ с сайта plast-tara.ru</h2>
+    <h2>Заказ с сайта plast-tara.ru</h2>
+		<p><b>Имя:</b> <%= @order.customer_name %></p>
+		<p><b>Контактная информация:</b> <%= @order.customer_contact %></p>
+		<% if @order.customer_message.present? %>
+			<p><b>Сообщение:</b> <%= @order.customer_message %></p>
+		<% end %>
 		<% @order.order_items.each do |oi| %>
-			<h3 style="font-weight:normal;"><%= oi.product.name %></h3>
+			<h3 style="font-weight:normal; margin-top:20px;"><%= oi.product.name %></h3>
 			<% if oi.color_quantity > 0 %>
 				<p><b>Цветной:</b> <%= oi.color_quantity %>шт. х <%= oi.var_price("color") %> руб. = <%= oi.color_quantity * oi.var_price("color") %> руб.</p>
 			<% end %>

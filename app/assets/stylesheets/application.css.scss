@@ -1012,7 +1012,6 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 .cart-submit {
 	font-size: 18px;
-	margin-top: 10px;
 }
 .module-cart button, .module-comparison button {
 	border: 0px;
@@ -1351,6 +1350,17 @@ max-width:1210px;
 .comp-button {
 	width: 99%;
 }
+.mail-cart-info {
+	padding: 0px 10px 0px 0px;
+}
+.mail-cart-message {
+	padding: 0px 0px 0px 10px;
+}
+@media (max-width: 768px) {
+	.mail-cart-info, .mail-cart-message {
+		padding: 0px;
+	}
+}
 
 /*******************/
 /*******Footer******/
@@ -1628,8 +1638,7 @@ max-width:1210px;
 		float: left;
 		margin:0px 10px 20px 0px;
 		padding: 7px 10px;
-		width:50%;
-//		min-width: 350px;
+//		width:50%;
 	}
 
 		.form-field-footer{
@@ -1642,6 +1651,13 @@ max-width:1210px;
 		}
 
 		.form-field-admin{
+			@extend .form-field;
+			width: 100%;
+			margin:0px 0px 20px 0px;
+			float: none;
+		}
+
+		.form-field-cart{
 			@extend .form-field;
 			width: 100%;
 			margin:0px 0px 20px 0px;
@@ -1665,6 +1681,11 @@ max-width:1210px;
 		.form-area-admin{
 			@extend .form-area;
 			height: 400px;
+		}
+
+		.form-area-cart{
+			@extend .form-area;
+			height: 96px;
 		}
 
 #contact_form_name{
