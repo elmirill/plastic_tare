@@ -33,6 +33,7 @@
 		</div>
 
 		<%= f.submit "Отправить заказ", class: "btn btn-primary cart-submit" %>
+<%= link_to "Очистить корзину", empty_order_path, method: :get, class: "btn btn-default cart-submit", data: { confirm: "Уверены?" }  %>
 	<% end %>
 	
 <% end %>

@@ -7,8 +7,12 @@ class OrdersController < ApplicationController
 	
 	def empty
 		OrderItem.where(order_id: @order.id).delete_all
+		@order.customer_name = nil
+		@order.customer_contact = nil
+		@order.customer_message = nil
+		@order.save!
 		flash[:notice] = "Корзина очищена"
-		redirect_to cart_path
+		redirect_to order_path
 	end
 	
 	def edit
