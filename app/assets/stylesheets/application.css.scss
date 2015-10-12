@@ -137,7 +137,7 @@ a{
 	}
 }
 
-li a, ul a, img a, h2 a{
+li a, ul a, img a{
 	border: none;
 }
 
@@ -1597,8 +1597,12 @@ max-width:1210px;
 		margin-top: 3px;
 		font-size: 28px;
 	}
-#admin-link {
+.admin-link {
 	margin-left: 10px;
+}
+.admin-p {
+	@extend .admin-link;
+	margin-bottom: 5px;
 }
 .admin-add-photo {
 	margin-top: 27px;

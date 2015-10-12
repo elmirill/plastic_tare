@@ -1,0 +1,14 @@
+<h1>Текущие администраторы</h1>
+
+<% @admins.each do |admin| %>
+<p>
+	<%= admin.email %>
+	<%= link_to admin, method: :delete, data: { confirm: "Уверены?" }, class: "inline-icons no-border" do %>
+		<i class="glyphicon glyphicon-remove"></i>
+	<% end %>
+</p>
+<% end %>
+
+<br>
+
+<h2><%= link_to "Создать администратора", new_admin_registration_path %></h2>

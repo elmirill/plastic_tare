@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#show', id:2
   get 'cert', to: 'pages#show', id:4
 	get 'price', to: 'price_lists#edit'
+	get 'manage_admins', to: 'admins#index'
 
-  devise_for :admins
+	devise_for :admins, controllers: { registrations: 'registrations'}
+	resources :admins, only: [:index, :destroy]
   resources :pages
   resources :products
   resources :categories
