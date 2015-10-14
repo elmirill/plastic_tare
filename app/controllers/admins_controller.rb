@@ -8,6 +8,6 @@ class AdminsController < ApplicationController
 	
 	def destroy
 		Admin.find(params[:id]).destroy
-		redirect_to 'manage_admins', notice: 'Администратор удален.'
+		redirect_to admins_path, notice: 'Администратор удален.'
 	end
 end

@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Core Settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Main phone</th>
+      <th>Add phone 1</th>
+      <th>Add phone 2</th>
+      <th>Main phone multi</th>
+      <th>Add phone 1 multi</th>
+      <th>Add phone 2 multi</th>
+      <th>Main email</th>
+      <th>Add email</th>
+      <th>Address</th>
+      <th>Address comment</th>
+      <th>Site description</th>
+      <th>Map lat</th>
+      <th>Map lng</th>
+      <th>Map name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @core_settings.each do |core_setting| %>
+      <tr>
+        <td><%= core_setting.name %></td>
+        <td><%= core_setting.main_phone %></td>
+        <td><%= core_setting.add_phone_1 %></td>
+        <td><%= core_setting.add_phone_2 %></td>
+        <td><%= core_setting.main_phone_multi %></td>
+        <td><%= core_setting.add_phone_1_multi %></td>
+        <td><%= core_setting.add_phone_2_multi %></td>
+        <td><%= core_setting.main_email %></td>
+        <td><%= core_setting.add_email %></td>
+        <td><%= core_setting.address %></td>
+        <td><%= core_setting.address_comment %></td>
+        <td><%= core_setting.site_description %></td>
+        <td><%= core_setting.map_lat %></td>
+        <td><%= core_setting.map_lng %></td>
+        <td><%= core_setting.map_name %></td>
+        <td><%= link_to 'Show', core_setting %></td>
+        <td><%= link_to 'Edit', edit_core_setting_path(core_setting) %></td>
+        <td><%= link_to 'Destroy', core_setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Core setting', new_core_setting_path %>

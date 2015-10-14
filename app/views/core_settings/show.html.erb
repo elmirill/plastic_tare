@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @core_setting.name %>
+</p>
+
+<p>
+  <strong>Main phone:</strong>
+  <%= @core_setting.main_phone %>
+</p>
+
+<p>
+  <strong>Add phone 1:</strong>
+  <%= @core_setting.add_phone_1 %>
+</p>
+
+<p>
+  <strong>Add phone 2:</strong>
+  <%= @core_setting.add_phone_2 %>
+</p>
+
+<p>
+  <strong>Main phone multi:</strong>
+  <%= @core_setting.main_phone_multi %>
+</p>
+
+<p>
+  <strong>Add phone 1 multi:</strong>
+  <%= @core_setting.add_phone_1_multi %>
+</p>
+
+<p>
+  <strong>Add phone 2 multi:</strong>
+  <%= @core_setting.add_phone_2_multi %>
+</p>
+
+<p>
+  <strong>Main email:</strong>
+  <%= @core_setting.main_email %>
+</p>
+
+<p>
+  <strong>Add email:</strong>
+  <%= @core_setting.add_email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @core_setting.address %>
+</p>
+
+<p>
+  <strong>Address comment:</strong>
+  <%= @core_setting.address_comment %>
+</p>
+
+<p>
+  <strong>Site description:</strong>
+  <%= @core_setting.site_description %>
+</p>
+
+<p>
+  <strong>Map lat:</strong>
+  <%= @core_setting.map_lat %>
+</p>
+
+<p>
+  <strong>Map lng:</strong>
+  <%= @core_setting.map_lng %>
+</p>
+
+<p>
+  <strong>Map name:</strong>
+  <%= @core_setting.map_name %>
+</p>
+
+<%= link_to 'Edit', edit_core_setting_path(@core_setting) %> |
+<%= link_to 'Back', core_settings_path %>

@@ -4,7 +4,11 @@
 	<%= link_to "Редактировать", edit_admin_registration_path, class: "admin-link" %> |
 	<%= link_to "Выйти", destroy_admin_session_path, method: :delete %>
 	<br>
-<%= link_to "Управление администраторами", '/manage_admins', class: "admin-link" %>
+	<%= link_to "Управление администраторами", admins_path, class: "admin-link" %>
+	<br><br>
+	<% if CoreSetting.find(1).present? %>
+		<%= link_to "Настройки сайта", '/edit_core_settings', class: "admin-link" %>
+	<% end %>
 <% else %>
 	<%= link_to "Войти в админку", new_admin_session_path, class: "admin-link" %>
 <% end %>

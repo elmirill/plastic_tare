@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008120502) do
+ActiveRecord::Schema.define(version: 20151014191059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,16 +67,23 @@ ActiveRecord::Schema.define(version: 20151008120502) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.text     "address_full"
-    t.text     "address_short"
-    t.string   "email"
-    t.string   "phone_main"
-    t.string   "phone_other"
-    t.string   "map"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "description"
+  create_table "core_settings", force: :cascade do |t|
+    t.string   "main_phone"
+    t.string   "add_phone_1"
+    t.string   "add_phone_2"
+    t.boolean  "main_phone_multi"
+    t.boolean  "add_phone_1_multi"
+    t.boolean  "add_phone_2_multi"
+    t.string   "main_email"
+    t.string   "add_email"
+    t.text     "address"
+    t.text     "address_comment"
+    t.string   "site_description"
+    t.decimal  "map_lat"
+    t.decimal  "map_lng"
+    t.string   "map_name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "order_items", force: :cascade do |t|

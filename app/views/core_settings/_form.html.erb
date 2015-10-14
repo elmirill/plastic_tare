@@ -1,0 +1,94 @@
+<%= simple_form_for(@core_setting) do |f| %>
+  <%= f.error_notification %>
+  
+  <div class="actions">
+		<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+			<i class="glyphicon glyphicon-ok"></i> 
+		<% end %>
+		<%= link_to root_path, class: "admin-icon-return" do %>
+			<i class="glyphicon glyphicon-arrow-left"></i>
+		<% end %>
+	</div>
+
+  <div class="admin-form">
+  
+  <div class="row">
+		<div class="field col-sm-8">
+			<%= f.label "Основной телефон" %><br>
+			<%= f.text_field :main_phone, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 mbottom20">
+			<%= f.label "Многоканальный?" %><br>
+			<%= f.check_box :main_phone_multi %>
+		</div>
+		<div class="field col-sm-8">
+			<%= f.label "Дополнительный телефон 1" %><br>
+			<%= f.text_field :add_phone_1, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 mbottom20">
+			<%= f.label "Многоканальный?" %><br>
+			<%= f.check_box :add_phone_1_multi %>
+		</div>
+		<div class="field col-sm-8">
+			<%= f.label "Дополнительный телефон 2" %><br>
+			<%= f.text_field :add_phone_2, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-4 mbottom20">
+			<%= f.label "Многоканальный?" %><br>
+			<%= f.check_box :add_phone_2_multi %>
+		</div>
+		<div class="col-sm-12"><p>Внимание! Телефоны и адреса на странице «<%= link_to "Доставка и оплата", '/delivery' %>» обновляются отдельно.</p></div>
+	</div>
+  
+  <div class="row">
+		<div class="field col-sm-6">
+			<%= f.label "Электропочта" %><br>
+			<%= f.text_field :main_email, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-6">
+			<%= f.label "Дополнительная электропочта" %><br>
+			<%= f.text_field :add_email, class: "form-field-admin" %>
+		</div>
+  </div>
+  
+	<div class="row">
+		<div class="field col-sm-12">
+			<%= f.label "Адрес" %><br>
+			<%= f.text_area :address, class: "form-area-cart" %>
+		</div>
+		<div class="field col-sm-12">
+			<%= f.label "Комментарии к адресу" %><br>
+			<%= f.text_area :address_comment, class: "form-area-cart" %>
+		</div>
+  </div>
+  
+  <div class="row">
+		<div class="field col-sm-12">
+			<%= f.label "Описание сайта" %><br>
+			<%= f.text_field :site_description, class: "form-field-admin" %>
+		</div>
+  </div>
+    
+  <div class="row">
+		<div class="field col-sm-6">
+			<%= f.label "Название компании на карте" %><br>
+			<%= f.text_field :map_name, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3">
+			<%= f.label "Широта" %><br>
+			<%= f.text_field :map_lat, class: "form-field-admin" %>
+		</div>
+		<div class="field col-sm-3">
+			<%= f.label "Долгота" %><br>
+			<%= f.text_field :map_lng, class: "form-field-admin" %>
+		</div>
+  </div>
+  
+</div>
+
+	<br>
+	<div class="actions">
+		<%= link_to 'Назад', root_path, class: "admin-edit-link-back" %>
+		<%= f.submit "Обновить", class: "btn btn-primary" %>
+	</div>
+<% end %>
