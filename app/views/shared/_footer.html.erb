@@ -24,7 +24,13 @@
 						<% end %>
 					</p>
 					
-					<p><%= @core_setting.main_email if @core_setting.main_email.present? %></p>
+					<p>
+						<%= @core_setting.main_email if @core_setting.main_email.present? %>
+						<% if @core_setting.add_email.present? %>
+							<br>
+							<%= @core_setting.add_email %>
+						<% end %>
+					</p>
 					<p id="address"><%= @core_setting.address if @core_setting.address.present? %></p>
 				</span>
 				<p><%= @core_setting.address_comment if @core_setting.address_comment.present? %></p>

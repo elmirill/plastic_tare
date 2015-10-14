@@ -86,7 +86,7 @@ class ApplicationController < ActionController::Base
   end
 
 	def set_core_setting
-		@core_setting = CoreSetting.find(1)
+		@core_setting = CoreSetting.find(1) if CoreSetting.find(1).present?
 	end
 	
 end
