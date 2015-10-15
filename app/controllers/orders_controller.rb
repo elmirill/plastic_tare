@@ -19,8 +19,9 @@ class OrdersController < ApplicationController
 	end
 	
 	def update
+		@to = @core_setting.main_email
 		if @order.update(order_params)
-			if CartMailer.send_cart_contents(@order).deliver
+			if CartMailer.send_cart_contents(@order, @to).deliver
 				redirect_to :back, notice: 'Заказ отправлен.'
 			else
 				flash.now[:alert] = 'Ошибка! Заказ не отправлен.'
