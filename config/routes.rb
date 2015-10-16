@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get 'comparison_items/update'
   get 'comparison_items/destroy'
   get 'comparisons/show'
-	
   get 'delivery', to: 'pages#show', id:3
   get 'about', to: 'pages#show', id:2
   get 'cert', to: 'pages#show', id:4
 	get 'price', to: 'price_lists#edit'
 	get 'edit_core_settings', to: 'core_settings#edit', id:1
+	match '/send_form', to: 'contact_form_mailer#send_form', via: 'post'
 
 	devise_for :admins, controllers: { registrations: 'registrations'}
 	scope "/manage" do
