@@ -1,5 +1,5 @@
 <% if @order.errors.any? || @order_item.errors.any? %>
-alert("Произошла ошибка или продукт уже в корзине");
+alert("Продукт недоступен для заказа или уже в корзине");
 <% else %>
   $("#cart").html("<%= escape_javascript(render 'shared/sidebar_cart') %>");
 	$("#content").load(document.URL + ' #content');

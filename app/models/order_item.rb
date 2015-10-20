@@ -35,7 +35,7 @@ class OrderItem < ActiveRecord::Base
 	private
 	
 	def product_present?
-		if product.nil?
+		if product.nil? || !product.active?
 			errors.add(:product, "невалиден или неактивен.")
 		end
 	end
