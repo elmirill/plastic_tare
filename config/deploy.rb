@@ -60,8 +60,6 @@ role :web,            deploy_server
 role :app,            deploy_server
 role :db,             deploy_server, :primary => true
 
-after "deploy", "deploy:migrate"
-
 # Следующие строки необходимы, т.к. ваш проект использует rvm.
 set :rvm_ruby_string, "2.1.5"
 set :rake,            "rvm use #{rvm_ruby_string} do bundle exec rake" 
@@ -92,12 +90,7 @@ end
 
 
 # - for unicorn - #
-namespace :deploy do
-  desc 'Symlink shared directories and files'
-    task :symlink_directories_and_files do
-    run "ln -s #{shared_path}/config/application.yml #{release_path}/config/application.yml"
-  end
-	
+namespace :deploy do	
   desc "Start application"
   task :start, :roles => :app do
     run unicorn_start_cmd
@@ -111,5 +104,17 @@ namespace :deploy do
   desc "Restart Application"
   task :restart, :roles => :app do
     run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
+  end
+end
+
+namespace :figaro do
+  desc "SCP transfer figaro configuration to the shared folder"
+  task :setup do
+    transfer :up, "config/application.yml", "#{shared_path}/application.yml", :via => :scp
+  end
+
+  desc "Symlink application.yml to the release path"
+  task :finalize do
+    run "ln -sf #{shared_path}/application.yml #{release_path}/config/application.yml"
   end
 end
