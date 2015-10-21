@@ -22,6 +22,14 @@ require 'bundler/capistrano'
 #   run "cp #{db_config} #{release_path}/config/database.yml"
 # end
 
+## Figaro YAML file:
+
+after "deploy:update_code", :copy_figaro_env
+task :copy_figaro_env, roles => :app do
+ figaro_env = "#{shared_path}/application.yml"
+ run "cp #{figaro_env} #{release_path}/config/application.yml"
+end
+
 # В rails 3 по умолчанию включена функция assets pipelining,
 # которая позволяет значительно уменьшить размер статических
 # файлов css и js.
