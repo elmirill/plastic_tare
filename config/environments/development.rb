@@ -42,25 +42,25 @@ Rails.application.configure do
 	Paperclip.options[:command_path] = "/usr/bin/"
 	
 	# Mailer config
-	config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+	config.action_mailer.default_url_options = { host: ENV["mailer_host"], port: 3000 }
 	config.action_mailer.raise_delivery_errors = true
 	config.action_mailer.delivery_method = :smtp
 	config.action_mailer.smtp_settings = {
-	address: 'smtp.gmail.com',
-	port: 587,
-	domain: 'gmail.com',
+	address: ENV["mailer_address"],
+	port: ENV["mailer_port"],
+	domain: ENV["mailer_domain"],
 	authentication: 'plain',
 	enable_starttls_auto: true,
-	user_name: 'plast.tara.site@gmail.com',
-	password: 'plasttara123'
+	user_name: ENV["mailer_user"],
+	password: ENV["mailer_pass"]
 	}
 	
 	config.paperclip_defaults = {
 		:storage => :s3,
-		:bucket => ENV['S3_BUCKET_NAME'],
+		:bucket => ENV["s3_bucket_name"],
 		:s3_credentials => {
-			:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-			:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+			:access_key_id => ENV["aws_access_key_id"],
+			:secret_access_key => ENV["aws_secret_access_key"]
 		}
 	}
 end

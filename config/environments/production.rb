@@ -78,34 +78,25 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 	
 	# Mailer config
-	config.action_mailer.default_url_options = { host: 'plast-tara.ru' }
+	config.action_mailer.default_url_options = { host: ENV["mailer_host"] }
 	config.action_mailer.raise_delivery_errors = true
 	config.action_mailer.delivery_method = :smtp
 	config.action_mailer.smtp_settings = {
-	address: 'smtp.gmail.com',
-	port: 587,
-	domain: 'gmail.com',
+	address: ENV["mailer_address"],
+	port: ENV["mailer_port"],
+	domain: ENV["mailer_domain"],
 	authentication: 'plain',
 	enable_starttls_auto: true,
-	user_name: 'plast.tara.site@gmail.com',
-	password: 'plasttara123'
+	user_name: ENV["mailer_user"],
+	password: ENV["mailer_pass"]
 	}
-	
-#	config.paperclip_defaults = {
-#		:storage => :s3,
-#		:bucket => ENV['S3_BUCKET_NAME'],
-#		:s3_credentials => {
-#			:access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-#			:secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-#		}
-#	}
 	
 	config.paperclip_defaults = {
 		:storage => :s3,
-		:bucket => 'purple-waves',
+		:bucket => ENV["s3_bucket_name"],
 		:s3_credentials => {
-			:access_key_id => 'AWSAccessKeyId=AKIAI7AY3PPEGV2T527Q',
-			:secret_access_key => 'AWSSecretKey=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'
+			:access_key_id => ENV["aws_access_key_id"],
+			:secret_access_key => ENV["aws_secret_access_key"]
 		}
 	}
 end

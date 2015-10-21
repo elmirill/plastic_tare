@@ -18,19 +18,16 @@ default: &default
  adapter: postgresql
  encoding: unicode
  pool: 5
+ host: <%= ENV["database_host"] %>
+ database: <%= ENV["database_name"] %>
+ username: <%= ENV["database_user"] %>
+ password: <%= ENV["database_pass"] %>
 
 development:
  <<: *default
- host: localhost
- database: plastic_tare_dev
- username: elmirill
- password: password
 
 test:
  <<: *default
- database: test
- username: elmirill
- password:
 
 production:
  <<: *default

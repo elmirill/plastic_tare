@@ -16,11 +16,11 @@ require 'bundler/capistrano'
 ## database.yml в shared-каталог проекта на сервере и раскомментируйте
 ## следующие строки.
 
- after "deploy:update_code", :copy_database_config
- task :copy_database_config, roles => :app do
-   db_config = "#{shared_path}/database.yml"
-   run "cp #{db_config} #{release_path}/config/database.yml"
- end
+# after "deploy:update_code", :copy_database_config
+# task :copy_database_config, roles => :app do
+#   db_config = "#{shared_path}/database.yml"
+#   run "cp #{db_config} #{release_path}/config/database.yml"
+# end
 
 # В rails 3 по умолчанию включена функция assets pipelining,
 # которая позволяет значительно уменьшить размер статических
@@ -91,6 +91,11 @@ end
 
 # - for unicorn - #
 namespace :deploy do
+  desc 'Symlink shared directories and files'
+    task :symlink_directories_and_files do
+    run "ln -s #{shared_path}/config/application.yml #{release_path}/config/application.yml"
+  end
+	
   desc "Start application"
   task :start, :roles => :app do
     run unicorn_start_cmd
@@ -106,3 +111,5 @@ namespace :deploy do
     run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
   end
 end
+
+after 'deploy:update_code', 'deploy:migrate'
