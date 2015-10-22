@@ -91,6 +91,7 @@ Rails.application.configure do
 	password: ENV["mailer_pass"]
 	}
 	
+	# Paperclip config
 	config.paperclip_defaults = {
 		:storage => :s3,
 		:bucket => ENV["s3_bucket_name"],
