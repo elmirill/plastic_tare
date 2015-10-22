@@ -7,7 +7,7 @@
 	<%= link_to "Управление администраторами", admins_path, class: "admin-link" %>
 	<br><br>
 	<% if CoreSetting.find(1).present? %>
-		<%= link_to "Настройки сайта", '/edit_core_settings', class: "admin-link" %>
+		<%= link_to "Настройки", '/edit_core_settings', class: "admin-link" %>
 	<% end %>
 <% else %>
 	<%= link_to "Войти в админку", new_admin_session_path, class: "admin-link" %>

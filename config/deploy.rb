@@ -12,6 +12,10 @@
 # закомментируйте эту строку.
 require 'bundler/capistrano'
 
+## Capistrano-unicorn
+
+require 'capistrano-unicorn'
+
 ## Чтобы не хранить database.yml в системе контроля версий, поместите
 ## database.yml в shared-каталог проекта на сервере и раскомментируйте
 ## следующие строки.
@@ -29,6 +33,14 @@ task :copy_figaro_env, roles => :app do
  figaro_env = "#{shared_path}/application.yml"
  run "cp #{figaro_env} #{release_path}/config/application.yml"
 end
+
+## Migrate DB after deploy:
+
+after "deploy", "deploy:migrate"
+
+## Restart unicorn after deploy
+
+after 'deploy:restart', 'unicorn:restart'
 
 # В rails 3 по умолчанию включена функция assets pipelining,
 # которая позволяет значительно уменьшить размер статических
@@ -115,14 +127,14 @@ namespace :deploy do
   end
 end
 
-namespace :figaro do
-  desc "SCP transfer figaro configuration to the shared folder"
-  task :setup do
-    transfer :up, "config/application.yml", "#{shared_path}/application.yml", :via => :scp
-  end
-
-  desc "Symlink application.yml to the release path"
-  task :finalize do
-    run "ln -sf #{shared_path}/application.yml #{release_path}/config/application.yml"
-  end
-end
+#namespace :figaro do
+#  desc "SCP transfer figaro configuration to the shared folder"
+#  task :setup do
+#    transfer :up, "config/application.yml", "#{shared_path}/application.yml", :via => :scp
+#  end
+#
+#  desc "Symlink application.yml to the release path"
+#  task :finalize do
+#    run "ln -sf #{shared_path}/application.yml #{release_path}/config/application.yml"
+#  end
+#end

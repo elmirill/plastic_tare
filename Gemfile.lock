@@ -69,6 +69,8 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    capistrano-unicorn (0.2.0)
+      capistrano (< 3.0)
     ckeditor (4.1.2)
       cocaine
       orm_adapter (~> 0.5.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   bxslider-rails (~> 4.1.0)
   byebug
   capistrano!
+  capistrano-unicorn (~> 0.2.0)
   ckeditor (~> 4.1.2)
   cocoon (~> 1.2.6)
   coffee-rails (~> 4.1.0)

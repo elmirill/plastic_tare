@@ -21,6 +21,7 @@ gem 'bxslider-rails', '~> 4.1.0'
 gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
 gem 'jquery-smooth-scroll-rails', '~> 0.0.5'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'capistrano-unicorn', '~> 0.2.0'
 
 group :development, :test do
   gem 'byebug'
