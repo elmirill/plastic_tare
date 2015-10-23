@@ -30,17 +30,17 @@
 <!--				<div class="cleatfix" style="width:calc(100% - 60px); height:60px; float:left;"></div>-->
 		
 			<ul id="menu" class="nav navbar-nav collapse navbar-collapse">
-				<li><%= link_to "Доставка и оплата", "#{root_url}delivery" %></li>
+				<li><%= link_to "Доставка и оплата", "/delivery" %></li>
 				<li>
 					<% if admin_signed_in? %>
-						<%= link_to "Прайс", price_path %>
+						<%= link_to "Прайс", "/price" %>
 					<% else %>
 						<%= link_to "Прайс", @price_list.price.url %>
 					<% end %>
 				</li>
-				<li><%= link_to "Сертификаты", "#{root_url}cert" %></li>
+				<li><%= link_to "Сертификаты", "/cert" %></li>
 				<li><%= link_to "Контакты", '#footer', class: "scroll" %></li>
-				<li><%= link_to "О компании", "#{root_url}about" %></li>
+				<li><%= link_to "О компании", "/about" %></li>
 			</ul>
 			
 			<div id="callme-shrinked" class="hidden"><p><a class="scroll" href="#footer"><%= @core_setting.main_phone if @core_setting.main_phone.present? %></a></p></div>
