@@ -1,12 +1,12 @@
 <div id="contact-form" class="clearfix">
-	<%= form_tag(send_form_path) do %>
-	<%= text_field_tag 'form_name', nil, required: true, class: "form-field-footer",
-																								 									placeholder: "Имя" %>
-	<%= text_field_tag 'form_contact', nil, required: true, class: "form-field-footer",
-																								 placeholder: "Телефон/электропочта" %>
-	<%= text_area_tag 'form_message', nil, class: "form-area-footer",
-																														placeholder: "Сообщение" %>
-	<%= text_field_tag 'form_nickname', nil, class: "hidden", placeholder: "Оставьте поле пустым" %>
+		<%= form_tag(send_form_path) do %>
+		<%= text_field_tag 'form_name', nil, required: true, class: "form-field-footer",
+																																		placeholder: "Имя" %>
+		<%= text_field_tag 'form_contact', nil, required: true, class: "form-field-footer",
+																									 placeholder: "Телефон/электропочта" %>
+		<%= text_area_tag 'form_message', nil, class: "form-area-footer",
+																															placeholder: "Сообщение" %>
+		<%= text_field_tag 'form_nickname', nil, class: "nickname", placeholder: "Оставьте поле пустым" %>
     <div>
       <%= submit_tag 'Отправить сообщение', class: "btn btn-primary btn-footer" %>
     </div>
