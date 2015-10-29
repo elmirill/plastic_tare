@@ -1,11 +1,13 @@
-<!-- <p id="notice"><%= notice %></p> -->
+
 <% if @curr_cat_id.present? %>
-<h1><%= Category.find(@curr_cat_id).name %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= render 'sort' %></h1>
+	<% title = Category.find(@curr_cat_id).name %>
 <% elsif @search_request.present? %>
-  <h1>Поиск по запросу «<%= @search_request %>»</h1>
+  <% title = "Поиск по запросу" + " «" + @search_request + "»" %>
 <% else %>
-  <h1>Каталог продукции <%= render 'sort' %></h1>
+	<% title = "Каталог продукции" %>
 <% end %>
+<% meta_title title %>
+<h1><%= title %>&nbsp;&nbsp;&nbsp;&nbsp;<%= render 'sort' %></h1>
 
 <div id ="products-index-wrapper">
   <% @products.each do |product| %>
