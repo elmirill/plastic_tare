@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016010611) do
+ActiveRecord::Schema.define(version: 20151030142506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(version: 20151016010611) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.text     "address_full"
+    t.text     "address_short"
+    t.string   "email"
+    t.string   "phone_main"
+    t.string   "phone_other"
+    t.string   "map"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "description"
+  end
+
   create_table "core_settings", force: :cascade do |t|
     t.string   "main_phone"
     t.string   "add_phone_1"
@@ -77,8 +89,10 @@ ActiveRecord::Schema.define(version: 20151016010611) do
     t.decimal  "map_lat"
     t.decimal  "map_lng"
     t.string   "map_name"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "default_meta_title"
+    t.string   "default_meta_description"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -109,8 +123,10 @@ ActiveRecord::Schema.define(version: 20151016010611) do
   create_table "pages", force: :cascade do |t|
     t.string   "name"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "meta_title"
+    t.string   "meta_description"
   end
 
   create_table "price_lists", force: :cascade do |t|
@@ -205,6 +221,8 @@ ActiveRecord::Schema.define(version: 20151016010611) do
     t.text     "meta"
     t.integer  "min_price"
     t.boolean  "active",                 default: true
+    t.string   "meta_title"
+    t.string   "meta_description"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
