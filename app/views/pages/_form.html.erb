@@ -28,6 +28,18 @@
 		<%= f.cktext_area :content, ckeditor: { language: 'ru' } %>
 		<br>
   </div>
+  
+	<div class="field">
+		<%= f.label "Meta title" %><br>
+		<%= f.text_field :meta_title, class: "form-field-admin" %>
+	</div>
+
+	<div class="field">
+		<%= f.label "Meta description" %><br>
+		<%= f.text_field :meta_description, class: "form-field-admin" %>
+	</div>
+	<br>
+  
   <div class="actions">
 		<%= link_to 'Назад', @page, class: "admin-edit-link-back" %>
 		<%= f.submit "Обновить", class: "btn btn-primary " %>
