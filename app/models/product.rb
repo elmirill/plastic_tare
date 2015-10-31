@@ -22,9 +22,8 @@ class Product < ActiveRecord::Base
 	# Relationships 
 	has_many :product_types
 	has_many :types, through: :product_types
-
-	has_many :product_applications
-	has_many :applications, through: :product_applications
+	
+	has_and_belongs_to_many :applications
 	
 	has_many :product_photos, dependent: :delete_all
 	
@@ -37,7 +36,6 @@ class Product < ActiveRecord::Base
 	belongs_to :category
 	
 	accepts_nested_attributes_for :types, reject_if: :all_blank
-	accepts_nested_attributes_for :applications, reject_if: :all_blank
 	accepts_nested_attributes_for :product_photos, reject_if: :all_blank, allow_destroy: true
 
 	# Scopes

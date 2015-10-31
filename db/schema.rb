@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030142506) do
+ActiveRecord::Schema.define(version: 20151031094347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,16 @@ ActiveRecord::Schema.define(version: 20151030142506) do
 
   create_table "applications", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "meta_title"
+    t.string   "meta_description"
+  end
+
+  create_table "applications_products", id: false, force: :cascade do |t|
+    t.integer "product_id",     null: false
+    t.integer "application_id", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -137,16 +145,6 @@ ActiveRecord::Schema.define(version: 20151030142506) do
     t.integer  "price_file_size"
     t.datetime "price_updated_at"
   end
-
-  create_table "product_applications", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "application_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "product_applications", ["application_id"], name: "index_product_applications_on_application_id", using: :btree
-  add_index "product_applications", ["product_id"], name: "index_product_applications_on_product_id", using: :btree
 
   create_table "product_photos", force: :cascade do |t|
     t.string   "caption"

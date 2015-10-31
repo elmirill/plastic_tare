@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 	resources :price_lists, only: [:edit, :update]
 	resources :contact_forms, only: [:new, :create]
 	resources :core_settings, only: [:new, :create, :edit, :update]
+	resources :applications
 	
   root 'pages#show', id: 1
 	

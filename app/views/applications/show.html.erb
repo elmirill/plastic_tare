@@ -1,0 +1,23 @@
+<% @application.meta_title.present? ? meta_title(@application.meta_title) : meta_title(@application.name) %>
+<% @application.meta_description.present? ? meta_description(@application.meta_description) : meta_description %>
+<h1 class="show-product-title"><%= @application.name %></h1>
+
+<% if admin_signed_in? %>
+	<div data-no-turbolinks>
+		<%= link_to edit_application_path(@application), class: "admin-icon-edit no-margin" do %>
+				<i class="glyphicon glyphicon-pencil"></i>
+		<% end %>
+		<%= link_to @application, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete no-margin" do %>
+			<i class="glyphicon glyphicon-trash"></i>
+		<% end %>
+	</div>
+<% end %>
+<div class="clearfix"></div>
+
+<% if @application.description.present? %>
+	<p><%= @application.description %></p>
+<% end %>
+
+<% @application.products.each do |product| %>
+	<%= render '/products/product_module', product: product %>
+<% end %>

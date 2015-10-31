@@ -1,0 +1,59 @@
+<%= simple_form_for(@application) do |f| %>
+	<div class="admin-form">
+		<%= f.error_notification %>
+
+		<div class="form-actions">
+			<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+				<i class="glyphicon glyphicon-ok"></i> 
+			<% end %>
+			<%= link_to @application, class: "admin-icon-return" do %>
+				<i class="glyphicon glyphicon-arrow-left"></i>
+			<% end %>
+		</div>
+
+		<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Название" %><br>
+				<%= f.text_field :name, label: false, class: "form-field-admin" %>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Описание" %><br>	
+				<%= f.text_area :description, label: false, class: "form-field-admin" %>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="field col-xs-12 mbottom20">
+				<%= f.label "Продукты" %><br>
+				<% @products.each do |product| %>
+					<div class="col-lg-4 col-sm-6">
+						<%= check_box_tag 'application[product_ids][]', product.id, @application.product_ids.include?(product.id) %>
+						<%= product.name %>&nbsp;&nbsp;
+					</div>
+				<% end %>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Meta title" %><br>	
+				<%= f.text_field :meta_title, label: false, class: "form-field-admin" %>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Meta description" %><br>	
+				<%= f.text_area :meta_description, label: false, class: "form-field-admin" %>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<%= link_to "Назад", @application, class: "admin-edit-link-back" %>
+			<%= f.submit "Создать/Обновить", class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>

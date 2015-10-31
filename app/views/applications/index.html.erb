@@ -1,0 +1,10 @@
+<% meta_title "Готовые решения по сферам применения" %>
+<h1>Готовые решения по сферам применения</h1>
+
+	<% @applications.each do |application| %>
+		<h2><%= link_to application.name, application %></h2>
+	<% end %>
+
+<% if admin_signed_in? %>
+	<%= link_to 'Новая сфера', new_application_path, class: "admin-edit-link-right" %>
+<% end %>

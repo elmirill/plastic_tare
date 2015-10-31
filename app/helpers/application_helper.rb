@@ -15,5 +15,9 @@ module ApplicationHelper
 			content_for?(:meta_description) ? content_for(:meta_description) : @core_setting.default_meta_description
 		end
 	end
+	
+	def class_for_current_page(path)
+		"active" if request.path == path
+	end
 
 end

@@ -1,4 +1,3 @@
 class Application < ActiveRecord::Base
-	has_many :product_applications
-	has_many :products, through: :product_applications
+	has_and_belongs_to_many :products
 end

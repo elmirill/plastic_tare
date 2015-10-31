@@ -447,22 +447,21 @@ font-weight:300;
 }
 
 #menu li a {
-color:rgba(255,255,255,0.95);
-display:block;
-text-decoration:none;
-padding:0px 15px;
-transition:background 0.3s ease, box-shadow 0.1s ease;
--webkit-transition:background 0.3s ease, box-shadow 0.1s ease;
--khtml-transition:background 0.3s ease, box-shadow 0.1s ease;
--moz-transition:background 0.3s ease, box-shadow 0.1s ease;
-font-size:18px;
-line-height: 60px;
+	color:rgba(255,255,255,0.95);
+	display:block;
+	text-decoration:none;
+	padding:0px 15px;
+	transition:background 0.3s ease, box-shadow 0.1s ease;
+	-webkit-transition:background 0.3s ease, box-shadow 0.1s ease;
+	-khtml-transition:background 0.3s ease, box-shadow 0.1s ease;
+	-moz-transition:background 0.3s ease, box-shadow 0.1s ease;
+	font-size:18px;
+	line-height: 60px;
+	&:hover, &.active{
+		box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
+		background: #2E7D32;
 }
-
-#menu li a:hover{
-box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 }
-
 .current_page_item a, .current_menu_item a, .current-cat a, .current-page-ancestor a{
 }
 
@@ -575,7 +574,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	text-align: center;
 	background: #E8F5E9;
 	padding: 5px 5px 0px 5px;
-	width: 20%;
+	width: 16.666%;
 	border-right: 1px solid rgba(0, 0, 0, 0.04);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 	position: relative;
@@ -612,7 +611,7 @@ box-shadow: inset 0px 0px 7px 2px rgba(0,0,0,0.15);
 	width: 100%;
 	/*background: rgba(200,230,201,0.8);*/
 	line-height: 1.2;
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .category-name-menu-fixed{ 
@@ -1538,12 +1537,18 @@ max-width:1210px;
 		@extend .admin-icons;
 		margin-top: 3px;
 		margin-right: 145px;
+		&.no-margin {
+			margin-right: 40px;
+		}
 	}
 
 	.admin-icon-delete{
 		@extend .admin-icons;
 		margin-top: 3px;
 		margin-right: 105px;
+		&.no-margin {
+			margin-right: 0px;
+		}
 	}
 	.admin-icon-delete-promo {
 		@extend .admin-icon-delete;
@@ -1734,10 +1739,6 @@ max-width:1210px;
 
 #header-main-nav{
 	background: #388E3C;
-}
-
-#menu li a:hover{
-	background: #2E7D32;
 }
 
 #sidebar{
