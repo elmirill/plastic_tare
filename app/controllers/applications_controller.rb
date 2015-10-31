@@ -6,7 +6,6 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
   def index
-		@applications = Application.all.order('name ASC')
   end
 
   # GET /applications/1
