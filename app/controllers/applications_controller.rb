@@ -76,7 +76,7 @@ class ApplicationsController < ApplicationController
 	end
 	
 	def get_products
-		@products = Product.all
+		@products = Product.all.order('name ASC')
 	end
 	
 end
