@@ -18,6 +18,6 @@
 	<p><%= @application.description %></p>
 <% end %>
 
-<% @application.products.each do |product| %>
+<% @application_products.each do |product| %>
 	<%= render '/products/product_module', product: product %>
 <% end %>

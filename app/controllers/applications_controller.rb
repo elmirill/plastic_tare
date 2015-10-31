@@ -6,12 +6,13 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
   def index
-		@applications = Application.all.order('position ASC')
+		@applications = Application.all.order('name ASC')
   end
 
   # GET /applications/1
   # GET /applications/1.json
   def show
+		@application_products = @application.products.order('position ASC')
   end
 
   # GET /applications/new
