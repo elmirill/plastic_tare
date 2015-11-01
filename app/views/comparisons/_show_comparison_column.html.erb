@@ -5,7 +5,7 @@
 	<% end %>
 	<table class="comp comp-product">
 		<tr><th title="<%= c.product.name %>"><%= c.product.name %></th></tr>
-		<tr><td class="comp-thumb-td comp-product-thumb-td text-center">
+		<tr><td class="comp-thumb-td comp-product-thumb-td text-center" data-no-turbolink >
 			<%= link_to c.product, title: c.product.name do %>
 				<%= image_tag c.product.thumbnail.url(:thumb), class: "comp-thumb" %>
 			<% end %>

@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require bxslider
 //= require jquery-smooth-scroll
+//= require magnific-popup
 //= require_tree .
 
 // Fix navbar when scrolled
@@ -53,3 +54,16 @@ $(document).ready(function(){
 	});
 });
 
+
+// Initialize Magnific Popup
+$(document).ready(function() {
+	$('.image-popup-vertical-fit').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		mainClass: 'mfp-fade',
+		removalDelay: 300,
+		image: {
+			verticalFit: true
+		}
+	});
+});

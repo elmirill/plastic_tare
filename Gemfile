@@ -22,6 +22,7 @@ gem 'capistrano', github: 'capistrano/capistrano', ref: '96a16'
 gem 'jquery-smooth-scroll-rails', '~> 0.0.5'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'capistrano-unicorn', '~> 0.2.0'
+gem 'magnific-popup-rails', '~> 0.9.9.1'
 
 group :development, :test do
   gem 'byebug'
