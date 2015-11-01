@@ -175,6 +175,9 @@ input[type="checkbox"] {
 	vertical-align: bottom;
 	margin-top: 10px;
 }
+.label-nomargin{
+	margin: 0;
+}
 .btn {
 		box-sizing:border-box;
 		-moz-box-sizing:border-box;
@@ -200,7 +203,7 @@ input[type="checkbox"] {
 }
 .btn-primary {
 	color: #333;
-	background-color: #E57373;
+	background-color: #E98A8A;
 	&:hover, &:active, &:focus {
 		background-color: #A0D0A2;
 		color :inherit;
@@ -1472,10 +1475,16 @@ max-width:1210px;
 			z-index: 2;
 		}
 
+	.admin-edit-link-submit {
+		@extend .admin-edit-link;
+		margin: 5px 0px 0px 15px;
+		float: left;
+	}
+
 	.admin-edit-link-back {
 		@extend .admin-edit-link;
 		float: left;
-		margin: 7px 15px 0px 0px;
+		margin: 5px 15px 0px 0px;
 	}
 
 .inline-icons {

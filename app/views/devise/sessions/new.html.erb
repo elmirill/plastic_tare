@@ -11,16 +11,19 @@
     <%= f.password_field :password, autocomplete: "off", class: "form-field-admin" %>
   </div>
 
-  <% if devise_mapping.rememberable? -%>
+  <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label "Запомнить меня" %>
+			<%= f.label "Запомнить меня", class: "label-nomargin" %>
     </div>
   <% end %>
 		
 	<br>
 
-  <div class="actions">
+  <div class="actions btn-group">
     <%= f.submit "Войти", class: "btn btn-primary" %>
+		<% if devise_mapping.recoverable? %>
+    	<%= link_to "Забыли пароль?", new_password_path(resource_name), class: "admin-edit-link-submit" %>
+		<% end %>
   </div>
 <% end %>
