@@ -21,7 +21,8 @@
 		<div class="row">
 			<div class="field col-xs-12">
 				<%= f.label "Описание" %><br>	
-				<%= f.text_area :description, label: false, class: "form-field-admin" %>
+				<%= f.cktext_area :description, label: false, class: "form-field-admin",
+						ckeditor: { language: 'ru' } %>
 			</div>
 		</div>
 		

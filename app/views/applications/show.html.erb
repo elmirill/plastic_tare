@@ -15,7 +15,7 @@
 <div class="clearfix"></div>
 
 <% if @application.description.present? %>
-	<p><%= @application.description %></p>
+	<%= @application.description.html_safe %>
 <% end %>
 
 <% @application_products.each do |product| %>
