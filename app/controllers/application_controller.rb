@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 	before_action :get_types, :get_categories, :get_promo, :create_order_item, :create_comparison_item, :set_price, :set_core_setting
-	helper_method :current_order, :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text, :current_comparison, :comparison_item_by_product_id, :current_controller?
+	helper_method :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text, :current_comparison, :comparison_item_by_product_id, :current_controller?, :current_order
 	
 
   def get_types
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 	def get_promo
 		@promo = Promo.where(name: "default").first
 	end
-	
+		
 	def current_order
 		if session[:order_id].present?
       Order.find(session[:order_id])

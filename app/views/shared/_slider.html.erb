@@ -1,5 +1,4 @@
 <% if current_page?(root_url) && unit_active? %>
-	<% @slider = 1 %>
 	<div class="row hidden-xs relative">
 	
 		<% if admin_signed_in? %>
@@ -8,7 +7,7 @@
 		
 		<ul id="slider" class="bxslider">
 			<% @promo.promo_units.each do |unit| %>
-			<% if unit.active? %>
+				<% if unit.active? %>
 					<li>
 						<div id="promo">
 							<div id="promo-content">
