@@ -23,4 +23,4 @@
 /public/system
 
 #Ignore locum token
-/.locum
+.locum
