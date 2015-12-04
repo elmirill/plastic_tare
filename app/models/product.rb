@@ -4,7 +4,6 @@ class Product < ActiveRecord::Base
 	before_save :set_keywords, :set_min_price
 	validates :name, presence: true, uniqueness: true
 	
-	
 	has_attached_file :thumbnail, styles: {
 														thumb: {
 															geometry: "250x210>",
@@ -18,6 +17,13 @@ class Product < ActiveRecord::Base
 														}
 													}, convert_options: { thumb: "-gravity center -extent 250x210"}, 																default_url: 'box_menu.png'
 	validates_attachment_content_type :thumbnail, :content_type => /\Aimage\/.*\Z/
+	
+	# Set positions
+	def self.order(ids)
+		if ids.present?
+			update_all(["position = STRPOS(?, ','||id||',')", ",#{ids.join(',')},"])
+		end
+	end
 
 	# Relationships 
 	has_many :product_types
@@ -39,7 +45,6 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :product_photos, reject_if: :all_blank, allow_destroy: true
 
 	# Scopes
-	
 	scope :search, ->(search){ where('keywords LIKE ?', "%#{search.mb_chars.downcase}%") if search.present? }
 	
 	scope :filter_category, ->(category_id){where(products: { category_id: category_id }) if category_id.present?}

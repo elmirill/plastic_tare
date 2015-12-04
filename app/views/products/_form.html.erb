@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="row">
-			<div class="field col-sm-5">
+			<div class="field col-sm-6">
 				<%= f.label "Название" %><br>
 				<%= f.text_field :name, class: "form-field-admin" %>
 			</div>
@@ -32,14 +32,9 @@
 				<%= f.check_box :active %>
 			</div>
 
-			<div class="field col-sm-3">
+			<div class="field col-sm-4">
 				<%= f.label "Категория" %><br>
 				<%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class: "form-field-admin"}) %>
-			</div>
-
-			<div class="field col-sm-2">
-				<%= f.label "Позиция" %><br>
-				<%= f.number_field :position, step: "any", class: "form-field-admin" %>
 			</div>
 		</div>
 
@@ -186,7 +181,7 @@
 
 		<div class="field">
 			<%= f.label "Описание" %><br>
-			<%= f.cktext_area :description, ckeditor: { language: 'ru' } %>
+			<%= f.cktext_area :description, class: "ckeditor", ckeditor: { language: 'ru' } %>
 		</div>
 
 		<div class="row">

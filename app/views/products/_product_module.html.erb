@@ -5,7 +5,7 @@
 	<% module_class = "product-index product-inactive" %>
 <% end %>
 	
-<div id="product-index-<%= product.id %>" class="<%= module_class %> col-lg-3 col-md-4 col-sm-6" data-no-turbolink >
+<div id="product-index-<%= product.id %>" class="<%= module_class %> col-lg-3 col-md-4 col-sm-6">
 		
 		<%= link_to product_path(product.id, filter_category: @curr_cat_id), class: "no-border" do %>
 			<h3 title="<%= product.name %>"><%= product.name %></h3>

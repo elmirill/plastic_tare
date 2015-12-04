@@ -7,6 +7,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'pg'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'ckeditor', '~> 4.1.2'
@@ -23,6 +24,7 @@ gem 'jquery-smooth-scroll-rails', '~> 0.0.5'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'capistrano-unicorn', '~> 0.2.0'
 gem 'magnific-popup-rails', '~> 0.9.9.1'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
 group :development, :test do
   gem 'byebug'

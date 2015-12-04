@@ -14,6 +14,7 @@
  *= require_self
  *= require bxslider
  *= require magnific-popup
+ *= require jquery-ui
  */
 
 @import "bootstrap-sprockets";
@@ -66,6 +67,10 @@ img {
 h1, h2, h3, h4, h5, h6{
 	font-family: 'PT Serif', serif;
 	color:rgba(0,0,0,0.87);
+}
+
+h2, h3, h4, h5, h6 {
+	line-height: 1.3;
 }
 
 h1 {
@@ -581,7 +586,8 @@ font-weight:300;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 	position: relative;
 }
-
+#ready_solutions {
+}
 .production_category_fixed{
 	background: #A0D0A2;
 }
@@ -680,7 +686,19 @@ font-weight:300;
 #content {
 	position: relative;
 }
-
+.scroll-to-top {
+	position: fixed;
+	top: calc(50% - 40px);
+	right: 30px;
+	font-size: 80px;
+	opacity: 0.6;
+	display: none;
+	z-index: 999;
+	cursor: pointer;
+	&:hover, &:active, &:focus {
+		opacity: 0.7;
+	}
+}
 #slider{
 
 }
@@ -1360,6 +1378,48 @@ max-width:1210px;
 @media (max-width: 768px) {
 	.mail-cart-info, .mail-cart-message {
 		padding: 0px;
+	}
+}
+.product-prices-row {
+	
+}
+.product-prices-headings {
+	width: calc(100% - 160px);
+	float: right;
+	h4 {
+		width: 33.3333%;
+		float: left;
+		margin-bottom: 15px;
+	}
+}
+.product-prices-name {
+	width: 130px;
+	float: left;
+	padding: 7px 0px;
+	cursor: row-resize;
+}
+.product-prices-active {
+	float: left;
+	margin: 9px 5px 0px 5px !important;
+}
+.product-prices-price {
+	width: calc(100% - 160px);
+	float: left;
+}
+.form-field-prices {
+	width: 11.1110%;
+	margin-right: 0px !important;
+	border: 0px !important;
+	border-right: 1px solid #ffffff !important;
+	border-bottom: 1px solid #ffffff !important;
+	&.color {
+		background-color: rgba(225,225,225,0.7); 
+	}
+	&.high {
+		background-color: rgba(225,225,225,0.4); 
+	}
+	&.spec {
+		background-color: rgba(225,225,225,0.7); 
 	}
 }
 

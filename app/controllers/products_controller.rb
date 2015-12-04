@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :get_url_params
-	before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
-	before_action :get_all_products, only: [:new, :create, :edit, :update]
+	before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, 													:edit_prices_and_positions, :update_prices_and_positions]
+	before_action :get_all_products, only: [:new, :create, :edit, :update, :edit_prices_and_positions, :update_prices_and_positions]
 	before_action :get_all_types, only: [:new, :create, :edit, :update]
 
   # GET /products
@@ -64,6 +64,19 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+	
+	def edit_prices_and_positions
+	end
+	
+	def update_prices_and_positions
+		params['product'].keys.each do |id|
+			@product = Product.find(id.to_i)
+			@product.update_attributes(product_prices_params(id))
+		end
+		order = Rack::Utils.parse_nested_query(params[:productpos]).values
+		Product.order(order)
+		redirect_to '/edit_prices', notice: 'Цены и позиции обновлены.'
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -72,8 +85,12 @@ class ProductsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def product_params
-      params.require(:product).permit(:name, :category, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign, :thumbnail, :delete_thumbnail, :category_id, :meta, :active, :meta_title, :meta_description, type_ids: [], related_product_ids: [], color: [], product_photos_attributes: [:id, :photo, :caption, :_destroy])
+		def product_params
+			params.require(:product).permit(:name, :category, :length, :width, :height, :diameter, :inner_length, :inner_width, :inner_height, :inner_diameter, :volume, :net_volume, :weight, :side, :bottom, :types, :cover, :static_load, :dynamic_load, :rack_load, :capacity, :gallery, :description, :var_color, :var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :applications, :articul, :position, :featured, :campaign, :thumbnail, :delete_thumbnail, :category_id, :meta, :active, :meta_title, :meta_description, type_ids: [], related_product_ids: [], color: [], product_photos_attributes: [:id, :photo, :caption, :_destroy])
+    end
+	
+		def product_prices_params(id)
+			params.require(:product).fetch(id).permit(:var_color_price_1, :var_color_price_2, :var_color_price_3, :var_high, :var_high_price_1, :var_high_price_2, :var_high_price_3, :var_spec, :var_spec_price_1, :var_spec_price_2, :var_spec_price_3, :active)
     end
 
   def get_url_params

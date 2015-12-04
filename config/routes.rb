@@ -14,10 +14,16 @@ Rails.application.routes.draw do
 	get '/edit_core_settings', to: 'core_settings#edit', id:1
 	get '/edit_promos', to: 'promos#edit', id:1
 	match '/send_form', to: 'contact_form_mailer#send_form', via: 'post'
+	match '/edit_prices', to: 'products#edit_prices_and_positions', as: :edit_prices, via: 'get'
+	match '/update_prices', to: 'products#update_prices_and_positions', as: :update_prices, via: 'put'
+	
 
 	devise_for :admins, controllers: { registrations: 'registrations'}
 	scope "/manage" do
 		resources :admins, only: [:index, :destroy]
+	end
+	devise_scope :admin do
+		get "/admin" => "devise/sessions#new"
 	end
   resources :pages
   resources :products

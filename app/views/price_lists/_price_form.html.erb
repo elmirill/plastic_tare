@@ -1,7 +1,6 @@
-<h3><%= link_to "Скачать", @price_list.price.url %></h3>
+<h3><%= link_to "Скачать текущий прайс-лист", @price_list.price.url %></h3>
 <br>
 
-<h3>Обновить</h3>
 <%= form_for @price_list, html: { multipart: true } do |f| %>
 	<%= f.file_field :price, class: "form-field-admin" %>
 	<%= f.submit "Обновить", class: "btn btn-primary" %>

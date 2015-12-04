@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require ckeditor/init
@@ -95,8 +97,47 @@ $(document).ready(function() {
 	});
 });
 
-
 // Initialize Smooth Scroll
 $(document).ready(function() {
 	$('a.scroll').smoothScroll();
+});
+
+// Scroll to Top
+$(document).ready(function() {
+	
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 300) {
+			$('.scroll-to-top').fadeIn();
+		} else {
+			$('.scroll-to-top').fadeOut();
+		}
+	});
+	
+	$('.scroll-to-top').click(function() {
+		$('html, body').animate({scrollTop: 0}, 800);
+	});
+	
+});
+
+// Blink Ready Solutions
+$(document).ready(function() {
+	$('#ready_solutions').fadeOut().fadeIn();
+});
+
+// Sortable Products
+$(document).ready(function() {
+	$('#products-sortable').sortable({
+		items: '.product-prices-row',
+		axis: "y",
+		update: function() {
+			$('#products-order').val($('#products-sortable').sortable('serialize'));
+		}
+	});
+});
+
+// Init ckeditor with turbolinks
+$(document).bind('page:change', function() {
+  $('.ckeditor').each(function() {
+    CKEDITOR.replace($(this).attr('id'));
+  });
 });

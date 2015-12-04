@@ -45,14 +45,12 @@
 	</div>
 	
  	<% if admin_signed_in? %>
-		<div data-no-turbolinks>
-			<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
-					<i class="glyphicon glyphicon-pencil"></i>
-			<% end %>
-			<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
-				<i class="glyphicon glyphicon-trash"></i>
-			<% end %>
-		</div>
+		<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
+				<i class="glyphicon glyphicon-pencil"></i>
+		<% end %>
+		<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
+			<i class="glyphicon glyphicon-trash"></i>
+		<% end %>
 		<span class="admin-icon-divider">|</span>
 	<% end %>
 </div>

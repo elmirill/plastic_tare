@@ -1,5 +1,5 @@
 <div id="production-menu-wrapper" class="clearfix collapse navbar-collapse">
-	<div id="production_menu" class="clearfix" data-no-turbolink >
+	<div id="production_menu" class="clearfix">
 		<div class="row clearfix">
 			<div id="production-menu-inner" class="clearfix">
 			
@@ -22,9 +22,9 @@
 				
 				<%= link_to applications_path do %>
 					<% if current_controller?("applications") %>
-						<div class="production_category production_category_active clearfix">
+						<div id="ready_solutions" class="production_category production_category_active clearfix">
 					<% else %>
-						<div class="production_category clearfix">
+						<div id="ready_solutions" class="production_category clearfix">
 					<% end %>
 							<%= image_tag("solutions.png", class: "category_icon hidden-sm hidden-xs") %>
 						<div class="category_name_menu">
