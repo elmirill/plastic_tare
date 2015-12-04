@@ -123,7 +123,7 @@ $(document).ready(function() {
 
 // Blink Ready Solutions
 $(document).ready(function() {
-	$('#ready_solutions').delay(1000).fadeOut().fadeIn();
+	$('#ready-solutions-inner').delay(1000).fadeOut().fadeIn();
 });
 
 // Sortable Products
@@ -147,11 +147,11 @@ $(document).bind('page:change', function() {
 // Fade in table headings for edit prices and positions
 $(document).ready(function() {
 	
-	var blockWidth = $('.product-prices-price').width() - 2;
+	var blockWidth = $('.product-prices-price').width() - 1;
 	 
 	$('.product-prices-headings-fixed').css('width', blockWidth);
 	$('.product-prices-headings-fixed').css('margin-left',
-													$('#content').width() - blockWidth - 2);
+													$('#content').width() - blockWidth - 1);
 	
 	if ($(window).scrollTop() > 325) {
 			$('.product-prices-headings-fixed').fadeIn();
