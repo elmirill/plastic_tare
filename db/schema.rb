@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204034018) do
+ActiveRecord::Schema.define(version: 20151204082951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,15 +181,12 @@ ActiveRecord::Schema.define(version: 20151204034018) do
     t.integer  "volume"
     t.integer  "net_volume"
     t.string   "color"
-    t.boolean  "var_color"
     t.integer  "var_color_price_1"
     t.integer  "var_color_price_2"
     t.integer  "var_color_price_3"
-    t.boolean  "var_high"
     t.integer  "var_high_price_1"
     t.integer  "var_high_price_2"
     t.integer  "var_high_price_3"
-    t.boolean  "var_spec"
     t.integer  "var_spec_price_1"
     t.integer  "var_spec_price_2"
     t.integer  "var_spec_price_3"
