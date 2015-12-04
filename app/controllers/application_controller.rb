@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 	before_action :get_types, :get_categories, :get_promo, :create_order_item, :create_comparison_item, :set_price, :set_core_setting
-	helper_method :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text, :current_comparison, :comparison_item_by_product_id, :current_controller?, :current_order
+	helper_method :order_item_by_product_id, :product_in_cart?, :tovar_pluralize, :cart_size, :cart_button_text, :current_comparison, :comparison_item_by_product_id, :current_controller?, :current_order, :var_color?, :var_high?, :var_spec?, :var_prices_any?
 	
 
   def get_types
@@ -90,6 +90,36 @@ class ApplicationController < ActionController::Base
 
 	def set_core_setting
 		@core_setting = CoreSetting.find(1)
+	end
+	
+	def var_color?(product)
+		if product.var_color_price_1.present? ||
+			 product.var_color_price_2.present? ||
+			 product.var_color_price_3.present?
+			true
+		end
+	end
+	
+	def var_high?(product)
+		if product.var_high_price_1.present? ||
+			 product.var_high_price_2.present? ||
+			 product.var_high_price_3.present?
+			true
+		end
+	end
+	
+	def var_spec?(product)
+		if product.var_spec_price_1.present? ||
+			 product.var_spec_price_2.present? ||
+			 product.var_spec_price_3.present?
+			true
+		end
+	end
+
+	def var_prices_any?(product)
+		if var_color?(product) || var_high?(product) || var_spec?(product)
+			true
+		end
 	end
 	
 end

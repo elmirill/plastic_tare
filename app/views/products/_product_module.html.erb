@@ -34,7 +34,7 @@
 			<%= image_tag product.thumbnail.url(:thumb) %>
 		<% end %>
 
-		<% if product.var_color || product.var_high || product.var_spec %>
+	<% if var_prices_any?(product) %>
 			<% 
 				prices = []
 				prices << product.var_color_price_1 if product.var_color_price_1.present?
