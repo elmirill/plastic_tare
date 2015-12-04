@@ -52,6 +52,7 @@ $(window).scroll(function(){
 		$('.category_name_menu').addClass('category-name-menu-fixed');
 		$('#cat-menu-appearer').addClass('reveal');
 		$('.production_category').addClass('production_category_fixed');
+		$('#production-menu-inner').css('background', '#ccc');
 	} else {
 		$('#production_menu').removeClass('production_menu_fixed');
 		$('#production-menu-inner').removeClass('production-menu-inner-fixed');
@@ -60,6 +61,7 @@ $(window).scroll(function(){
 		$('.category_name_menu').removeClass('category-name-menu-fixed');
 		$('#cat-menu-appearer').removeClass('reveal');
 		$('.production_category').removeClass('production_category_fixed');
+		$('#production-menu-inner').css('background', '#E8F5E9');
 	}
 });
 
@@ -121,7 +123,7 @@ $(document).ready(function() {
 
 // Blink Ready Solutions
 $(document).ready(function() {
-	$('#ready_solutions').fadeOut().fadeIn();
+	$('#ready_solutions').delay(1000).fadeOut().fadeIn();
 });
 
 // Sortable Products
@@ -143,14 +145,24 @@ $(document).bind('page:change', function() {
 });
 
 // Fade in table headings for edit prices and positions
-//$(document).ready(function() {
-//	
-//	$(window).scroll(function() {
-//		if ($(this).scrollTop() > 485) {
-//			$('.product-prices-headings-fixed').fadeIn();
-//		} else {
-//			$('.product-prices-headings-fixed').fadeOut();
-//		}
-//	});
-//	
-//});
+$(document).ready(function() {
+	
+	var blockWidth = $('.product-prices-price').width() - 2;
+	 
+	$('.product-prices-headings-fixed').css('width', blockWidth);
+	$('.product-prices-headings-fixed').css('margin-left',
+													$('#content').width() - blockWidth - 2);
+	
+	if ($(window).scrollTop() > 325) {
+			$('.product-prices-headings-fixed').fadeIn();
+		}
+	
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 325) {
+			$('.product-prices-headings-fixed').fadeIn();
+		} else {
+			$('.product-prices-headings-fixed').fadeOut();
+		}
+	});
+	
+});
