@@ -1,0 +1,70 @@
+<h1>Редактировать цены и позиции</h1>
+
+<br>
+	
+<div class="product-prices-headings">
+	<h4>Цветной</h4>
+	<h4>Высший сорт</h4>
+	<h4>Спецпредложение</h4>
+</div>
+
+<div class="product-prices-headings-fixed">
+	<h4>Цветной</h4>
+	<h4>Высший сорт</h4>
+	<h4>Спецпредложение</h4>
+</div>
+
+<div class="clearfix"></div>
+
+<%= form_for :product, url: update_prices_path, method: :put do %>
+
+	<div class="actions">
+		<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+			<i class="glyphicon glyphicon-ok"></i> 
+		<% end %>
+		<%= link_to products_path, class: "admin-icon-return" do %>
+			<i class="glyphicon glyphicon-arrow-left"></i>
+		<% end %>
+	</div>
+	
+	<div id="products-sortable">
+
+		<% @products.each do |product| %>
+		<div id="productpos_<%= product.id %>" class="product-prices-row">
+				<span class="product-prices-name"><%= product.name %></span>
+
+
+				<%= fields_for "product[]", product do |f| %>
+
+					<%= f.check_box :active, class: "product-prices-active" %>
+
+					<div class="product-prices-price">
+						<%= f.number_field :var_color_price_1, class: "form-field form-field-prices color" %>
+						<%= f.number_field :var_color_price_2, class: "form-field form-field-prices color" %>
+						<%= f.number_field :var_color_price_3, class: "form-field form-field-prices color" %>
+						<%= f.number_field :var_high_price_1, class: "form-field form-field-prices high" %>
+						<%= f.number_field :var_high_price_2, class: "form-field form-field-prices high" %>
+						<%= f.number_field :var_high_price_3, class: "form-field form-field-prices high" %>
+						<%= f.number_field :var_spec_price_1, class: "form-field form-field-prices spec" %>
+						<%= f.number_field :var_spec_price_2, class: "form-field form-field-prices spec" %>
+						<%= f.number_field :var_spec_price_3, class: "form-field form-field-prices spec" %>
+					</div>	
+
+					<div class="clearfix"></div>
+
+				<% end %>
+
+			</div>
+		<% end %>
+	
+	</div>
+
+	<input id="products-order" name="productpos" type="hidden">
+	<br>
+
+	<div class="actions">
+		<%= link_to 'Назад', products_path, class: "admin-edit-link-back" %>
+		<%= submit_tag "Обновить", class: "btn btn-primary" %>
+	</div>
+
+<% end %>
