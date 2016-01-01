@@ -147,15 +147,23 @@ $(document).bind('page:change', function() {
 // Fade in table headings for edit prices and positions
 $(document).ready(function() {
 	
-	var blockWidth = $('.product-prices-price').width() - 1;
-	 
-	$('.product-prices-headings-fixed').css('width', blockWidth);
-	$('.product-prices-headings-fixed').css('margin-left',
-													$('#content').width() - blockWidth - 1);
+	function resizeBlock() {
+		var blockWidth = $('.product-prices-price').width() - 1;
+
+		$('.product-prices-headings-fixed').css('width', blockWidth);
+		$('.product-prices-headings-fixed').css('margin-left',
+														$('#content').width() - blockWidth - 1);
+	}
+	
+	resizeBlock();
+	
+	$(window).resize(function() {
+		resizeBlock();
+	});
 	
 	if ($(window).scrollTop() > 325) {
 			$('.product-prices-headings-fixed').fadeIn();
-		}
+	}
 	
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 325) {

@@ -4,22 +4,21 @@
 	<ul>
 		<% if category_types_present? %>
 		<h2>Фильтр категории</h2>
+		<%= form_tag products_path, method: :get do %>
 			<li>
 				<h3>Тип</h3>
-
-				<%= form_tag products_path, method: :get do %>
-					<% Type.all.each do |type| %>
-						<% if Product.filter_category(@curr_cat_id).filter_types(Array.wrap(type.name)).present? %>
-							<% type_params = Array.new %>
-							<% if params[:types].present? %>
-								<% params[:types].each do |t| %>
-									<% type_params << t %>
-								<% end %>
+				<% Type.all.each do |type| %>
+					<% if Product.filter_category(@curr_cat_id).filter_types(Array.wrap(type.name)).present? %>
+						<% type_params = Array.new %>
+						<% if params[:types].present? %>
+							<% params[:types].each do |t| %>
+								<% type_params << t %>
 							<% end %>
-							<%= check_box_tag('types[]', type.name, (true if type_params.include?(type.name))) %>
-							<%= type.name %> <br>
 						<% end %>
+						<%= check_box_tag('types[]', type.name, (true if type_params.include?(type.name))) %>
+						<%= type.name %> <br>
 					<% end %>
+				<% end %>
 			</li>
 			<li>		
 				<h3>Объем</h3>
@@ -53,8 +52,8 @@
 				<input name="filter_category" value="<%= params[:filter_category] %>" type="hidden">
 				<%= submit_tag "Фильтровать", class: "btn btn-primary" %>
 			</li>
-				<% end %>
 		<% end %>
+	<% end %>
 
 		<li class="li-full">
 			<%= link_to products_path(filter_category: @curr_cat_id) do %>
