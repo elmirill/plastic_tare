@@ -14,7 +14,7 @@
 	</div>
 	<div class="col-md-9 col-sm-8 col-xs-9 cart-form-wrapper">
 		<%= form_for order_item, remote: true do |f| %>
-			<% if product.var_color? %>
+			<% if var_color?(product) %>
 				<div class="row cart-quantity-row">
 					<h4 class="cart-quantity-title">Цветной</h4>
 					<%= f.text_field :color_quantity, value: order_item.color_quantity.to_i,
@@ -25,7 +25,7 @@
 					<% end %>
 				</div>	
 			<% end %>
-			<% if product.var_high? %>
+			<% if var_high?(product) %>
 				<div class="row cart-quantity-row">
 					<h4 class="cart-quantity-title">Высший сорт</h4>
 					<%= f.text_field :high_quantity, value: order_item.high_quantity.to_i,
@@ -36,7 +36,7 @@
 					<% end %>
 				</div>
 			<% end %>
-			<% if product.var_spec? %>
+			<% if var_spec?(product) %>
 				<div class="row cart-quantity-row">
 					<h4 class="cart-quantity-title">Спецпредложение</h4>
 					<%= f.text_field :spec_quantity, value: order_item.spec_quantity.to_i,

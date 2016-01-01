@@ -9,9 +9,9 @@ class OrderItem < ActiveRecord::Base
 	before_save :finalize
 	
 	def total_price
-		color_price = product.var_color? ? self.var_price("color") : 0
-		high_price = product.var_high? ? self.var_price("high") : 0
-		spec_price = product.var_spec? ? self.var_price("spec") : 0
+		color_price = var_color?(product) ? self.var_price("color") : 0
+		high_price = var_high?(product) ? self.var_price("high") : 0
+		spec_price = var_spec?(product) ? self.var_price("spec") : 0
 		total_price = color_quantity * color_price + high_quantity * high_price + spec_quantity * spec_price
 		total_price.to_i
 	end
@@ -29,6 +29,30 @@ class OrderItem < ActiveRecord::Base
 			end
 		else
 				product.send("var_#{var}_price_1")
+		end
+	end
+	
+	def var_color?(product)
+		if product.var_color_price_1.present? ||
+			 product.var_color_price_2.present? ||
+			 product.var_color_price_3.present?
+			true
+		end
+	end
+	
+	def var_high?(product)
+		if product.var_high_price_1.present? ||
+			 product.var_high_price_2.present? ||
+			 product.var_high_price_3.present?
+			true
+		end
+	end
+	
+	def var_spec?(product)
+		if product.var_spec_price_1.present? ||
+			 product.var_spec_price_2.present? ||
+			 product.var_spec_price_3.present?
+			true
 		end
 	end
 	
