@@ -25,5 +25,5 @@ module ApplicationHelper
 			unit.active?
 		end
 	end
-
+	
 end

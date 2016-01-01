@@ -43,12 +43,12 @@ class ApplicationController < ActionController::Base
 		@new_comparison_item = current_comparison.comparison_items.new
 	end
 	
-	def order_item_by_product_id(product)
-		OrderItem.where(product_id: product).first
+	def order_item_by_product_id(product_id)
+		current_order.order_items.where(product_id: product_id).first
 	end
 	
-	def comparison_item_by_product_id(product)
-		ComparisonItem.where(product_id: product).first
+	def comparison_item_by_product_id(product_id)
+		current_comparison.comparison_items.where(product_id: product_id).first
 	end
 	
 	def current_controller?(names)
