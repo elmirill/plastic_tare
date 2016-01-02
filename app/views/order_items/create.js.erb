@@ -3,4 +3,12 @@ alert("Продукт недоступен для заказа или уже в 
 <% else %>
   $("#cart").html("<%= escape_javascript(render 'shared/sidebar_cart') %>");
 	$("#content").load(document.URL + ' #content');
+	
+	$('.infobox').html('<p>Добавлено <%= link_to " в корзину", order_path, class: "admin-edit-link" %></p>')
+	
+	if ($('.infobox').css('display') == 'none') {
+		$('.infobox').slideDown("fast").delay(5000).slideUp("fast");
+	} else {
+		$('.infobox').finish().show().delay(5000).slideUp("fast");
+	}
 <% end %>
