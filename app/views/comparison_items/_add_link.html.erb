@@ -1,0 +1,6 @@
+<%= form_for @new_comparison_item, remote: true do |f| %>
+	<%= f.hidden_field :product_id, value: c %>
+	<%= button_tag(type: 'submit', class: "admin-index-icons") do %>
+		<i title="Добавить к сравнению" class="glyphicon glyphicon-stats"></i>
+	<% end %>
+<% end %>

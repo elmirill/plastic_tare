@@ -1,8 +1,8 @@
 <% if @comparison_items.size == 3 %>
-		<div class="comp-wrapper comp-product-wrapper-3">
-	<% else %>
-		<div class="comp-wrapper comp-product-wrapper-2">
-	<% end %>
+	<div class="comp-wrapper comp-product-wrapper-3" id="comp-wrapper-<%= c.id %>">
+<% else %>
+	<div class="comp-wrapper comp-product-wrapper-2" id="comp-wrapper-<%= c.id %>">
+<% end %>
 	<table class="comp comp-product">
 		<tr><th title="<%= c.product.name %>"><%= c.product.name %></th></tr>
 		<tr><td class="comp-thumb-td comp-product-thumb-td text-center">

@@ -1,3 +1,5 @@
-$("#cart").html("<%= escape_javascript(render 'shared/sidebar_cart') %>");
-$(".shopping-cart").load(document.URL + ' .shopping-cart');
-$("#content").load(document.URL + ' #content');
+$("#cart").html("<%=j render 'shared/sidebar_cart' %>");
+$('.cart-row#order-item-<%= @order_item.id %>').slideUp(300);
+
+$('#module-cart-<%= @order_item.product_id %>').empty()
+	.html('<%=j render 'order_items/add_link', o: @order_item.product_id %>');

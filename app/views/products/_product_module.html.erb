@@ -54,36 +54,19 @@
 			<p class="product-index-price">&nbsp;</p>
 		<% end %>
 		
-		<div class="module-comparison">
+		<div class="module-comparison" id="module-comparison-<%= product.id %>">
 			<% if current_comparison.comparison_items.any? { |ci| ci.product_id == product.id } %>
-				<%= link_to comparison_item_by_product_id(product.id), method: :delete, remote: true, class: "admin-index-icons" do %>
-					<i title="В сравнении. Удалить?" class="glyphicon glyphicon-stats added"></i>
-				<% end %>
+				<%= render 'comparison_items/remove_link', c: product.id %>
 			<% else %>
-				<%= form_for @new_comparison_item, remote: true do |f| %>
-					<%= f.hidden_field :product_id, value: product.id %>
-					<%= button_tag(type: 'submit', class: "admin-index-icons") do %>
-						<i title="Добавить к сравнению" class="glyphicon glyphicon-stats"></i>
-					<% end %>
-				<% end %>
+				<%= render 'comparison_items/add_link', c: product.id %>
 			<% end %>
 		</div>
 	
-		<div class="module-cart">
+		<div class="module-cart" id="module-cart-<%= product.id %>">
 			<% if current_order.order_items.any? { |oi| oi.product_id == product.id } %>
-				<%= link_to order_item_by_product_id(product.id), method: :delete, remote: true, class: "admin-index-icon-cart" do %>
-					<i title="В корзине. Удалить?" class="glyphicon glyphicon-shopping-cart added"></i>
-				<% end %>
+				<%= render 'order_items/remove_link', o: product.id %>
 			<% else %>
-				<%= form_for @new_order_item, remote: true do |f| %>
-					<%= f.hidden_field :product_id, value: product.id %>
-					<%= f.hidden_field :color_quantity, value: 0 %>
-					<%= f.hidden_field :high_quantity, value: 0 %>
-					<%= f.hidden_field :spec_quantity, value: 0 %>
-					<%= button_tag(type: 'submit', class: "admin-index-icon-cart") do %>
-						<i title="Добавить в корзину" class="glyphicon glyphicon-shopping-cart"></i>
-					<% end %>
-				<% end %>
+				<%= render 'order_items/add_link', o: product.id %>
 			<% end %>
 		</div>
 

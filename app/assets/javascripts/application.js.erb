@@ -175,3 +175,14 @@ $(document).ready(function() {
 	
 });
 
+
+// Infobox
+function infobox(text) {
+	$('.infobox').html(text)
+	
+	if ($('.infobox').css('display') == 'none') {
+		$('.infobox').slideDown("fast").delay(5000).slideUp("fast");
+	} else {
+		$('.infobox').finish().show().delay(5000).slideUp("fast");
+	}
+}

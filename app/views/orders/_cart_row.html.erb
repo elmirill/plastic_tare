@@ -1,8 +1,8 @@
-<div class="row cart-row">
+<div class="row cart-row" id="order-item-<%= order_item.id %>">
 	<div class="row">
 		<h3 class="cart-title">
 			<%= product.name %>
-			<%= link_to order_item, { data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "admin-icon-delete-cart-row" } do %>
+			<%= link_to order_item, method: :delete, remote: true, class: "admin-icon-delete-cart-row" do %>
 				<i class="glyphicon glyphicon-remove"></i>
 			<% end %>
 		</h3>

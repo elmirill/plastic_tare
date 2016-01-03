@@ -1,2 +1,14 @@
-$("#comparison").html("<%= escape_javascript(render 'shared/sidebar_comparison') %>");
-$("#content").load(document.URL + ' #content');
+$('#comparison').html('<%=j render 'shared/sidebar_comparison' %>');
+
+$('#comp-wrapper-<%= @comparison_item.id %>').fadeOut(300, function() {
+	$(this).remove();
+});
+if ($('.comp-wrapper').length == 2) {
+	$('.comp-keys-wrapper').fadeOut();
+	$('#show_comparison').append('<%=j render 'comparisons/empty_comparisons_text' %>');
+	$('html, body').animate({scrollTop: 0}, 800);
+}
+
+$('#module-comparison-<%= @comparison_item.product_id %>').empty()
+	.html('<%=j render 'comparison_items/add_link', c: @comparison_item.product_id %>');
+

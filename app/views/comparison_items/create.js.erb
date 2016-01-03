@@ -1,14 +1,10 @@
 <% if @comparison.errors.any? || @comparison_item.errors.any? %>
 	alert("Максимум три товара.");
 <% else %>
-  $('#comparison').html("<%= escape_javascript(render 'shared/sidebar_comparison') %>");
-  $('#content').load(document.URL + ' #content');
+  $('#comparison').html("<%=j render 'shared/sidebar_comparison' %>");
+
+		$('#module-comparison-<%= @comparison_item.product_id %>').empty()
+			.html('<%=j render 'comparison_items/remove_link', c: @comparison_item.product_id %>');
 	
-	$('.infobox').html('<p>Добавлено <%= link_to " в сравнение", comparison_path, class: "admin-edit-link" %></p>')
-	
-	if ($('.infobox').css('display') == 'none') {
-		$('.infobox').slideDown("fast").delay(5000).slideUp("fast");
-	} else {
-		$('.infobox').finish().show().delay(5000).slideUp("fast");
-	}
+	infobox('<p>Добавлено <%= link_to " к сравнению", comparison_path, class: "admin-edit-link" %></p>');
 <% end %>

@@ -1,0 +1,9 @@
+<%= form_for @new_order_item, remote: true do |f| %>
+	<%= f.hidden_field :product_id, value: o %>
+	<%= f.hidden_field :color_quantity, value: 0 %>
+	<%= f.hidden_field :high_quantity, value: 0 %>
+	<%= f.hidden_field :spec_quantity, value: 0 %>
+	<%= button_tag(type: 'submit', class: "admin-index-icon-cart") do %>
+		<i title="Добавить в корзину" class="glyphicon glyphicon-shopping-cart"></i>
+	<% end %>
+<% end %>

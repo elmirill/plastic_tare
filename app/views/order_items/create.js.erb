@@ -1,14 +1,10 @@
 <% if @order.errors.any? || @order_item.errors.any? %>
 alert("Продукт недоступен для заказа или уже в корзине");
 <% else %>
-  $("#cart").html("<%= escape_javascript(render 'shared/sidebar_cart') %>");
-	$("#content").load(document.URL + ' #content');
+  $("#cart").html("<%=j render 'shared/sidebar_cart' %>");
 	
-	$('.infobox').html('<p>Добавлено <%= link_to " в корзину", order_path, class: "admin-edit-link" %></p>')
+	$('#module-cart-<%= @order_item.product_id %>').empty()
+		.html('<%=j render 'order_items/remove_link', o: @order_item.product_id %>');
 	
-	if ($('.infobox').css('display') == 'none') {
-		$('.infobox').slideDown("fast").delay(5000).slideUp("fast");
-	} else {
-		$('.infobox').finish().show().delay(5000).slideUp("fast");
-	}
+	infobox('<p>Добавлено <%= link_to " в корзину", order_path, class: "admin-edit-link" %></p>');
 <% end %>
