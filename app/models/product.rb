@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
 	attr_accessor :delete_thumbnail
 	before_validation { thumbnail.clear if delete_thumbnail == '1' }
 	before_save :set_keywords, :set_min_price
+	before_create :set_position
 	validates :name, presence: true, uniqueness: true
 	
 	has_attached_file :thumbnail, styles: {
@@ -86,6 +87,10 @@ class Product < ActiveRecord::Base
 		prices << var_spec_price_2 if var_spec_price_2.present?
 		prices << var_spec_price_3 if var_spec_price_3.present?
 		self.min_price = prices.min
+	end
+	
+	def set_position
+		self.position = 0
 	end
 
 end

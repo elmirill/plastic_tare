@@ -1441,6 +1441,7 @@ max-width:1210px;
 
 .infobox {
 	display: none;
+	z-index: 999;
 	position: fixed;
 	left: 30px;
 	bottom: 30px;

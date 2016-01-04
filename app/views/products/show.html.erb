@@ -1,245 +1,222 @@
-<% @product.meta_title.present? ? meta_title(@product.meta_title) : meta_title(@product.name) %>
-<% meta_description(@product.meta_description)  %>
-<div id="show-product-title-wrapper">
-<h1 class="show-product-title"><%= @product.name %></h1>
-	
-	<div class="product-show-cart">
-		<% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
-		<%= link_to order_item_by_product_id(@product.id), method: :delete, remote: true, class: "admin-icon-cart" do %>
-			<i title="В корзине. Удалить?" class="glyphicon glyphicon-shopping-cart added"></i>
-		<% end %>
-	<% else %>
-		<% if @product.active? %>
-			<%= form_for @new_order_item, remote: true do |f| %>
-				<%= f.hidden_field :product_id, value: @product.id %>
-				<%= f.hidden_field :color_quantity, value: 0 %>
-				<%= f.hidden_field :high_quantity, value: 0 %>
-				<%= f.hidden_field :spec_quantity, value: 0 %>
-				<%= button_tag(type: 'submit', class: "admin-icon-cart") do %>
-					<i title="Добавить в корзину" class="glyphicon glyphicon-shopping-cart"></i>
-				<% end %>
+<div id="show-product">
+	<% @product.meta_title.present? ? meta_title(@product.meta_title) : meta_title(@product.name) %>
+	<% meta_description(@product.meta_description)  %>
+	<div id="show-product-title-wrapper">
+	<h1 class="show-product-title"><%= @product.name %></h1>
+
+		<div class="product-show-cart">
+			<% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
+				<%= render 'products/order_comp_links/remove_order_show' %>
+			<% else %>
+				<%= render 'products/order_comp_links/add_order_show' %>
 			<% end %>
-		<% else %>
-			<i title="Продукт недоступен для заказа" class="glyphicon glyphicon-shopping-cart admin-icon-cart icon-product-inactive"></i>
+		</div>
+
+		<div class="product-show-comparison">
+			<% if current_comparison.comparison_items.any? { |ci| ci.product_id == @product.id } %>
+				<%= render 'products/order_comp_links/remove_comp_show' %>
+			<% else %>
+				<%= render 'products/order_comp_links/add_comp_show' %>
+			<% end %>
+		</div>
+
+		<% if admin_signed_in? %>
+			<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
+					<i class="glyphicon glyphicon-pencil"></i>
+			<% end %>
+			<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
+				<i class="glyphicon glyphicon-trash"></i>
+			<% end %>
+			<span class="admin-icon-divider">|</span>
+		<% end %>
+	</div>
+	<div class="clearfix"></div>
+
+	<% if @product.articul? %>
+		Артикул: <%= @product.articul %>
+	<% end %>
+
+	<% if @product.thumbnail.url != 'box_menu.png' %>
+		<%= link_to @product.thumbnail.url(:original), class: "imglink image-popup-fit" do %>
+			<%= image_tag @product.thumbnail.url(:thumb), class: "col-md-4 col-xs-6 mbottom30" %>
 		<% end %>
 	<% end %>
-	</div>
 
-	<div class="product-show-comparison">
-		<% if current_comparison.comparison_items.any? { |ci| ci.product_id == @product.id } %>
-			<%= link_to comparison_item_by_product_id(@product.id), method: :delete, remote: true, class: "admin-icon-comp" do %>
-				<i title="В сравнении. Удалить?" class="glyphicon glyphicon-stats added"></i>
+	<% @product.product_photos.each do |pic| %>
+		<div class="show-gallery">
+			<%= link_to pic.photo.url(:original), class: "imglink image-popup-fit" do %>
+				<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-xs-6 mbottom30" %>
 			<% end %>
-		<% else %>
-			<% if @product.active? %>
-				<%= form_for @new_comparison_item, remote: true do |f| %>
-					<%= f.hidden_field :product_id, value: @product.id %>
-					<%= button_tag(type: 'submit', class: "admin-icon-comp") do %>
-						<i title="Добавить к сравнению" class="glyphicon glyphicon-stats"></i>
+		</div>
+	<% end %>
+
+	<div class="clearfix"></div>
+
+	<div id="show-left-col">
+		<ul>
+			<% if @product.length.present? && @product.width.present? && @product.height.present? %>
+				<li>Внешний размер: <%= "#{@product.length} x #{@product.width} x #{@product.height} мм" %></li>
+			<% elsif @product.diameter.present? && @product.height.present? %>
+				<li>Внешний размер: &#8709;<%= @product.diameter %> x <%= @product.height %> мм</li>
+			<% elsif @product.diameter.present? %>
+				<li>Внешний размер: &#8709;<%= @product.diameter %> мм</li>
+			<% end %>
+
+			<% if @product.inner_length.present? && @product.inner_width.present? && @product.inner_height.present? %>
+				<li>Внутренний размер: <%= "#{@product.inner_length} x #{@product.inner_width} x #{@product.inner_height} мм" %></li>
+			<% elsif @product.inner_diameter.present? && @product.inner_height.present? %>
+				<li>Внутренний размер: &#8709;<%= @product.inner_diameter %> x <%= @product.inner_height %> мм</li>
+			<% elsif @product.inner_diameter.present? %>
+				<li>Внутренний размер: &#8709;<%= @product.inner_diameter %> мм</li>
+			<% end %>
+
+			<% if @product.volume.present? %>
+				<li>Объем: <%= @product.volume %> л</li>
+			<% end %>
+
+			<% if @product.net_volume.present? %>
+				<li>Полезный объем: <%= @product.net_volume %>л</li>
+			<% end %>
+
+			<% if @product.capacity.present? %>
+				<li>Вместимость: <%= @product.capacity %>л</li>
+			<% end %>
+
+			<% if @product.weight.present? %>
+				<li>Вес: <%= @product.weight %> кг</li>
+
+			<% end %>
+
+			<% if @product.side.present? %>
+				<li>Стенки: <%= @product.side %></li>
+			<% end %>
+
+			<% if @product.bottom.present? %>
+				<li>Дно: <%= @product.bottom %></li>
+			<% end %>
+
+			<% if @product.category.name == "Ящики" %>
+				<% unless @product.cover.nil? %>
+					<% if @product.cover %>
+						<li>С крышкой</li>
+					<% else %>
+						<li>Без крышки</li>
 					<% end %>
 				<% end %>
+			<% end %>
+
+			<% if @product.static_load.present? %>
+				<li>Статическая нагрузка: <%= @product.static_load %> кг</li>
+			<% end %>
+
+			<% if @product.dynamic_load.present? %>
+				<li>Динамическая нагрузка: <%= @product.dynamic_load %> кг</li>
+			<% end %>
+
+			<% if @product.rack_load.present? %>
+				<li>Стеллажная нагрузка: <%= @product.rack_load %> кг</li>
+			<% end %>
+		<ul>
+	</div>
+
+	<% if var_prices_any?(@product) || @product.color.present? %>
+		<div id="show-right-col">
+			<% if var_prices_any?(@product) %>
+				<table id="show-prices">
+					<tr>
+						<th></th>
+						<th>До 50 т.р.</th>
+						<th>До 300 т.р.</th>
+						<th>От 300 т.р.</th>
+					</tr>
+					<% if var_color?(@product) %>
+						<tr>
+							<td>Цветной</td>
+							<% if @product.var_color_price_1.present? %>
+								<td><%= @product.var_color_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+							<% if @product.var_color_price_2.present? %>
+								<td><%= @product.var_color_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+							<% if @product.var_color_price_3.present? %>
+								<td><%= @product.var_color_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+						</tr>
+					<% end %>
+					<% if var_high?(@product) %>
+						<tr>
+							<td>Высший сорт</td>
+							<% if @product.var_high_price_1.present? %>
+								<td><%= @product.var_high_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+							<% if @product.var_high_price_2.present? %>
+								<td><%= @product.var_high_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+							<% if @product.var_high_price_3.present? %>
+								<td><%= @product.var_high_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+						</tr>
+					<% end %>
+					<% if var_spec?(@product) %>
+						<tr>
+							<td>Спецпредложение</td>
+							<% if @product.var_spec_price_1.present? %>
+								<td><%= @product.var_spec_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+							<% if @product.var_spec_price_2.present? %>
+								<td><%= @product.var_spec_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+							<% if @product.var_spec_price_3.present? %>
+								<td><%= @product.var_spec_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
+							<% end %>
+						</tr>
+					<% end %>
+				</table>
+			<% end %>
+
+			<br>
+			<% if @product.color.present? %>
+				<div class="product-colors-show">
+					<% @product.color.split(/\W+/).delete_if(&:blank?).each do |color| %>
+						<div id="<%= color %>-color" class="product-color"></div>
+					<% end %>
+					<div class="clearfix"></div>
+				</div>
+			<% end %>
+
+		</div>
+	<% end %>
+	<div class="clearfix"></div>
+
+	<% if @product.description.present? %>
+		<%= @product.description.html_safe %>
+	<% end %>
+
+	<br>
+	<% if @product.active? %>
+		<% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
+			<%= link_to "Удалить из корзины", order_item_by_product_id(@product.id), method: :delete, remote: true, class: "btn btn-primary" %>
 			<% else %>
-				<i title="Продукт недоступен для сравнения" class="glyphicon glyphicon-stats admin-icon-comp icon-product-inactive"></i>
+				<%= form_for @new_order_item, remote: true do |f| %>
+					<%= f.hidden_field :product_id, value: @product.id %>
+					<%= f.hidden_field :color_quantity, value: 0 %>
+					<%= f.hidden_field :high_quantity, value: 0 %>
+					<%= f.hidden_field :spec_quantity, value: 0 %>
+					<%= f.submit "Добавить в корзину", class: "btn btn-primary" %>
 			<% end %>
 		<% end %>
-	</div>
-	
- 	<% if admin_signed_in? %>
-		<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
-				<i class="glyphicon glyphicon-pencil"></i>
-		<% end %>
-		<%= link_to @product, method: :delete, data: { confirm: 'Уверены? Необратимо.' }, class: "admin-icon-delete" do %>
-			<i class="glyphicon glyphicon-trash"></i>
-		<% end %>
-		<span class="admin-icon-divider">|</span>
+	<% else %>
+	<span class="btn btn-primary button-product-inactive">Нет в наличии</span>
 	<% end %>
-</div>
-<div class="clearfix"></div>
 
-<% if @product.articul? %>
-  Артикул: <%= @product.articul %>
-<% end %>
+	<br><br><br>
 
-<% if @product.thumbnail.url != 'box_menu.png' %>
-	<%= link_to @product.thumbnail.url(:original), class: "imglink image-popup-fit" do %>
-		<%= image_tag @product.thumbnail.url(:thumb), class: "col-md-4 col-xs-6 mbottom30" %>
-	<% end %>
-<% end %>
-
-<% @product.product_photos.each do |pic| %>
-	<div class="show-gallery">
-		<%= link_to pic.photo.url(:original), class: "imglink image-popup-fit" do %>
-			<%= image_tag pic.photo.url(:thumb), class: "col-md-4 col-xs-6 mbottom30" %>
-		<% end %>
-	</div>
-<% end %>
-
-<div class="clearfix"></div>
-
-<div id="show-left-col">
-  <ul>
-    <% if @product.length.present? && @product.width.present? && @product.height.present? %>
-      <li>Внешний размер: <%= "#{@product.length} x #{@product.width} x #{@product.height} мм" %></li>
-    <% elsif @product.diameter.present? && @product.height.present? %>
-      <li>Внешний размер: &#8709;<%= @product.diameter %> x <%= @product.height %> мм</li>
-    <% elsif @product.diameter.present? %>
-      <li>Внешний размер: &#8709;<%= @product.diameter %> мм</li>
-    <% end %>
-
-    <% if @product.inner_length.present? && @product.inner_width.present? && @product.inner_height.present? %>
-      <li>Внутренний размер: <%= "#{@product.inner_length} x #{@product.inner_width} x #{@product.inner_height} мм" %></li>
-    <% elsif @product.inner_diameter.present? && @product.inner_height.present? %>
-      <li>Внутренний размер: &#8709;<%= @product.inner_diameter %> x <%= @product.inner_height %> мм</li>
-    <% elsif @product.inner_diameter.present? %>
-      <li>Внутренний размер: &#8709;<%= @product.inner_diameter %> мм</li>
-    <% end %>
-
-    <% if @product.volume.present? %>
-      <li>Объем: <%= @product.volume %> л</li>
-    <% end %>
-
-    <% if @product.net_volume.present? %>
-      <li>Полезный объем: <%= @product.net_volume %>л</li>
-    <% end %>
-
-    <% if @product.capacity.present? %>
-      <li>Вместимость: <%= @product.capacity %>л</li>
-    <% end %>
-
-    <% if @product.weight.present? %>
-      <li>Вес: <%= @product.weight %> кг</li>
-
-    <% end %>
-
-    <% if @product.side.present? %>
-      <li>Стенки: <%= @product.side %></li>
-    <% end %>
-
-    <% if @product.bottom.present? %>
-      <li>Дно: <%= @product.bottom %></li>
-    <% end %>
-		
-		<% if @product.category.name == "Ящики" %>
-			<% unless @product.cover.nil? %>
-				<% if @product.cover %>
-					<li>С крышкой</li>
-				<% else %>
-					<li>Без крышки</li>
-				<% end %>
+			<% if @product.related_products.present? %>
+		<h2>
+			Сопутствующие товары	
+		</h2>
+			<% @product.related_products.order('name ASC').each do |product| %>
+				<%= render 'product_module', product: product  %>
 			<% end %>
-		<% end %>
-
-    <% if @product.static_load.present? %>
-      <li>Статическая нагрузка: <%= @product.static_load %> кг</li>
-    <% end %>
-
-    <% if @product.dynamic_load.present? %>
-      <li>Динамическая нагрузка: <%= @product.dynamic_load %> кг</li>
-    <% end %>
-
-    <% if @product.rack_load.present? %>
-      <li>Стеллажная нагрузка: <%= @product.rack_load %> кг</li>
-    <% end %>
-  <ul>
-</div>
-
-		<% if var_prices_any?(@product) || @product.color.present? %>
-	<div id="show-right-col">
-		<% if var_prices_any?(@product) %>
-			<table id="show-prices">
-				<tr>
-					<th></th>
-					<th>До 50 т.р.</th>
-					<th>До 300 т.р.</th>
-					<th>От 300 т.р.</th>
-				</tr>
-				<% if var_color?(@product) %>
-					<tr>
-						<td>Цветной</td>
-						<% if @product.var_color_price_1.present? %>
-							<td><%= @product.var_color_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-						<% if @product.var_color_price_2.present? %>
-							<td><%= @product.var_color_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-						<% if @product.var_color_price_3.present? %>
-							<td><%= @product.var_color_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-					</tr>
-				<% end %>
-				<% if var_high?(@product) %>
-					<tr>
-						<td>Высший сорт</td>
-						<% if @product.var_high_price_1.present? %>
-							<td><%= @product.var_high_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-						<% if @product.var_high_price_2.present? %>
-							<td><%= @product.var_high_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-						<% if @product.var_high_price_3.present? %>
-							<td><%= @product.var_high_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-					</tr>
-				<% end %>
-				<% if var_spec?(@product) %>
-					<tr>
-						<td>Спецпредложение</td>
-						<% if @product.var_spec_price_1.present? %>
-							<td><%= @product.var_spec_price_1 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-						<% if @product.var_spec_price_2.present? %>
-							<td><%= @product.var_spec_price_2 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-						<% if @product.var_spec_price_3.present? %>
-							<td><%= @product.var_spec_price_3 %> <span><i class="glyphicon glyphicon-ruble"></i></span></td>
-						<% end %>
-					</tr>
-				<% end %>
-			</table>
-		<% end %>
-
-		<br>
-		<% if @product.color.present? %>
-			<div class="product-colors-show">
-				<% @product.color.split(/\W+/).delete_if(&:blank?).each do |color| %>
-					<div id="<%= color %>-color" class="product-color"></div>
-				<% end %>
-				<div class="clearfix"></div>
-			</div>
-		<% end %>
-
-	</div>
-<% end %>
-<div class="clearfix"></div>
-
-<% if @product.description.present? %>
-  <%= @product.description.html_safe %>
-<% end %>
-
-<br>
-<% if @product.active? %>
-	<% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
-		<%= link_to "Удалить из корзины", order_item_by_product_id(@product.id), data: { confirm: "Уверены?" }, method: :delete, remote: true, class: "btn btn-primary" %>
-		<% else %>
-			<%= form_for @new_order_item, remote: true do |f| %>
-				<%= f.hidden_field :product_id, value: @product.id %>
-				<%= f.hidden_field :color_quantity, value: 0 %>
-				<%= f.hidden_field :high_quantity, value: 0 %>
-				<%= f.hidden_field :spec_quantity, value: 0 %>
-				<%= f.submit "Добавить в корзину", class: "btn btn-primary" %>
-		<% end %>
 	<% end %>
-<% else %>
-<span class="btn btn-primary button-product-inactive">Нет в наличии</span>
-<% end %>
-
-<br><br><br>
-
-		<% if @product.related_products.present? %>
-	<h2>
-		Сопутствующие товары	
-	</h2>
-		<% @product.related_products.order('name ASC').each do |product| %>
-			<%= render 'product_module', product: product  %>
-		<% end %>
-<% end %>
+</div>

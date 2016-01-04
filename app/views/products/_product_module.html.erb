@@ -56,17 +56,17 @@
 		
 		<div class="module-comparison" id="module-comparison-<%= product.id %>">
 			<% if current_comparison.comparison_items.any? { |ci| ci.product_id == product.id } %>
-				<%= render 'comparison_items/remove_link', c: product.id %>
+				<%= render 'products/order_comp_links/remove_comp_index', c: product.id %>
 			<% else %>
-				<%= render 'comparison_items/add_link', c: product.id %>
+				<%= render 'products/order_comp_links/add_comp_index', c: product.id %>
 			<% end %>
 		</div>
 	
 		<div class="module-cart" id="module-cart-<%= product.id %>">
 			<% if current_order.order_items.any? { |oi| oi.product_id == product.id } %>
-				<%= render 'order_items/remove_link', o: product.id %>
+				<%= render 'products/order_comp_links/remove_order_index', o: product.id %>
 			<% else %>
-				<%= render 'order_items/add_link', o: product.id %>
+				<%= render 'products/order_comp_links/add_order_index', o: product.id %>
 			<% end %>
 		</div>
 

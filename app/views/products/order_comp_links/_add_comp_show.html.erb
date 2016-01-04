@@ -1,0 +1,10 @@
+<% if @product.active? %>
+	<%= form_for @new_comparison_item, remote: true do |f| %>
+		<%= f.hidden_field :product_id, value: @product.id %>
+		<%= button_tag(type: 'submit', class: "admin-icon-comp") do %>
+			<i title="Добавить к сравнению" class="glyphicon glyphicon-stats"></i>
+		<% end %>
+	<% end %>
+<% else %>
+	<i title="Продукт недоступен для сравнения" class="glyphicon glyphicon-stats admin-icon-comp icon-product-inactive"></i>
+<% end %>

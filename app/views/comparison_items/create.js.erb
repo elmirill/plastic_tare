@@ -3,8 +3,10 @@
 <% else %>
   $('#comparison').html("<%=j render 'shared/sidebar_comparison' %>");
 
-		$('#module-comparison-<%= @comparison_item.product_id %>').empty()
-			.html('<%=j render 'comparison_items/remove_link', c: @comparison_item.product_id %>');
+	$('#module-comparison-<%= @comparison_item.product_id %>').empty()
+		.html('<%=j render 'products/order_comp_links/remove_comp_index', c: @comparison_item.product_id %>');
+	
+	$("#show-product").load(document.URL + ' #show-product');
 	
 	infobox('<p>Добавлено <%= link_to " к сравнению", comparison_path, class: "admin-edit-link" %></p>');
 <% end %>
