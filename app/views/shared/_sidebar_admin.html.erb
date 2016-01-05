@@ -1,18 +1,15 @@
+<p class="admin-p">Вы вошли как <%= current_admin.email %></p>
+<%= link_to "Редактировать", edit_admin_registration_path, class: "admin-link" %> |
+<%= link_to "Выйти", destroy_admin_session_path, method: :delete %>
 <br>
-<% if admin_signed_in? %>
-	<p class="admin-p">Вы вошли как <%= current_admin.email %></p>
-	<%= link_to "Редактировать", edit_admin_registration_path, class: "admin-link" %> |
-	<%= link_to "Выйти", destroy_admin_session_path, method: :delete %>
-	<br>
-	<%= link_to "Управление администраторами", admins_path, class: "admin-link" %>
-	<br><br>
+<%= link_to "Управление администраторами", admins_path, class: "admin-link" %>
+<br><br>
 
-	<%= link_to "Редактировать цены и позиции", "/edit_prices", class: "admin-link" %><br>
-	<%= link_to "Обновить прайс-лист", "/price", class: "admin-link" %><br>
-	<%= link_to "Редактировать акции", "/edit_promos", class: "admin-link" %>
-	<br><br>
+<%= link_to "Редактировать цены и позиции", "/edit_prices", class: "admin-link" %><br>
+<%= link_to "Обновить прайс-лист", "/price", class: "admin-link" %><br>
+<%= link_to "Редактировать акции", "/edit_promos", class: "admin-link" %>
+<br><br>
 
-	<% if CoreSetting.find(1).present? %>
-		<%= link_to "Настройки сайта", '/edit_core_settings', class: "admin-link" %>
-	<% end %>
+<% if CoreSetting.find(1).present? %>
+	<%= link_to "Настройки сайта", '/edit_core_settings', class: "admin-link" %>
 <% end %>

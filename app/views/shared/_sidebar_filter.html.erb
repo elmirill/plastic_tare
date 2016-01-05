@@ -1,10 +1,8 @@
-<% if(params.has_key?(:filter_category)) %>
-
 <div class="catalogue">
 	<ul>
 		<% if category_types_present? %>
-		<h2>Фильтр категории</h2>
-		<%= form_tag products_path, method: :get do %>
+		<h2 id="filter-title">Фильтры <a href="#" id="hide-filter">скрыть</a></h2>
+		<%= form_tag products_path, id: "catalogue-filter", method: :get do %>
 			<li>
 				<h3>Тип</h3>
 				<% Type.all.each do |type| %>
@@ -51,17 +49,10 @@
 			<li>
 				<input name="filter_category" value="<%= params[:filter_category] %>" type="hidden">
 				<%= submit_tag "Фильтровать", class: "btn btn-primary" %>
+				<%= link_to "Сбросить", products_path(filter_category: @curr_cat_id),
+						class: 'admin-edit-link' %>
 			</li>
 		<% end %>
-	<% end %>
-
-		<li class="li-full">
-			<%= link_to products_path(filter_category: @curr_cat_id) do %>
-				<h3>Вся продукция категории</h3>
-			<% end %>
-		</li>
+		<% end %>
 	</ul>
 </div>
-<% else %>
-	<div style="height:12px;"></div>
-<% end %>

@@ -121,11 +121,6 @@ $(document).ready(function() {
 	
 });
 
-// Blink Ready Solutions
-$(document).ready(function() {
-	$('#ready-solutions-inner').delay(1000).fadeOut().fadeIn();
-});
-
 // Sortable Products
 $(document).ready(function() {
 	$('#products-sortable').sortable({
@@ -186,3 +181,40 @@ function infobox(text) {
 		$('.infobox').finish().show().delay(5000).slideUp("fast");
 	}
 }
+
+// Catalogue filter visibility
+$(document).ready(function() {
+	
+	// Hide on load
+	setTimeout(function() {
+		hideFilters();
+	}, 500);
+	
+	// Show on click
+	$('#filter-title').on('click', '#show-filter', function(e) {
+		e.preventDefault();
+		showFilters();
+	});
+	
+	// Hide on click
+	$('#filter-title').on('click', '#hide-filter', function(e) {
+		e.preventDefault();
+		hideFilters();
+	});
+	
+});
+
+
+function hideFilters() {
+	$('#catalogue-filter').slideUp(function() {
+		$('#filter-title').html('<a href="#" id="show-filter">Показать фильтры</a>');
+	});
+}
+
+function showFilters() {
+	$('#catalogue-filter').slideDown(function() {
+		$('#filter-title')
+			.html('Фильтры <a href="#" id="hide-filter">скрыть</a>');
+	});
+}
+

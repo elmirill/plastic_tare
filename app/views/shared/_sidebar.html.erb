@@ -1,21 +1,25 @@
 <div id="sidebar" class="clearfix">
 
-	<%= render 'shared/sidebar_filter' %>
+	<% if(params.has_key?(:filter_category)) %>
+		<%= render 'shared/sidebar_filter' %>
+	<% end %>
 	
-<!--	<%= render 'shared/sidebar_applications' %>-->
+	<% if request.original_url != applications_url %>
+		<%= render 'shared/sidebar_ready_solutions' %>
+	<% end %>
 
 	<%= render 'shared/sidebar_search' %>
-	
-	<br>
+
 	<div id="comparison" class="sidebar-widget">
 		<%= render 'shared/sidebar_comparison' %>
 	</div>	
 
-	<br>
 	<div id="cart" class="sidebar-widget">
 		<%= render 'shared/sidebar_cart' %>
 	</div>
-
-	<%= render 'shared/sidebar_admin' %>
+	
+	<% if admin_signed_in? %>
+		<%= render 'shared/sidebar_admin' %>
+	<% end %>
 
 </div>
