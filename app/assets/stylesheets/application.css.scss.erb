@@ -199,7 +199,7 @@ input[type="checkbox"] {
 }
 .btn-default {
 	background-color: #ccc;
-	&:hover, &:active, &:focus {
+	&:hover, &:active, &:focus, &:active:hover, &:active:focus {
 		background-color: #ddd;
 		color :inherit;
 		border: 1px solid rgba(0, 0, 0, 0.05);
@@ -208,7 +208,7 @@ input[type="checkbox"] {
 .btn-primary {
 	color: #333;
 	background-color: #E98A8A;
-	&:hover, &:active, &:focus {
+	&:hover, &:active, &:focus, &:active:hover, &:active:focus {
 		background-color: #A0D0A2;
 		color :inherit;
 		border: 1px solid rgba(0, 0, 0, 0.05);
@@ -581,7 +581,7 @@ font-weight:300;
 	text-align: center;
 	background: #E8F5E9;
 	padding: 5px 5px 0px 5px;
-	width: 16.666%;
+	width: <%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%;
 	border-right: 1px solid rgba(0, 0, 0, 0.04);
 	border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 	position: relative;

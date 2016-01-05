@@ -19,38 +19,15 @@
 						</div>
 					<%end %>	
 				<% end %>
-				
-				<%= link_to applications_path do %>
-					<% if current_controller?("applications") %>
-						<div id="ready_solutions" class="production_category production_category_active clearfix">
-					<% else %>
-						<div id="ready_solutions" class="production_category clearfix">
-					<% end %>
-					
-						<div id="ready-solutions-inner">
-							<%= image_tag("solutions.png", class: "category_icon hidden-sm hidden-xs") %>
-							<div class="category_name_menu">
-								<div class="name_menu_aligner">
-									<p>Готовые решения</p>
-								</div>
-							</div>
-						</div>
-							
-					</div>
-				<%end %>
-				
 			</div>	
 		</div>
 	</div>
 </div>
 
 <div id="cat-menu-appearer" style="width:100%; display:none;" class="row clearfix">
-	<div style="width:16.666%;" class="clearfix">
+	<div style="width: <%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%;" class="clearfix">
 		<%= image_tag('box_menu.png', class: "category-icon-hidden hidden-xs") %>
 	 	<div style="height:45px; line-height:1.2; font-size:1em;">
     </div>
 	</div>
 </div>
-
-
-			       					
