@@ -1,15 +1,22 @@
 <% meta_title "Готовые решения по сферам применения" %>
+
 <h1>Готовые решения по сферам применения</h1>
-	
 <br>
 
 <div class="row">
 	<% @applications.each do |application| %>
-<div class="col-md-4 col-sm-6">
-	<%= image_tag 'http://lorempixel.com/250/210/cats' %>
-	<h2><%= link_to application.name, application %></h2>
-</div>
-<% end %>
+		<div class="col-md-4 col-xs-6 application">
+			<%= link_to application, class: 'no-border' do %>
+				<% application.products.order("RANDOM()").first(4).each do |p| %>
+					<%= image_tag p.thumbnail.url(:thumb), class: 'application-thumb' %>
+				<% end %>
+				<div class="clearfix"></div>
+			<% end %>
+			<div class="application-name">
+				<h3><%= link_to application.name, application %></h3>
+			</div>
+		</div>
+	<% end %>
 </div>
 
 

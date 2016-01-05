@@ -1,6 +1,6 @@
 <div id="production-menu-wrapper" class="clearfix collapse navbar-collapse">
 	<div id="production_menu" class="clearfix">
-		<div class="row clearfix">
+		<div class="main-row clearfix">
 			<div id="production-menu-inner" class="clearfix">
 			
 				<% @categories.each do |category| %>
@@ -24,7 +24,7 @@
 	</div>
 </div>
 
-<div id="cat-menu-appearer" style="width:100%; display:none;" class="row clearfix">
+<div id="cat-menu-appearer" style="width:100%; display:none;" class="main-row clearfix">
 	<div style="width: <%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%;" class="clearfix">
 		<%= image_tag('box_menu.png', class: "category-icon-hidden hidden-xs") %>
 	 	<div style="height:45px; line-height:1.2; font-size:1em;">
