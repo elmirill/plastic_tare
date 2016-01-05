@@ -2,11 +2,16 @@
 <h1>Готовые решения по сферам применения</h1>
 	
 <br>
-	
 
-<% @applications.each do |application| %>
+<div class="row">
+	<% @applications.each do |application| %>
+<div class="col-md-4 col-sm-6">
+	<%= image_tag 'http://lorempixel.com/250/210/cats' %>
 	<h2><%= link_to application.name, application %></h2>
+</div>
 <% end %>
+</div>
+
 
 <% if admin_signed_in? %>
 	<%= link_to 'Новая сфера', new_application_path, class: "admin-edit-link-right" %>
