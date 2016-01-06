@@ -10,7 +10,7 @@
 						<% else %>
 							<div class="production_category clearfix">
 						<% end %>
-								<%= image_tag(category.icon, class: "category_icon hidden-sm hidden-xs") %>
+								<%= image_tag category.thumbnail.url, class: "category_icon hidden-sm hidden-xs" %>
 						 	<div class="category_name_menu">
 						 		<div class="name_menu_aligner">
 					      	<%= category.name %>
@@ -25,7 +25,7 @@
 </div>
 
 <div id="cat-menu-appearer" style="width:100%; display:none;" class="main-row clearfix">
-	<div style="width: <%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%;" class="clearfix">
+	<div style="width: <%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%;" class="clearfix">
 		<%= image_tag('box_menu.png', class: "category-icon-hidden hidden-xs") %>
 	 	<div style="height:45px; line-height:1.2; font-size:1em;">
     </div>

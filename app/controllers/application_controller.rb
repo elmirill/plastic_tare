@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 	
 	def get_categories
-		@categories = Category.all
+		@categories = Category.all.order("position ASC")
   end
 	
 	def get_promo

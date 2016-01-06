@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 	end
   resources :pages
   resources :products
-  resources :categories
+	resources :categories, except: :show
 	resources :promos, only: [:edit, :update]
 	resource :order do
 		collection do

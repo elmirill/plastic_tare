@@ -1,0 +1,45 @@
+
+<%= simple_form_for(@category) do |f| %>
+  
+	<div class="actions">
+		<%= button_tag(type: 'submit', class: "admin-icon-submit") do %>
+			<i class="glyphicon glyphicon-ok"></i> 
+		<% end %>
+		<%= link_to categories_path, class: "admin-icon-return" do %>
+			<i class="glyphicon glyphicon-arrow-left"></i>
+		<% end %>
+	</div>
+
+  <div class="form-inputs">
+	
+  	<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Название" %>
+				<%= f.text_field :name, class: "form-field-admin" %>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Позиция" %>
+				<%= f.number_field :position, class: "form-field-admin" %>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="field col-xs-12">
+				<%= f.label "Изображение" %>
+				<%= f.file_field :thumbnail, class: "form-field-admin" %>
+			</div>
+		</div>
+
+  </div>
+  
+  <br>
+
+	<div class="actions">
+		<%= link_to 'Назад', categories_path, class: "admin-edit-link-back" %>
+		<%= f.submit "Создать/Обновить", class: "btn btn-primary" %>
+	</div>
+	
+<% end %>
