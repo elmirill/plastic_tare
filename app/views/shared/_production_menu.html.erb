@@ -6,9 +6,11 @@
 				<% @categories.each do |category| %>
 					<%= link_to products_path(filter_category: category.id) do %>
 						<% if category.id == @curr_cat_id %>
-							<div class="production_category production_category_active clearfix">
+							<div class="production_category production_category_active clearfix"
+								style="width: <%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%;">
 						<% else %>
-							<div class="production_category clearfix">
+							<div class="production_category clearfix"
+								style="width: <%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%;">
 						<% end %>
 								<%= image_tag category.thumbnail.url, class: "category_icon hidden-sm hidden-xs" %>
 						 	<div class="category_name_menu">

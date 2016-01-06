@@ -18,11 +18,13 @@
 					<% end %>
 				<% end %>
 			</li>
-			<li>		
-				<h3>Объем</h3>
-				<%= number_field_tag('minvol', params[:minvol]) %> л&nbsp;&nbsp; —&nbsp;
-				<%= number_field_tag('maxvol', params[:maxvol]) %> л
-			</li>	
+			<% if Category.find(@curr_cat_id).name != "Паллеты" %>
+				<li>		
+					<h3>Объем</h3>
+					<%= number_field_tag('minvol', params[:minvol]) %> л&nbsp;&nbsp; —&nbsp;
+					<%= number_field_tag('maxvol', params[:maxvol]) %> л
+				</li>	
+			<% end %>
 			<li>
 				<h3>Длина</h3>
 				<%= number_field_tag('minlen', params[:minlen]) %> мм —
