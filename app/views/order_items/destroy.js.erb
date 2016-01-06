@@ -1,5 +1,15 @@
 $("#cart").html("<%=j render 'shared/sidebar_cart' %>");
-$('.cart-row#order-item-<%= @order_item.id %>').slideUp(300);
+
+$('.cart-row#order-item-<%= @order_item.id %>').slideUp(300, function() {
+	this.remove();
+});
+
+if ($('.cart-row').length == 1) {
+	$('.cart-total-price').fadeOut(300);
+	$('.shopping-cart .edit_order').fadeOut(300, function() {
+		$('.shopping-cart').append('<%=j render 'orders/empty_orders_text' %>');
+	});
+}
 
 $('#module-cart-<%= @order_item.product_id %>').empty()
 	.html('<%=j render 'products/order_comp_links/add_order_index', o: @order_item.product_id %>');

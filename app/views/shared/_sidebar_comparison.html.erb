@@ -4,7 +4,7 @@
 		<% current_comparison.comparison_items.each do |comparison_item| %>
 			<li>
 				<%= comparison_item.product.name %>
-				<%= link_to comparison_item_by_product_id(comparison_item.product.id), method: :delete, remote: true, class: "inline-icons" do %>
+				<%= link_to comparison_item_by_product_id(comparison_item.product.id), method: :delete, remote: true, class: "inline-icons no-border" do %>
 					<i title="В сравнении. Удалить?" class="glyphicon glyphicon-remove"></i>
 				<% end %>
 			</li>

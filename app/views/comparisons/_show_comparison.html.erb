@@ -7,10 +7,7 @@
 
 
 <% if @comparison_items.size == 0 %>
-  <p>
-		Пожалуйста, <%= link_to "вернитесь в каталог", products_path(filter_category: Category.first.id) %> чтобы добавить товары к сравнению.
-  </p>
-  
+	<%= render 'empty_comparisons_text' %>
 <% else %>
 	<div class="comp-wrapper comp-keys-wrapper">
 		<table class="comp comp-keys">
