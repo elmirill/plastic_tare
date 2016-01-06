@@ -7,7 +7,7 @@
 	<% @applications.each do |application| %>
 		<div class="col-md-4 col-xs-6 application">
 			<%= link_to application, class: 'no-border' do %>
-				<% application.products.order("RANDOM()").first(4).each do |p| %>
+				<% solutions_generate_thumb_list(application).each do |p| %>
 					<%= image_tag p.thumbnail.url(:thumb), class: 'application-thumb' %>
 				<% end %>
 				<div class="clearfix"></div>

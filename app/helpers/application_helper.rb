@@ -26,4 +26,12 @@ module ApplicationHelper
 		end
 	end
 	
+	def solutions_generate_thumb_list(application)
+		products_for_thumbs = application.products.order("RANDOM()").first(4)
+		while products_for_thumbs.size < 4
+			products_for_thumbs << application.products.order("RANDOM()").first
+		end
+		products_for_thumbs
+	end
+	
 end
