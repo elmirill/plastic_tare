@@ -10,7 +10,6 @@ gem 'turbolinks'
 gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'ckeditor', '~> 4.1.2'
 gem 'devise', '~> 3.5.1'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'paperclip', '~> 4.3.0'
@@ -25,6 +24,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'capistrano-unicorn', '~> 0.2.0'
 gem 'magnific-popup-rails', '~> 0.9.9.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem 'wysiwyg-rails', '~> 2.0', '>= 2.0.3'
 
 group :development, :test do
   gem 'byebug'

@@ -15,12 +15,33 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require ckeditor/init
 //= require cocoon
 //= require turbolinks
 //= require bxslider
 //= require jquery-smooth-scroll
 //= require magnific-popup
+//= require froala_editor.min.js
+//= require languages/ru.js
+//= require plugins/char_counter.min.js
+//= require plugins/code_beautifier.min.js
+//= require plugins/code_view.min.js
+//= require plugins/colors.min.js
+//= require plugins/emoticons.min.js
+//= require plugins/file.min.js
+//= require plugins/font_family.min.js
+//= require plugins/font_size.min.js
+//= require plugins/fullscreen.min.js
+//= require plugins/image.min.js
+//= require plugins/image_manager.min.js
+//= require plugins/link.min.js
+//= require plugins/lists.min.js
+//= require plugins/paragraph_format.min.js
+//= require plugins/paragraph_style.min.js
+//= require plugins/quote.min.js
+//= require plugins/save.min.js
+//= require plugins/table.min.js
+//= require plugins/url.min.js
+//= require plugins/video.min.js
 //= require_tree .
 
 // Fix navbar when scrolled
@@ -41,6 +62,7 @@ $(window).scroll(function(){
 		$('#callme-shrinked').addClass('hidden');
 	}
 });
+
 
 // Fix category menu when scrolled
 $(window).scroll(function(){
@@ -65,10 +87,29 @@ $(window).scroll(function(){
 	}
 });
 
+
+// Init Froala Editor
+$(function() {
+	$('.froala').froalaEditor({
+		language: 'ru',
+		toolbarButtons: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'],
+		toolbarButtonsMD: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'],
+		toolbarButtonsSM: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'],
+		toolbarButtonsXS: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html']
+	})
+});
+
+// And a bottle of rum!
+$(document).ready(function(){
+	$( "a:contains('nlicensed')" ).closest('div').remove();
+});
+
+
 // Toggle production menu
 function toggleDiv(toggleId) {
    $("#"+toggleId).slideToggle(200);
 }
+
 
 // Initialize bxSlider
 $(document).ready(function(){
@@ -78,6 +119,7 @@ $(document).ready(function(){
 		pager: false
 	});
 });
+
 
 // Initialize Magnific Popup
 $(document).ready(function() {
@@ -99,10 +141,12 @@ $(document).ready(function() {
 	});
 });
 
+
 // Initialize Smooth Scroll
 $(document).ready(function() {
 	$('a.scroll').smoothScroll();
 });
+
 
 // Scroll to Top
 $(document).ready(function() {
@@ -121,6 +165,7 @@ $(document).ready(function() {
 	
 });
 
+
 // Sortable Products
 $(document).ready(function() {
 	$('#products-sortable').sortable({
@@ -132,12 +177,14 @@ $(document).ready(function() {
 	});
 });
 
+
 // Init ckeditor with turbolinks
 $(document).bind('page:change', function() {
   $('.ckeditor').each(function() {
     CKEDITOR.replace($(this).attr('id'));
   });
 });
+
 
 // Fade in table headings for edit prices and positions
 $(document).ready(function() {
@@ -217,3 +264,11 @@ function showFilters() {
 			.html('Фильтры <a href="#" id="hide-filter">скрыть</a>');
 	});
 }
+
+
+// Submit order form on blur
+//$(document).ready(function() {
+//	$('.cart-quantity').blur(function() {
+//		$(this).closest("form").submit();
+//	});
+//});

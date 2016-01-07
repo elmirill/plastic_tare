@@ -17,13 +17,11 @@
 				<%= f.text_field :name, label: false, class: "form-field-admin" %>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="field col-xs-12 mbottom20">
-				<%= f.label "Описание" %><br>	
-				<%= f.cktext_area :description, label: false, class: "form-field-admin, ckeditor",
-						ckeditor: { language: 'ru' } %>
-			</div>
+			
+		<div class="field mbottom30">
+			<%= f.label "Описание", class: "mleft15" %><br>	
+			<%= f.input :description, label: false,
+					input_html: { class: "form-field-admin froala" } %>
 		</div>
 		
 		<div class="row">
