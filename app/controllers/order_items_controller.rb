@@ -7,6 +7,9 @@ class OrderItemsController < ApplicationController
     @order.save
 		session[:order_id] = @order.id
   end
+	
+	def edit
+	end
 
   def update
 		@order_item.update_attributes(order_item_params)

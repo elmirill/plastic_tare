@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 	match '/send_form', to: 'contact_form_mailer#send_form', via: 'post'
 	match '/edit_prices', to: 'products#edit_prices_and_positions', as: :edit_prices, via: 'get'
 	match '/update_prices', to: 'products#update_prices_and_positions', as: :update_prices, via: 'put'
+	get 'send_order_email', to: 'orders#send_order_email', as: :send_order_email
 	
 
 	devise_for :admins, controllers: { registrations: 'registrations'}

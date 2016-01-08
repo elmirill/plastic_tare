@@ -18,17 +18,24 @@
 	<h2 class="cart-total-price">Итого: <%= @order.total %> <i class='glyphicon glyphicon-ruble'></i></h2>
 	<div class="clearfix"></div>
 
-	<%= form_for @order do |f| %>
+<%= form_for @order, remote: true do |f| %>
 		<div class="mail-cart-info col-sm-4">
-			<%= f.text_field :customer_name, required: true, placeholder: "Ваше имя", class: "form-field-cart" %>
-			<%= f.text_field :customer_contact, required: true, placeholder: "Контактная информация", class: "form-field-cart" %>
+			<%= f.text_field :customer_name, placeholder: "Ваше имя", class: "form-field-cart" %>
+			<%= f.text_field :customer_contact, placeholder: "Контактная информация", class: "form-field-cart" %>
 		</div>
 		<div class="mail-cart-message col-sm-8">
 			<%= f.text_area :customer_message, placeholder: "Сообщение (опционально)", class: "form-area-cart" %>
 		</div>
 
-		<%= f.submit "Отправить заказ", class: "btn btn-primary cart-submit" %>
-<%= link_to "Очистить корзину", empty_order_path, method: :get, class: "btn btn-default cart-submit", data: { confirm: "Уверены?" }  %>
+	<div id="order-form-controls">
+		<% f.submit "Save", class: "btn" %>
+		<%= link_to "Отправить заказ", send_order_email_path, class: "btn btn-primary cart-submit" %>
+		<%= link_to "Сохранить как PDF", order_path(format: 'pdf'),
+			class: "btn btn-default cart-submit" %>
+		<%= link_to "Очистить корзину", empty_order_path, method: :get,
+	class: "admin-edit-link cart-submit cart-submit-link", data: { confirm: "Уверены?" }  %>
+	</div>
+
 	<% end %>
 	
 <% end %>

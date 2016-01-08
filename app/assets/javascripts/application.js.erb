@@ -90,12 +90,13 @@ $(window).scroll(function(){
 
 // Init Froala Editor
 $(function() {
+	var modules = ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'];
 	$('.froala').froalaEditor({
 		language: 'ru',
-		toolbarButtons: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'],
-		toolbarButtonsMD: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'],
-		toolbarButtonsSM: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html'],
-		toolbarButtonsXS: ['paragraphFormat', 'fontFamily', 'fontSize', '|', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'color', 'emoticons', '|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', '|', 'insertHR', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'undo', 'redo', 'clearFormatting', 'fullscreen', 'html']
+		toolbarButtons: modules,
+		toolbarButtonsMD: modules,
+		toolbarButtonsSM: modules,
+		toolbarButtonsXS: modules
 	})
 });
 
@@ -266,9 +267,19 @@ function showFilters() {
 }
 
 
-// Submit order form on blur
+// Submit order item form on blur
 //$(document).ready(function() {
 //	$('.cart-quantity').blur(function() {
 //		$(this).closest("form").submit();
 //	});
 //});
+
+// Submit order form on blur
+$(document).ready(function() {
+	$('.form-area-cart').blur(function() {
+		$(this).closest("form").submit();
+	});
+	$('.form-field-cart').blur(function() {
+		$(this).closest("form").submit();
+	});
+});

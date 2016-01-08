@@ -1,2 +1,3 @@
-$("#cart").html("<%= escape_javascript(render 'shared/sidebar_cart') %>");
-$(".shopping-cart").load(document.URL + ' .shopping-cart');
+$("#cart").html('<%=j render 'shared/sidebar_cart' %>');
+$(".order-item-<%= @order_item.id %>").replaceWith('<%=j render 'orders/cart_row', order_item: @order_item, product: @order_item.product %>');
+//$('#cart-rows').append

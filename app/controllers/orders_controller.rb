@@ -3,6 +3,15 @@ class OrdersController < ApplicationController
 	
   def show
 		@order_items = @order.order_items.order(params.fetch(:sort, "created_at ASC"))
+		respond_to do |format|
+			format.html
+			format.pdf do 
+				pdf = OrderPdf.new(@order)
+				send_data pdf.render,
+				filename: "order_#{Time.now.strftime("%d.%m.%Y")}.pdf",
+				type: 'application/pdf'
+			end
+		end
   end
 	
 	def empty
@@ -19,16 +28,15 @@ class OrdersController < ApplicationController
 	end
 	
 	def update
+		@order.update(order_params)
+	end
+	
+	def send_order_email
 		@to = @core_setting.main_email
-		if @order.update(order_params)
-			if CartMailer.send_cart_contents(@order, @to).deliver
-				redirect_to :back, notice: 'Заказ отправлен.'
-			else
-				flash.now[:alert] = 'Ошибка! Заказ не отправлен.'
-				render :cart
-			end
+		if CartMailer.send_cart_contents(@order, @to).deliver
+			redirect_to :back, notice: 'Заказ отправлен.'
 		else
-			flash.now[:alert] = 'Ошибка! Заказ не сохранен.'
+			flash.now[:alert] = 'Ошибка! Заказ не отправлен.'
 			render :cart
 		end
 	end

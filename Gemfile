@@ -25,6 +25,8 @@ gem 'capistrano-unicorn', '~> 0.2.0'
 gem 'magnific-popup-rails', '~> 0.9.9.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'wysiwyg-rails', '~> 2.0', '>= 2.0.3'
+gem 'prawn', '~> 2.0', '>= 2.0.2'
+gem 'prawn-table', '~> 0.2.2'
 
 group :development, :test do
   gem 'byebug'
