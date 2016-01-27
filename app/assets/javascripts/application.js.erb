@@ -179,14 +179,6 @@ $(document).ready(function() {
 });
 
 
-// Init ckeditor with turbolinks
-$(document).bind('page:change', function() {
-  $('.ckeditor').each(function() {
-    CKEDITOR.replace($(this).attr('id'));
-  });
-});
-
-
 // Fade in table headings for edit prices and positions
 $(document).ready(function() {
 	
@@ -283,3 +275,29 @@ $(document).ready(function() {
 		$(this).closest("form").submit();
 	});
 });
+
+
+// Handle production menu aligning between desktop and mobile
+$(document).ready(function() {
+  
+  if ($(document).width() < 855) {
+    alignProdMenuVert();
+  }
+  
+  $(window).resize(function(){
+    if ($(document).width() < 855) {
+      alignProdMenuVert();
+    } else {
+      alignProdMenuHor();
+    }
+  });
+  
+});
+
+function alignProdMenuVert() {
+  $('.production_category').css("width", "100%");
+}
+
+function alignProdMenuHor() {
+  $('.production_category').css("width", "<%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%");
+}
