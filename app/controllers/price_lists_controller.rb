@@ -6,9 +6,9 @@ class PriceListsController < ApplicationController
 	
 	def update
 		if @price_list.update(price_params)
-			redirect_to price_path, notice: "Прайс-лист обновлен."
+			redirect_to price_list_path, notice: "Прайс-лист обновлен."
 		else
-			render price_path, alert: "Ошибка. Прайс-лист не обновлен."
+			render price_list_path, alert: "Ошибка. Прайс-лист не обновлен."
 		end
   end
 	

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'contact_forms/new'
   get 'contact_forms/create'
-  get 'price_lists/show'
+#  get 'price_lists/show'
   get 'comparison_items/create'
   get 'comparison_items/update'
   get 'comparison_items/destroy'
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#show', id: 2, as: :about
 	get '/cert', to: 'pages#show', id: 4, as: :cert
 	get '/price_list', to: 'price_lists#edit', as: :price_list
+  resource :price_list, only: :update
 	get '/edit_core_settings', to: 'core_settings#edit', id: 1, as: :edit_core_settings
 	get '/edit_promos', to: 'promos#edit', id: 1, as: :edit_promos
 	post '/send_form', to: 'contact_form_mailer#send_form', as: :send_form
