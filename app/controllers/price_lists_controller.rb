@@ -2,6 +2,7 @@ class PriceListsController < ApplicationController
 	before_action :authenticate_admin!
 	
 	def edit
+    @price_list = PriceList.first
   end
 	
 	def update
