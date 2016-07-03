@@ -234,6 +234,8 @@ input[type="checkbox"] {
 }
 .btn-hidden {
 	visibility: hidden;
+  height: 0;
+  width: 0;
 }
 .clearfix:after { 
 	content: ""; 
@@ -1002,6 +1004,7 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 .cart-thumb {
 	margin-bottom: 10px;
+  max-width: 190px;
 }
 .cart-form-wrapper {
 	position: static;
@@ -1048,6 +1051,12 @@ border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 .cart-quantity-title {
 	width: 166px;
+  @media(max-width: 767px) {
+    width: 100%;
+    text-align: center;
+    margin: 25px 0 20px 0;
+    font-weight: 700;
+  }
 }
 #order-form-controls {
 	:nth-last-child(2) {
