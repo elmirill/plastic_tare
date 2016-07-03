@@ -11,7 +11,7 @@
 		<% end %>
 	</div>
 	<div class="col-md-9 col-sm-8 col-xs-9 cart-form-wrapper">
-		<%= form_for order_item, remote: true do |f| %>
+    <%= form_for order_item, remote: true, html: {class: "cart-quantity-form"} do |f| %>
 			<% if var_color?(product) %>
 				<div class="row cart-quantity-row">
 					<h4 class="cart-quantity-title">Цветной</h4>
@@ -21,7 +21,7 @@
 					<% if order_item.color_quantity > 0 %>
 					<h4>&nbsp;= <%= order_item.color_quantity * order_item.var_price("color") %> <i class='glyphicon glyphicon-ruble'></i></h4>
 					<% end %>
-				</div>	
+				</div>
 			<% end %>
 			<% if var_high?(product) %>
 				<div class="row cart-quantity-row">

@@ -13,12 +13,12 @@ class OrderItemsController < ApplicationController
 
   def update
 		@order_item.update_attributes(order_item_params)
-		@order_items = @order.order_items
+    @order_items = @order.order_items.order(params.fetch(:sort, "created_at ASC"))
   end
 
   def destroy
 		@order_item.destroy
-		@order_items = @order.order_items
+		@order_items = @order.order_items.order(params.fetch(:sort, "created_at ASC"))
   end
 	
 	private

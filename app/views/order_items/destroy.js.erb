@@ -1,7 +1,8 @@
 $("#cart").html("<%=j render 'shared/sidebar_cart' %>");
 
-$('.cart-row#order-item-<%= @order_item.id %>').slideUp(300, function() {
+$('.cart-row.order-item-<%= @order_item.id %>').slideUp(300, function() {
 	this.remove();
+  $(".shopping-cart").html("<%=j render 'orders/shopping_cart' %>");
 });
 
 if ($('.cart-row').length == 1) {

@@ -4,22 +4,22 @@
 	<div id="show-product-title-wrapper">
 	<h1 class="show-product-title"><%= @product.name %></h1>
 
-		<div class="product-show-cart">
-			<% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
-				<%= render 'products/order_comp_links/remove_order_show' %>
-			<% else %>
-				<%= render 'products/order_comp_links/add_order_show' %>
-			<% end %>
-		</div>
-
-		<div class="product-show-comparison">
-			<% if current_comparison.comparison_items.any? { |ci| ci.product_id == @product.id } %>
-				<%= render 'products/order_comp_links/remove_comp_show' %>
-			<% else %>
-				<%= render 'products/order_comp_links/add_comp_show' %>
-			<% end %>
-		</div>
-
+    <div class="product-show-cart">
+      <% if current_order.order_items.any? { |oi| oi.product_id == @product.id } %>
+        <%= render 'products/order_comp_links/remove_order_show' %>
+      <% else %>
+        <%= render 'products/order_comp_links/add_order_show' %>
+      <% end %>
+    </div>
+    
+    <div class="product-show-comparison">
+      <% if current_comparison.comparison_items.any? { |ci| ci.product_id == @product.id } %>
+        <%= render 'products/order_comp_links/remove_comp_show' %>
+      <% else %>
+        <%= render 'products/order_comp_links/add_comp_show' %>
+      <% end %>
+    </div>
+		
 		<% if admin_signed_in? %>
 			<%= link_to edit_product_path(@product), class: "admin-icon-edit" do %>
 					<i class="glyphicon glyphicon-pencil"></i>

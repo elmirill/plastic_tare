@@ -1,3 +1,4 @@
 $("#cart").html('<%=j render 'shared/sidebar_cart' %>');
-$(".order-item-<%= @order_item.id %>").replaceWith('<%=j render 'orders/cart_row', order_item: @order_item, product: @order_item.product %>');
+$(".shopping-cart").html("<%=j render 'orders/shopping_cart' %>");
+//$(".order-item-<%= @order_item.id %>").replaceWith('<%=j render 'orders/cart_row', order_item: @order_item, product: @order_item.product %>');
 //$('#cart-rows').append
