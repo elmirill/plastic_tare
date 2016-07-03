@@ -1,5 +1,5 @@
 <div class="cart-row col-xs-12 order-item-<%= order_item.id %>">
-	<h3>
+	<h3 class="cart-product-name">
 		<%= product.name %>
 		<%= link_to order_item, method: :delete, remote: true, class: "admin-icon-delete-cart-row" do %>
 			<i class="glyphicon glyphicon-remove"></i>
