@@ -11,7 +11,7 @@
 					<li>
 						<div id="promo">
 							<div id="promo-content">
-								<%= image_tag unit.image %>
+								<%= link_to (image_tag unit.image), unit.link %>
 								<div id="promo-text">
 									<h1><%= unit.title %></h1>
 									<h2><%= unit.subtitle %>&nbsp; &nbsp; <span><%= link_to "Подробнее", unit.link %></span></h2>
