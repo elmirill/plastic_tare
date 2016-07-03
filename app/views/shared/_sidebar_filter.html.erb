@@ -1,60 +1,60 @@
 <div class="catalogue">
-	<ul>
-		<% if category_types_present? %>
-		<h2 id="filter-title">Фильтры <a href="#" id="hide-filter">скрыть</a></h2>
-		<%= form_tag products_path, id: "catalogue-filter", method: :get do %>
-			<li>
-				<h3>Тип</h3>
-				<% Type.all.each do |type| %>
-					<% if Product.filter_category(@curr_cat_id).filter_types(Array.wrap(type.name)).present? %>
-						<% type_params = Array.new %>
-						<% if params[:types].present? %>
-							<% params[:types].each do |t| %>
-								<% type_params << t %>
-							<% end %>
-						<% end %>
-						<%= check_box_tag('types[]', type.name, (true if type_params.include?(type.name))) %>
-						<%= type.name %> <br>
-					<% end %>
-				<% end %>
-			</li>
-			<% if Category.find(@curr_cat_id).name != "Паллеты" %>
-				<li>		
-					<h3>Объем</h3>
-					<%= number_field_tag('minvol', params[:minvol]) %> л&nbsp;&nbsp; —&nbsp;
-					<%= number_field_tag('maxvol', params[:maxvol]) %> л
-				</li>	
-			<% end %>
-			<li>
-				<h3>Длина</h3>
-				<%= number_field_tag('minlen', params[:minlen]) %> мм —
-				<%= number_field_tag('maxlen', params[:maxlen]) %> мм
-			</li>	
-			<li>
-				<h3>Ширина</h3>
-				<%= number_field_tag('minwid', params[:minwid]) %> мм —
-				<%= number_field_tag('maxwid', params[:maxwid]) %> мм
-			</li>	
-			<li>
-				<h3>Высота</h3>
-				<%= number_field_tag('minheig', params[:minheig]) %> мм —
-				<%= number_field_tag('maxheig', params[:maxheig]) %> мм
-			</li>	
-			<li>
-				<h3>Диаметр</h3>
-				<%= number_field_tag('mindiam', params[:mindiam]) %> мм —
-				<%= number_field_tag('maxdiam', params[:maxdiam]) %> мм
-			</li>	
-			<li>
-				<h3 class="boxed"><%= check_box_tag('cover', true, (true if params[:cover].present?)) %>&nbsp;С крышкой</h3>
-			</li>	
-			<li>
-				<input name="filter_category" value="<%= params[:filter_category] %>" type="hidden">
-				<%= submit_tag "Фильтровать", class: "btn btn-primary" %>
-				<%= link_to "Сбросить", products_path(filter_category: @curr_cat_id),
-						class: 'admin-edit-link' %>
-			</li>
-		<% end %>
-		<% end %>
-	</ul>
+  <% if category_types_present? %>
+    <ul>
+      <h2 id="filter-title">Фильтры <a href="#" id="hide-filter">скрыть</a></h2>
+      <%= form_tag products_path, id: "catalogue-filter", method: :get do %>
+        <li>
+          <h3>Тип</h3>
+          <% Type.all.each do |type| %>
+            <% if Product.filter_category(@curr_cat_id).filter_types(Array.wrap(type.name)).present? %>
+              <% type_params = Array.new %>
+              <% if params[:types].present? %>
+                <% params[:types].each do |t| %>
+                  <% type_params << t %>
+                <% end %>
+              <% end %>
+              <%= check_box_tag('types[]', type.name, (true if type_params.include?(type.name))) %>
+              <%= type.name %> <br>
+            <% end %>
+          <% end %>
+        </li>
+        <% if Category.find(@curr_cat_id).name != "Паллеты" %>
+          <li>		
+            <h3>Объем</h3>
+            <%= number_field_tag('minvol', params[:minvol]) %> л&nbsp;&nbsp; —&nbsp;
+            <%= number_field_tag('maxvol', params[:maxvol]) %> л
+          </li>	
+        <% end %>
+        <li>
+          <h3>Длина</h3>
+          <%= number_field_tag('minlen', params[:minlen]) %> мм —
+          <%= number_field_tag('maxlen', params[:maxlen]) %> мм
+        </li>	
+        <li>
+          <h3>Ширина</h3>
+          <%= number_field_tag('minwid', params[:minwid]) %> мм —
+          <%= number_field_tag('maxwid', params[:maxwid]) %> мм
+        </li>	
+        <li>
+          <h3>Высота</h3>
+          <%= number_field_tag('minheig', params[:minheig]) %> мм —
+          <%= number_field_tag('maxheig', params[:maxheig]) %> мм
+        </li>	
+        <li>
+          <h3>Диаметр</h3>
+          <%= number_field_tag('mindiam', params[:mindiam]) %> мм —
+          <%= number_field_tag('maxdiam', params[:maxdiam]) %> мм
+        </li>	
+        <li>
+          <h3 class="boxed"><%= check_box_tag('cover', true, (true if params[:cover].present?)) %>&nbsp;С крышкой</h3>
+        </li>	
+        <li>
+          <input name="filter_category" value="<%= params[:filter_category] %>" type="hidden">
+          <%= submit_tag "Фильтровать", class: "btn btn-primary" %>
+          <%= link_to "Сбросить", products_path(filter_category: @curr_cat_id),
+              class: 'admin-edit-link' %>
+        </li>
+      <% end %>
+    </ul>
+	<% end %>
 </div>
