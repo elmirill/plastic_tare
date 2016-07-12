@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	get '/delivery', to: 'pages#show', id: 3, as: :delivery
   get '/about', to: 'pages#show', id: 2, as: :about
 	get '/cert', to: 'pages#show', id: 4, as: :cert
+  get '/scrap', to: 'pages#show', id: 5, as: :scrap
 	get '/price_list', to: 'price_lists#edit', as: :price_list
   resource :price_list, only: :update
 	get '/edit_core_settings', to: 'core_settings#edit', id: 1, as: :edit_core_settings

@@ -299,5 +299,5 @@ function alignProdMenuVert() {
 }
 
 function alignProdMenuHor() {
-  $('.production_category').css("width", "<%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%");
+  $('.production_category').css("width", "<%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%");
 }

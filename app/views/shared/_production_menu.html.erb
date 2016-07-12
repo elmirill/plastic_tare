@@ -6,11 +6,11 @@
 				<% @categories.each do |category| %>
 					<%= link_to products_path(filter_category: category.id) do %>
 						<% if category.id == @curr_cat_id %>
-							<div class="production_category production_category_active clearfix"
-								style="width: <%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%;">
+							<div class="production_category active clearfix"
+								style="width: <%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%;">
 						<% else %>
 							<div class="production_category clearfix"
-								style="width: <%= ((100.0 / Category.count) * 1000).floor / 1000.0  %>%;">
+								style="width: <%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%;">
 						<% end %>
 								<%= image_tag category.thumbnail.url, class: "category_icon hidden-sm hidden-xs" %>
 						 	<div class="category_name_menu">
@@ -21,6 +21,19 @@
 						</div>
 					<%end %>	
 				<% end %>
+       
+        <%= link_to scrap_path do %>
+          <div class="production_category <%= class_for_current_page(scrap_path) %> clearfix"
+                  style="width: <%= ((100.0 / (Category.count + 1)) * 1000).floor / 1000.0  %>%;">
+            <%= image_tag "recycle.png", class: "category_icon hidden-sm hidden-xs" %>
+            <div class="category_name_menu">
+              <div class="name_menu_aligner">
+                Лом пластмассы
+              </div>
+            </div>
+          </div>
+        <% end %>
+        
 			</div>	
 		</div>
 	</div>
