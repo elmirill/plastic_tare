@@ -76,7 +76,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-	
+
 	# Mailer config
 	config.action_mailer.default_url_options = { host: ENV["mailer_host"] }
 	config.action_mailer.raise_delivery_errors = true
@@ -90,7 +90,7 @@ Rails.application.configure do
 	user_name: ENV["mailer_user"],
 	password: ENV["mailer_pass"]
 	}
-	
+
 #	# Paperclip S3 config
 #	config.paperclip_defaults = {
 #		:storage => :s3,
@@ -100,4 +100,7 @@ Rails.application.configure do
 #			:secret_access_key => ENV["aws_secret_access_key"]
 #		}
 #	}
+
+GoogleTagManager.gtm_id = "GTM-WGNW84"
+
 end

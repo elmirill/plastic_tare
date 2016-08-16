@@ -6,8 +6,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'pg'
 gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jquery-turbolinks', '~> 0.2.1'
+# gem 'turbolinks'
+# gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise', '~> 3.5.1'
@@ -27,6 +27,7 @@ gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'wysiwyg-rails', '~> 2.0', '>= 2.0.3'
 gem 'prawn', '~> 2.0', '>= 2.0.2'
 gem 'prawn-table', '~> 0.2.2'
+gem 'google-tag-manager-rails'
 
 group :development, :test do
   gem 'byebug'
